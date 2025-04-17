@@ -252,14 +252,7 @@ const ClientPartners = () => {
           </Fade>
         </div>
         
-        <div className="flex justify-center mt-12">
-          <motion.button
-            className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
-            whileHover={{ x: 5 }}
-          >
-            {partnersContent.viewAll[language]} <ChevronRight className="w-4 h-4" />
-          </motion.button>
-        </div>
+      
       </div>
     </section>
   );
