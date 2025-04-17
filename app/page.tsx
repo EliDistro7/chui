@@ -6,6 +6,7 @@ import Testimonials from "./components/Testimonial";
 import SpecialOffer from "./components/CTA2";
 
 import ContactSection from "./components/Contact";
+import ClientPartners from "./components/ClientPartners";
 
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       {/* Hero Section - First Impression */}
       <section className="bg-gradient-to-b from-primary-50 to-white">
         <Hero />
+        <ClientPartners />
       </section>
 
       {/* Products Showcase - What We Offer */}

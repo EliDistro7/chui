@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import { Fade } from 'react-awesome-reveal';
-import { Users, Trophy, Leaf, Globe, Truck, Shield } from 'lucide-react';
+import { Users, Trophy, Leaf, Globe, Truck, Shield, Sparkles, Award } from 'lucide-react';
 import { Libre_Baskerville, Source_Sans_3 as Source_Sans_Pro } from 'next/font/google';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -26,32 +26,33 @@ const aboutContent = {
     sw: "Urithi Wetu wa Kilimo"
   },
   subtitle: {
-    en: "Committed to agricultural excellence since 2005",
-    sw: "Tumejitolea kwa ubora wa kilimo tangu 2005"
+    en: "Committed to agricultural excellence since 2019",
+    sw: "Tumejitolea kwa ubora wa kilimo tangu 2019"
   },
   missionTitle: {
     en: "Our Mission",
     sw: "Dhamira Yetu"
   },
   missionText: {
-    en: "To empower farmers with quality equipment and knowledge that transforms agricultural productivity across Tanzania",
-    sw: "Kuwapa wakulima nguvu kwa vifaa na ujuzi vinavyobadilisha tija ya kilimo Tanzania nzima"
+    en: "To supply cutting-edge agricultural machinery and implements, provide high-performance and eco-friendly pesticides and crop care solutions, and deliver effective and efficient Rental Machines that meet the demand of our clients.",
+    sw: "Kusambaza mashine za kilimo za kisasa na zana, kutoa viuatilifu vya hali ya juu na rafiki kwa mazingira na suluhisho za utunzaji wa mazao, na kutoa Mashine za Kukodisha zinazofaa na zenye ufanisi ambazo zinakidhi mahitaji ya wateja wetu."
   },
   visionTitle: {
     en: "Our Vision",
     sw: "Maono Yetu"
   },
   visionText: {
-    en: "A Tanzania where every farmer has access to modern tools for sustainable, profitable agriculture",
-    sw: "Tanzania ambayo kila mkulima anaweza kupata vifaa vya kisasa kwa kilimo endelevu na lenye faida"
+    en: "To be Tanzania's most trusted partner in modern agriculture, construction and Mining Projects through sustainable technologies and services.",
+    sw: "Kuwa mshirika anayeaminika zaidi Tanzania katika kilimo cha kisasa, ujenzi na Miradi ya Uchimbaji Madini kupitia teknolojia na huduma endelevu."
   },
   storyTitle: {
     en: "Our Story",
     sw: "Historia Yetu"
   },
   storyText: {
-    en: "Founded in Dar es Salaam with a single tractor, Fourfreyn has grown to become a trusted partner for thousands of farmers across East Africa. Our journey reflects Tanzania's agricultural transformation.",
-    sw: "Ilianzishwa Dar es Salaam na trekta moja, Fourfreyn imekua kuwa mshirika wa kuaminika kwa maelfu ya wakulima Afrika Mashariki. Safari yetu inaonyesha mabadiliko ya kilimo Tanzania."
+    en: "Fourfreyn is a leading provider of innovative agricultural solutions, dedicated to transforming farming through high-quality machinery, modern implements, and effective crop protection products. We also deal with RENTING of Farming Equipment and Construction Equipment. Founded in 2019, our mission is to empower farmers with reliable tools and technologies that increase productivity, sustainability, and profitability. We pride ourselves on supporting both smallholder and commercial farmers with customized solutions that meet local and global agricultural demands. We also provide service to Miners and Construction Companies that need machines to fulfill their Project demand on Equipment bases.",
+    
+    sw: "Fourfreyn ni mtoa huduma mkuu wa suluhisho bunifu za kilimo, inayojitolea kubadilisha kilimo kupitia mashine bora, zana za kisasa, na bidhaa madhubuti za kulinda mazao. Tunashughulika pia na KUKODISHA Vifaa vya Kilimo na Vifaa vya Ujenzi. Ilianzishwa mwaka 2019, dhamira yetu ni kuwawezesha wakulima kwa zana na teknolojia za kuaminika zinazoongeza uzalishaji, uendelevu, na faida. Tunajivunia kusaidia wakulima wadogo na wa kibiashara kwa suluhisho zilizoratibiwa kukidhi mahitaji ya kilimo ya ndani na kimataifa. Tunatoa pia huduma kwa Wachimbaji Madini na Kampuni za Ujenzi zinazohitaji mashine kutimiza mahitaji yao ya Miradi kwa misingi ya Vifaa."
   },
   valuesTitle: {
     en: "Our Core Values",
@@ -73,36 +74,43 @@ const aboutContent = {
 
 const values = [
   {
-    icon: <Leaf className="w-8 h-8 text-primary-600" />,
-    title: { en: "Sustainability", sw: "Uendelevu" },
+    icon: <Sparkles className="w-8 h-8 text-primary-600" />,
+    title: { en: "Innovation", sw: "Ubunifu" },
     description: {
-      en: "Promoting eco-friendly farming practices",
-      sw: "Kukuza mbinu za kilimo zisizoathiri mazingira"
+      en: "Constantly evolving to meet the needs of our clients demand and projects",
+      sw: "Kubadilika mara kwa mara kukidhi mahitaji ya wateja wetu na miradi"
     }
   },
   {
-    icon: <Trophy className="w-8 h-8 text-primary-600" />,
-    title: { en: "Excellence", sw: "Ubora" },
+    icon: <Award className="w-8 h-8 text-primary-600" />,
+    title: { en: "Quality", sw: "Ubora" },
     description: {
-      en: "Uncompromising quality in products and services",
-      sw: "Ubora bila maelewano katika bidhaa na huduma"
+      en: "Only the best products and services for our clients",
+      sw: "Bidhaa na huduma bora zaidi tu kwa wateja wetu"
+    }
+  },
+  {
+    icon: <Shield className="w-8 h-8 text-primary-600" />,
+    title: { en: "Integrity", sw: "Uadilifu" },
+    description: {
+      en: "Transparent and ethical business practices",
+      sw: "Biashara inayofanywa kwa uwazi na maadili"
+    }
+  },
+  {
+    icon: <Leaf className="w-8 h-8 text-primary-600" />,
+    title: { en: "Sustainability", sw: "Uendelevu" },
+    description: {
+      en: "Solutions that protect the environment and promote long-term growth",
+      sw: "Suluhisho zinazolinda mazingira na kukuza ukuaji wa muda mrefu"
     }
   },
   {
     icon: <Users className="w-8 h-8 text-primary-600" />,
-    title: { en: "Community", sw: "Jamii" },
-    sw: "Jamii",
+    title: { en: "Customer-Centric", sw: "Mteja Kwanza" },
     description: {
-      en: "Building strong relationships with farming communities",
-      sw: "Kujenga uhusiano imara na jamii za wakulima"
-    }
-  },
-  {
-    icon: <Globe className="w-8 h-8 text-primary-600" />,
-    title: { en: "Innovation", sw: "Ubunifu" },
-    description: {
-      en: "Bringing cutting-edge solutions to Tanzanian agriculture",
-      sw: "Kuleta ufumbuzi wa kisasa kwa kilimo cha Tanzania"
+      en: "Our Client first—always",
+      sw: "Mteja wetu kwanza—daima"
     }
   }
 ];
