@@ -8,6 +8,7 @@ import { Libre_Baskerville, Source_Sans_3 as Source_Sans_Pro } from 'next/font/g
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { productsData } from '@/data/index';
+import QuoteRequestModal from '@/app/components/QuoteRequestModal';
 
 
 
@@ -106,6 +107,8 @@ export default function SingleProductPage() {
   const [isSpecsOpen, setIsSpecsOpen] = useState(true);
   const [isDescOpen, setIsDescOpen] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productId, setProductId] = useState(null);
 
   useEffect(() => {
     if (pathname) {
@@ -137,7 +140,18 @@ export default function SingleProductPage() {
       </div>
     );
   }
-
+    
+    // Function to open modal with a specific product
+    const openQuoteModal = (id) => {
+        
+        setIsModalOpen(true);
+      };
+      
+      // Function to close modal
+      const closeQuoteModal = () => {
+        setIsModalOpen(false);
+      };
+  
   // Find the category name for this product
   const categoryObj = {
     tractors: { en: "Tractors & Machinery", sw: "Trekta na Mashine" },
@@ -267,6 +281,18 @@ export default function SingleProductPage() {
   const specifications = parseSpecifications();
   const features = extractFeatures();
 
+
+  if(isModalOpen){
+    return (
+
+        <QuoteRequestModal 
+        isOpen={isModalOpen}
+        onClose={closeQuoteModal}
+        productId={product.id}
+      />
+    )
+  }
+
   return (
     <div className={`${sourceSans.variable} ${baskerville.variable} bg-white min-h-screen`}>
       {/* Breadcrumb Navigation */}
@@ -388,12 +414,14 @@ export default function SingleProductPage() {
                 
                 {/* CTA Buttons */}
                 <div className="space-y-4">
-                  <Link
-                    href={`/quote?product=${product.id}`}
+                  <button
+                    onClick={()=>{
+                        openQuoteModal(product.id)
+                    }}
                     className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold transition-colors"
                   >
                     {productPageContent.requestQuote[language]}
-                  </Link>
+                  </button>
                   <Link
                     href={`/contact?product=${product.id}`}
                     className="w-full flex items-center justify-center px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-colors"
@@ -521,6 +549,8 @@ export default function SingleProductPage() {
           </div>
         </section>
       )}
+
+
     </div>
   );
 }
