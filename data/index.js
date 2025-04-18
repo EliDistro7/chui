@@ -1,5 +1,5 @@
 
-
+import { Award, Torus as Tool, Globe, BookOpen, TrendingUp } from 'lucide-react';
 
 export const productsData = [
     {
@@ -125,7 +125,7 @@ export const productsData = [
   ];
 
 // heroContent.js
-import { Award, Torus as Tool, Globe, BookOpen, TrendingUp } from 'lucide-react';
+
 
 export const heroContent = {
   title: {

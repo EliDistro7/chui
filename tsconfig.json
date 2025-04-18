@@ -20,6 +20,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/StatsSection.js", "app/components/Posts.js", "app/components/ContactForm.js", "app/components/HeroSection.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts","**/*.js", "**/*.tsx", ".next/types/**/*.ts", "app/components/StatsSection.js", "app/components/Posts.js", "app/components/ContactForm.js", "app/components/HeroSection.tsx", "app/products/page.js"],
   "exclude": ["node_modules"]
 }

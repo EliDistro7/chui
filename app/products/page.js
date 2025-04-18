@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import {productsData} from '@/data/index'
+
 // Font definitions
 const baskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -43,11 +45,30 @@ const productsContent = {
     en: "View All Products",
     sw: "Tazama Bidhaa Zote"
   },
+  specifications: {
+    en: "Key Specifications",
+    sw: "Vipimo Muhimu"
+  },
   categories: [
     {
       id: "tractors",
       name: { en: "Tractors & Machinery", sw: "Trekta na Mashine" },
       icon: <Tractor className="w-5 h-5" />
+    },
+    {
+      id: "harvesters",
+      name: { en: "Harvesting Equipment", sw: "Vifaa vya Kuvuna" },
+      icon: <Harvester className="w-5 h-5" />
+    },
+    {
+      id: "tillers",
+      name: { en: "Tillers", sw: "Tillers" },
+      icon: <Tools className="w-5 h-5" />
+    },
+    {
+      id: "seeders",
+      name: { en: "Seeders", sw: "Vifaa vya Kupanda" },
+      icon: <Sprout className="w-5 h-5" />
     },
     {
       id: "fertilizers",
@@ -60,16 +81,6 @@ const productsContent = {
       icon: <Irrigation className="w-5 h-5" />
     },
     {
-      id: "harvesting",
-      name: { en: "Harvesting Equipment", sw: "Vifaa vkuvuna" },
-      icon: <Harvester className="w-5 h-5" />
-    },
-    {
-      id: "tools",
-      name: { en: "Farm Tools", sw: "Vifaa vya Shambani" },
-      icon: <Tools className="w-5 h-5" />
-    },
-    {
       id: "storage",
       name: { en: "Storage Solutions", sw: "Vifaa vya Uhifadhi" },
       icon: <Warehouse className="w-5 h-5" />
@@ -77,33 +88,90 @@ const productsContent = {
   ]
 };
 
-const productsData = [
-  {
-    id: 1,
-    name: { en: "Compact 35HP Tractor", sw: "Trekta Ndogo ya HP 35" },
-    category: "tractors",
-    price: { en: "TZS 45,000,000", sw: "TZS Milioni 45" },
-    description: {
-      en: "Ideal for small to medium farms with fuel-efficient engine",
-      sw: "Inafaa kwa mashamba madogo hadi ya kati na injini yenye matumizi mazuri ya mafuta"
-    },
-    image: "/tractor-1.jpg",
-    featured: true
-  },
-  {
-    id: 2,
-    name: { en: "Organic NPK Fertilizer", sw: "Mbolea ya Asili NPK" },
-    category: "fertilizers",
-    price: { en: "TZS 120,000 per bag", sw: "TZS 120,000 kwa gunia" },
-    description: {
-      en: "Balanced nutrients for improved crop yield",
-      sw: "Virutubisho vilivyobana kwa mavuno bora"
-    },
-    image: "/mbolea-1.jpg",
-    featured: true
-  },
-  // Add 10+ more products with similar structure
-];
+// Convert description into structured specifications
+const parseSpecifications = (product, language) => {
+  if (product.specifications) return product.specifications;
+  
+  // If there are no structured specifications, we extract them from description
+  const description = product.description[language];
+  const specs = [];
+  
+  // Extract specs based on common patterns in the descriptions
+  if (description.includes("HP")) {
+    const powerMatch = description.match(/(\d+HP|\d+ HP|HP \d+|HP \d+,|\d+,\s*\d+,\s*\d+HP)/i);
+    if (powerMatch) {
+      specs.push({
+        name: { en: "Power", sw: "Nguvu" },
+        value: { 
+          en: powerMatch[0].replace(/,$/, ''),
+          sw: powerMatch[0].replace(/,$/, '').replace('HP', 'HP')
+        }
+      });
+    }
+  }
+  
+  // Extract engine information
+  if (description.toLowerCase().includes("engine")) {
+    const engineMatch = description.match(/[^ ]+ engine|engine [^.]+/i);
+    if (engineMatch) {
+      specs.push({
+        name: { en: "Engine", sw: "Injini" },
+        value: { 
+          en: engineMatch[0].replace(/,$/, ''),
+          sw: language === 'en' ? engineMatch[0].replace(/,$/, '') : 'Injini ya ' + engineMatch[0].replace(/,$/, '')
+        }
+      });
+    }
+  }
+  
+  // Extract brakes information
+  if (description.toLowerCase().includes("brake")) {
+    const brakesMatch = description.match(/[^ ]+ (brakes|brake) [^,.]*/i);
+    if (brakesMatch) {
+      specs.push({
+        name: { en: "Brakes", sw: "Breki" },
+        value: { 
+          en: brakesMatch[0].replace(/,$/, ''),
+          sw: language === 'en' ? brakesMatch[0].replace(/,$/, '') : 'Breki za ' + brakesMatch[0].replace(/,$/, '')
+        }
+      });
+    }
+  }
+  
+  // Extract weight information
+  if (description.toLowerCase().includes("kg")) {
+    const weightMatch = description.match(/\d+\s*kg|\d+\.\d+\s*kg/i);
+    if (weightMatch) {
+      specs.push({
+        name: { en: "Weight", sw: "Uzito" },
+        value: { 
+          en: weightMatch[0],
+          sw: weightMatch[0]
+        }
+      });
+    }
+  }
+  
+  // If we couldn't extract specs or have fewer than 2, add a generic one
+  if (specs.length < 2) {
+    specs.push({
+      name: { en: "Details", sw: "Maelezo" },
+      value: { 
+        en: description.split('.')[0] + '.',
+        sw: description.split('.')[0] + '.'
+      }
+    });
+  }
+  
+  return specs;
+};
+
+// Create a short description from the full description
+const createShortDescription = (product, language) => {
+  const fullDesc = product.description[language];
+  const firstSentence = fullDesc.split('.')[0] + '.';
+  return firstSentence.length > 100 ? firstSentence.substring(0, 100) + '...' : firstSentence;
+};
 
 export default function ProductsPage() {
   const { language } = useLanguage();
@@ -208,49 +276,76 @@ export default function ProductsPage() {
           {/* Products Grid */}
           {filteredProducts.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredProducts.map((product, index) => (
-                <Fade key={product.id} direction="up" delay={Math.min(index * 100, 300)} triggerOnce>
-                  <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                    <div className="h-48 bg-gray-100 overflow-hidden relative">
-                      <img 
-                        src={product.image} 
-                        alt={product.name[language]} 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                      {product.featured && (
-                        <div className="absolute top-3 left-3 bg-primary-600 text-white text-xs font-bold px-2 py-1 rounded">
-                          {language === 'en' ? 'Featured' : 'Maalum'}
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="mb-4">
-                        <span className="inline-block px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium mb-2">
-                          {productsContent.categories.find(c => c.id === product.category)?.name[language]}
-                        </span>
-                        <h3 className={`text-xl font-bold text-gray-900 mb-2 font-display`}>
-                          {product.name[language]}
-                        </h3>
-                        <p className="text-gray-600 mb-4">
-                          {product.description[language]}
-                        </p>
+              {filteredProducts.map((product, index) => {
+                const specifications = parseSpecifications(product, language);
+                const shortDescription = product.shortDescription ? 
+                  product.shortDescription[language] : 
+                  createShortDescription(product, language);
+                
+                return (
+                  <Fade key={product.id} direction="up" delay={Math.min(index * 100, 300)} triggerOnce>
+                    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+                      <div className="h-48 bg-gray-100 overflow-hidden relative">
+                        <img 
+                          src={product.image} 
+                          alt={product.name[language]} 
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                        {product.featured && (
+                          <div className="absolute top-3 left-3 bg-primary-600 text-white text-xs font-bold px-2 py-1 rounded">
+                            {language === 'en' ? 'Featured' : 'Maalum'}
+                          </div>
+                        )}
                       </div>
-                      <div className="mt-auto">
-                        <div className={`text-lg font-bold text-primary-600 mb-4 font-sans`}>
-                          {product.price[language]}
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="mb-4">
+                          <span className="inline-block px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium mb-2">
+                            {productsContent.categories.find(c => c.id === product.category)?.name[language] || product.category}
+                          </span>
+                          <h3 className={`text-xl font-bold text-gray-900 mb-2 font-display`}>
+                            {product.name[language]}
+                          </h3>
+                          
+                          {/* Short description */}
+                          <p className="text-gray-600 mb-4">
+                            {shortDescription}
+                          </p>
+                          
+                          {/* Specifications displayed as a structured list */}
+                          <div className="mt-3">
+                            <h4 className="font-medium text-gray-900 mb-2">
+                              {productsContent.specifications[language]}
+                            </h4>
+                            <ul className="text-sm space-y-1">
+                              {specifications.slice(0, 3).map((spec, idx) => (
+                                <li key={idx} className="flex items-start">
+                                  <span className="inline-block w-2 h-2 bg-primary-500 rounded-full mt-1.5 mr-2"></span>
+                                  <div>
+                                    <span className="font-medium">{spec.name[language]}: </span>
+                                    <span className="text-gray-600">{spec.value[language]}</span>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                        <Link 
-                          href={`/products/${product.id}`}
-                          className="w-full flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
-                        >
-                          {language === 'en' ? 'View Details' : 'Angalia Maelezo'}
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
+                        <div className="mt-auto">
+                          <div className={`text-lg font-bold text-primary-600 mb-4 font-sans`}>
+                            {product.price[language]}
+                          </div>
+                          <Link 
+                            href={`/single-product/${product.id}`}
+                            className="w-full flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
+                          >
+                            {language === 'en' ? 'View Details' : 'Angalia Maelezo'}
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Fade>
-              ))}
+                  </Fade>
+                );
+              })}
             </div>
           ) : (
             <Fade direction="up" triggerOnce>
