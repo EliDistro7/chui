@@ -113,8 +113,8 @@ export default function SingleProductPage() {
   useEffect(() => {
     if (pathname) {
       const productId = pathname.split('/').pop();
-      console.log('product Id', productId)
-      console.log('products', productsData)
+     // console.log('product Id', productId)
+   //   console.log('products', productsData)
       const foundProduct = productsData.find(p => p.id === Number(productId));
       
       if (foundProduct) {
