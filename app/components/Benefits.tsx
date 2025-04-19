@@ -59,27 +59,7 @@ const BenefitsSection = () => {
               </Fade>
             ))}
             
-            <Fade direction="up" delay={200} triggerOnce>
-              <div className="bg-primary-600 rounded-xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">
-                  {language === 'en' 
-                    ? 'Financing Options Available' 
-                    : 'Mikopo Inapatikana'}
-                </h3>
-                <p className="mb-4">
-                  {language === 'en'
-                    ? 'We partner with financial institutions to help you acquire equipment'
-                    : 'Tunaungana na taasisi za kifedha kukusaidia kupata vifaa'}
-                </p>
-                <Link
-                  href="/financing"
-                  className="inline-flex items-center text-white font-medium hover:underline"
-                >
-                  {language === 'en' ? 'Learn More' : 'Jifunze Zaidi'}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </div>
-            </Fade>
+         
           </div>
         </div>
       </section>
