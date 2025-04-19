@@ -187,7 +187,7 @@ export default function ProductShowcase() {
 
   return (
     <div className={`${sourceSans.variable} ${baskerville.variable} bg-white`}>
-      {/* Hero Section */}
+      {/* Hero Section 
       <section className="relative bg-gradient-to-b from-primary-50 to-white py-20">
         <div className="container mx-auto px-6 text-center">
           <Fade direction="down" triggerOnce>
@@ -200,6 +200,7 @@ export default function ProductShowcase() {
           </Fade>
         </div>
       </section>
+      */}
 
       {/* Main Content */}
       <section className="py-16">
