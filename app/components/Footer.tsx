@@ -88,21 +88,13 @@ const Footer = () => {
                   {language === 'en' ? 'Products' : 'Bidhaa'}
                 </Link>
               </li>
-              <li>
-                <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
-                  {language === 'en' ? 'Services' : 'Huduma'}
-                </Link>
-              </li>
+            
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
                   {language === 'en' ? 'About Us' : 'Kuhusu Sisi'}
                 </Link>
               </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
-                  {language === 'en' ? 'Blog' : 'Makala'}
-                </Link>
-              </li>
+            
               <li>
                 <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
                   {language === 'en' ? 'Contact' : 'Mawasiliano'}
