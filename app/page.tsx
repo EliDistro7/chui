@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className="bg-white">
       {/* Hero Section - First Impression */}
       <section className="bg-gradient-to-b from-primary-50 to-white">
-     
+        <Hero />
         <ClientPartners />
       </section>
 

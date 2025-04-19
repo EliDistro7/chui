@@ -389,30 +389,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Special Offer Banner */}
-      <Fade triggerOnce>
-        <section className="bg-primary-700 text-white py-12">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className={`text-2xl md:text-3xl font-bold mb-4 font-display`}>
-              {language === 'en' 
-                ? 'Special Financing Available' 
-                : 'Uwezo wa Kifedha Maalum Unapatikana'}
-            </h2>
-            <p className="text-lg mb-6 max-w-3xl mx-auto">
-              {language === 'en'
-                ? 'Get flexible payment plans for all equipment purchases above TZS 10,000,000'
-                : 'Pata mipango rahisi ya malipo kwa ununuzi wowote wa vifaa zaidi ya TZS Milioni 10'}
-            </p>
-            <Link
-              href="/financing"
-              className="inline-flex items-center px-8 py-3 bg-white text-primary-700 hover:bg-gray-100 rounded-lg font-bold text-lg"
-            >
-              {language === 'en' ? 'Learn More' : 'Jifunze Zaidi'}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
-        </section>
-      </Fade>
+ 
     </div>
   );
 }
