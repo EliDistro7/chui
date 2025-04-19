@@ -104,11 +104,20 @@ const ClientPartners = () => {
   };
 
   return (
-    <section className="py-8 bg-gradient-to-b from-white to-primary-50 overflow-hidden">
+    <section className="py-12 bg-gradient-to-b from-white to-primary-50 overflow-hidden">
       <div className="container">
-      
+        <div className="text-center mb-10">
+          <Fade direction="up" triggerOnce>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {partnersContent.title[language]}
+            </h2>
+            <p className="text-neutral-600 max-w-2xl mx-auto">
+              {partnersContent.subtitle[language]}
+            </p>
+          </Fade>
+        </div>
 
-        <div className="mt-0 relative">
+        <div className="mt-12 relative">
           <Fade triggerOnce>
             <motion.div 
               className="flex gap-8 mb-8"
