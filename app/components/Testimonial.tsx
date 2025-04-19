@@ -94,7 +94,7 @@ const Testimonials = () => {
               href="/testimonials"
               className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group"
             >
-              {language === 'en' ? 'View more testimonials' : 'Angalia ushuhuda zaidi'}
+              {language === 'en' ? 'View more testimonials' : 'Angalia shuhuda zaidi'}
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
