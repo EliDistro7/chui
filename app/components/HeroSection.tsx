@@ -128,89 +128,16 @@ const Hero = () => {
 
             {/* Trust indicators */}
             <Fade triggerOnce delay={600}>
-              <div className="pt-8">
+              <div >
                 <p className="text-sm text-neutral-500 uppercase tracking-wider mb-4">
                   {heroContent.trustText[language]}
                 </p>
-                <div className="flex flex-wrap items-center gap-6">
-                  {[1, 2, 3, 4].map((item) => (
-                    <div 
-                      key={item}
-                      className="h-12 grayscale hover:grayscale-0 transition-all"
-                    >
-                      <div className="h-full w-full bg-neutral-200 rounded-lg"></div>
-                    </div>
-                  ))}
-                </div>
+              
               </div>
             </Fade>
           </div>
 
-          {/* Right content - product carousel with farmers */}
-          <div className="relative">
-            <Fade direction="up" triggerOnce>
-              <Swiper
-                modules={[Autoplay, Pagination]}
-                spaceBetween={24}
-                slidesPerView={1}
-                autoplay={{ delay: 5000 }}
-                pagination={{ clickable: true }}
-                loop={true}
-                className="rounded-2xl shadow-layer overflow-hidden"
-              >
-                {heroContent.products.map((product, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="relative h-full min-h-[400px]">
-                      {/* Farmer image background */}
-                      <div className="absolute inset-0 overflow-hidden">
-                        <Image
-                          src={product.farmerImage}
-                          alt={`Happy farmer with ${product.name[language]}`}
-                          fill
-                          className="object-cover"
-                          priority
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/20" />
-                      </div>
-                      
-                      {/* Content overlay */}
-                      <div className={`relative z-10 p-8 h-full flex flex-col`}>
-                        <div className="mb-6">
-                          {index % 4 === 0 ? <Tractor className="w-8 h-8 text-white" /> : 
-                           index % 4 === 1 ? <Sprout className="w-8 h-8 text-white" /> :
-                           index % 4 === 2 ? <Wheat className="w-8 h-8 text-white" /> :
-                           <Truck className="w-8 h-8 text-white" />}
-                        </div>
-                        <h3 className="text-3xl font-bold text-white mb-3">{product.name[language]}</h3>
-                        <p className="text-white/90 mb-8">{product.description[language]}</p>
-                        <Link 
-                          href={`/products#${product.name.en.toLowerCase()}`}
-                          className="mt-auto inline-flex items-center gap-2 text-white hover:text-primary-200 font-medium"
-                        >
-                          {language === 'en' ? 'Explore' : 'Chunguza'} {product.name[language]}
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              
-              {/* Floating product card 
-              <div className="absolute -bottom-8 -left-8 bg-white bg-opacity-85 rounded-xl shadow-md p-4 border border-neutral-100 w-40 h-48 z-10">
-                <div className="w-10 h-10 rounded-lg bg-primary-100 mb-3 flex items-center justify-center">
-                  <ShoppingCart className="w-5 h-5 text-primary-600" />
-                </div>
-                <h4 className="font-medium text-neutral-800 mb-1">
-                  {language === 'en' ? 'Special Offers' : 'Ofa Maalum'}
-                </h4>
-                <p className="text-sm text-neutral-500">
-                  {language === 'en' ? 'Limited time discounts' : 'Punguzo la muda'}
-                </p>
-              </div>
-              */}
-            </Fade>
-          </div>
+       
         </div>
       </div>
 
