@@ -28,7 +28,7 @@ export default function HomePage() {
       <Testimonials />
 
       {/* Special Offer - Conversion Driver */}
-      <SpecialOffer />
+     
 
       {/* Educational Content  <EducationalContent /> - Build Trust */}
      
