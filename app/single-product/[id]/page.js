@@ -297,22 +297,22 @@ export default function SingleProductPage() {
     <div className={`${sourceSans.variable} ${baskerville.variable} bg-white min-h-screen`}>
       {/* Breadcrumb Navigation */}
       <div className="bg-gray-50 py-3">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <Link href="/products" className="flex items-center text-primary-600 hover:text-primary-700 font-medium">
             <ArrowLeft className="w-4 h-4 mr-2" />
             {productPageContent.backToProducts[language]}
           </Link>
         </div>
       </div>
-
+  
       {/* Product Detail Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-5 gap-8">
+      <section className="py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-5 gap-6 md:gap-8">
             {/* Product Images - Left Column (2/5) */}
             <div className="md:col-span-2">
               <Fade direction="left" triggerOnce>
-                <div className="sticky top-8">
+                <div className="md:sticky md:top-8">
                   {/* Main Image */}
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img 
@@ -325,7 +325,7 @@ export default function SingleProductPage() {
                   {/* Image Thumbnails (if there were multiple images) */}
                   <div className="flex gap-2 overflow-x-auto pb-2">
                     <button 
-                      className={`border-2 rounded-md overflow-hidden w-16 h-16 flex-shrink-0 ${selectedImage === 0 ? 'border-primary-600' : 'border-gray-200'}`}
+                      className={`border-2 rounded-md overflow-hidden w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 ${selectedImage === 0 ? 'border-primary-600' : 'border-gray-200'}`}
                       onClick={() => setSelectedImage(0)}
                     >
                       <img 
@@ -339,7 +339,7 @@ export default function SingleProductPage() {
                 </div>
               </Fade>
             </div>
-
+  
             {/* Product Info - Right Column (3/5) */}
             <div className="md:col-span-3">
               <Fade direction="right" triggerOnce>
@@ -351,25 +351,25 @@ export default function SingleProductPage() {
                 </div>
                 
                 {/* Product Name */}
-                <h1 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display`}>
+                <h1 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 font-display`}>
                   {product.name[language]}
                 </h1>
                 
                 {/* Price */}
-                <div className={`text-2xl font-bold text-primary-600 mb-6 font-sans`}>
+                <div className={`text-xl sm:text-2xl font-bold text-primary-600 mb-4 sm:mb-6 font-sans`}>
                   {product.price[language]}
                 </div>
                 
                 {/* Short Description */}
-                <p className="text-gray-700 mb-8 leading-relaxed">
+                <p className="text-gray-700 mb-6 sm:mb-8 leading-relaxed">
                   {product.description[language].split('.')[0] + '.'}
                 </p>
-
+  
                 {/* Key Information Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
                   {/* Availability */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-gray-900 mb-2">
+                  <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="font-medium text-gray-900 mb-1 sm:mb-2">
                       {productPageContent.availability[language]}
                     </h4>
                     <p className="flex items-center text-green-600">
@@ -379,8 +379,8 @@ export default function SingleProductPage() {
                   </div>
                   
                   {/* Shipping */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-gray-900 mb-2">
+                  <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="font-medium text-gray-900 mb-1 sm:mb-2">
                       {productPageContent.shipping[language]}
                     </h4>
                     <p className="flex items-center text-gray-600 text-sm">
@@ -390,8 +390,8 @@ export default function SingleProductPage() {
                   </div>
                   
                   {/* Warranty */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-gray-900 mb-2">
+                  <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="font-medium text-gray-900 mb-1 sm:mb-2">
                       {productPageContent.warranty[language]}
                     </h4>
                     <p className="flex items-center text-gray-600 text-sm">
@@ -401,8 +401,8 @@ export default function SingleProductPage() {
                   </div>
                   
                   {/* Financing */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-gray-900 mb-2">
+                  <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="font-medium text-gray-900 mb-1 sm:mb-2">
                       {productPageContent.financing[language]}
                     </h4>
                     <p className="flex items-center text-gray-600 text-sm">
@@ -413,29 +413,29 @@ export default function SingleProductPage() {
                 </div>
                 
                 {/* CTA Buttons */}
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <button
                     onClick={()=>{
                         openQuoteModal(product.id)
                     }}
-                    className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold transition-colors"
+                    className="w-full flex items-center justify-center px-4 sm:px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold transition-colors"
                   >
                     {productPageContent.requestQuote[language]}
                   </button>
                   <Link
                     href={`/contact?product=${product.id}`}
-                    className="w-full flex items-center justify-center px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-colors"
+                    className="w-full flex items-center justify-center px-4 sm:px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-colors"
                   >
                     {productPageContent.contactUs[language]}
                   </Link>
                 </div>
                 
                 {/* Collapsible Sections */}
-                <div className="mt-12 border-t border-gray-200 pt-8 space-y-6">
+                <div className="mt-8 sm:mt-12 border-t border-gray-200 pt-6 sm:pt-8 space-y-4 sm:space-y-6">
                   {/* Specifications */}
                   <div>
                     <button 
-                      className="flex items-center justify-between w-full text-left font-bold text-lg text-gray-900 mb-4"
+                      className="flex items-center justify-between w-full text-left font-bold text-base sm:text-lg text-gray-900 mb-3 sm:mb-4"
                       onClick={() => setIsSpecsOpen(!isSpecsOpen)}
                     >
                       <span>{productPageContent.specifications[language]}</span>
@@ -446,8 +446,8 @@ export default function SingleProductPage() {
                     </button>
                     
                     {isSpecsOpen && (
-                      <div className="bg-gray-50 p-6 rounded-lg">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+                      <div className="bg-gray-50 p-4 sm:p-6 rounded-lg">
+                        <div className="grid grid-cols-1 gap-y-4">
                           {specifications.map((spec, idx) => (
                             <div key={idx} className="border-b border-gray-200 pb-3">
                               <h4 className="font-medium text-gray-900 mb-1">
@@ -466,7 +466,7 @@ export default function SingleProductPage() {
                   {/* Description & Features */}
                   <div>
                     <button 
-                      className="flex items-center justify-between w-full text-left font-bold text-lg text-gray-900 mb-4"
+                      className="flex items-center justify-between w-full text-left font-bold text-base sm:text-lg text-gray-900 mb-3 sm:mb-4"
                       onClick={() => setIsDescOpen(!isDescOpen)}
                     >
                       <span>{productPageContent.description[language]}</span>
@@ -477,7 +477,7 @@ export default function SingleProductPage() {
                     </button>
                     
                     {isDescOpen && (
-                      <div className="space-y-6">
+                      <div className="space-y-4 sm:space-y-6">
                         {/* Full Description */}
                         <div>
                           <p className="text-gray-700 leading-relaxed">
@@ -487,7 +487,7 @@ export default function SingleProductPage() {
                         
                         {/* Key Features */}
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-3">
+                          <h4 className="font-bold text-gray-900 mb-2 sm:mb-3">
                             {productPageContent.features[language]}
                           </h4>
                           <ul className="space-y-2">
@@ -508,36 +508,36 @@ export default function SingleProductPage() {
           </div>
         </div>
       </section>
-
+  
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="py-12 bg-gray-50">
-          <div className="container mx-auto px-6">
+        <section className="py-8 sm:py-12 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6">
             <Fade triggerOnce>
-              <h2 className={`text-2xl md:text-3xl font-bold text-gray-900 mb-8 font-display`}>
+              <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 font-display`}>
                 {productPageContent.relatedProducts[language]}
               </h2>
               
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {relatedProducts.map((relatedProduct) => (
                   <div key={relatedProduct.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                    <div className="h-48 bg-gray-100 overflow-hidden relative">
+                    <div className="h-36 sm:h-48 bg-gray-100 overflow-hidden relative">
                       <img 
                         src={relatedProduct.image} 
                         alt={relatedProduct.name[language]} 
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="p-6">
-                      <h3 className={`text-xl font-bold text-gray-900 mb-2 font-display`}>
+                    <div className="p-4 sm:p-6">
+                      <h3 className={`text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2 font-display`}>
                         {relatedProduct.name[language]}
                       </h3>
-                      <div className={`text-lg font-bold text-primary-600 mb-4 font-sans`}>
+                      <div className={`text-base sm:text-lg font-bold text-primary-600 mb-3 sm:mb-4 font-sans`}>
                         {relatedProduct.price[language]}
                       </div>
                       <Link 
                         href={`/single-product/${relatedProduct.id}`}
-                        className="w-full flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
+                        className="w-full flex items-center justify-center px-3 sm:px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
                       >
                         {productPageContent.viewDetails[language]}
                       </Link>
@@ -549,8 +549,6 @@ export default function SingleProductPage() {
           </div>
         </section>
       )}
-
-
     </div>
   );
 }
