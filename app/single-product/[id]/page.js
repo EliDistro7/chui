@@ -536,7 +536,7 @@ export default function SingleProductPage() {
                         {relatedProduct.price[language]}
                       </div>
                       <Link 
-                        href={`/products/${relatedProduct.id}`}
+                        href={`/single-product/${relatedProduct.id}`}
                         className="w-full flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
                       >
                         {productPageContent.viewDetails[language]}
