@@ -198,7 +198,51 @@ export default function AboutPage() {
 
           {/* Timeline could be added here */}
         </div>
+       
+
+
       </section>
+
+      {/* Certificate of Incorporation */}
+<section className="py-16 bg-white">
+  <div className="container mx-auto px-6">
+    <Fade direction="up" triggerOnce>
+      <div className="max-w-4xl mx-auto text-center mb-8">
+        <h2 className={`text-3xl font-bold text-gray-900 mb-4 font-display`}>
+          {language === 'en' ? 'Certificate of Incorporation' : 'Cheti cha Usajili'}
+        </h2>
+        <p className={`text-gray-700 text-lg font-sans mb-8`}>
+          {language === 'en' 
+            ? 'Our official certificate of incorporation document' 
+            : 'Hati yetu rasmi ya cheti cha usajili'}
+        </p>
+      </div>
+    </Fade>
+    
+    <div className="max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-200">
+      <object 
+        data="/cert1.pdf" 
+        type="application/pdf" 
+        width="100%" 
+        height="600px"
+        className="w-full"
+      >
+        <p className="p-4 text-center">
+          {language === 'en' 
+            ? 'It appears your browser doesn\'t support embedded PDFs. ' 
+            : 'Inaonekana kivinjari chako hakisaidii PDF zilizojumuishwa. '}
+          <a 
+            href="/cert1.pdf" 
+            className="text-primary-600 hover:underline font-medium"
+          >
+            {language === 'en' ? 'Download the PDF' : 'Pakua PDF'}
+          </a>
+          {language === 'en' ? ' instead.' : ' badala yake.'}
+        </p>
+      </object>
+    </div>
+  </div>
+</section>
 
       {/* Our Values */}
       <section className="py-16 bg-white">

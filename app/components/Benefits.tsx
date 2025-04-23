@@ -16,15 +16,15 @@ const BenefitsSection = () => {
         title: { en: "Quality Guarantee", sw: "Hakiki ya Ubora" },
         description: {
           en: "All our products come with manufacturer warranties",
-          sw: "Bidhaa zote zina hakiki ya mzalishaji"
+          sw: "Bidhaa zote zina Garantii"
         }
       },
       {
         icon: <Truck className="w-8 h-8 text-primary-600" />,
-        title: { en: "Free Delivery", sw: "Uwasilishaji Bure" },
+        title: { en: "Free Delivery", sw: "Deli Bure" },
         description: {
           en: "On orders above 5M TZS within our service areas",
-          sw: "Kwa maagizo ya zaidi ya TZS Milioni 5 kwenye maeneo tunayohudumia"
+          sw: "Kwa order zaidi ya TZS Milioni 5 kwenye maeneo tunayohudumia"
         }
       }
     ];
