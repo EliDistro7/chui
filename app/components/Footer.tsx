@@ -127,7 +127,7 @@ const Footer = () => {
                     {language === 'en' ? 'Email Us' : 'Tutumie Barua Pepe'}
                   </p>
                   <a href="mailto:info@fourfreyn.co.tz" className="text-white hover:text-primary-500 transition-colors">
-                    info@fourfreyn.co.tz
+                    info@fourfreyn.com
                   </a>
                 </div>
               </li>
