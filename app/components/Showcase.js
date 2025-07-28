@@ -287,27 +287,27 @@ export default function TamTamProductShowcase() {
             </div>
           </div>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map(category => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-2xl flex items-center gap-3 font-semibold transition-all transform hover:scale-105 ${
-                  activeCategory === category.id 
-                    ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-glow' 
-                    : 'bg-white text-gray-700 hover:bg-primary-50 shadow-soft hover:shadow-layer'
-                }`}
-              >
-                {typeof category.icon === 'string' ? (
-                  <span className="text-xl">{category.icon}</span>
-                ) : (
-                  category.icon
-                )}
-                {category.name[language]}
-              </button>
-            ))}
-          </div>
+        {/* Category Filters */}
+<div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+  {categories.map(category => (
+    <button
+      key={category.id}
+      onClick={() => setActiveCategory(category.id)}
+      className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-1 sm:gap-3 font-medium sm:font-semibold text-sm sm:text-base transition-all transform hover:scale-105 min-w-0 flex-shrink-0 ${
+        activeCategory === category.id 
+          ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-glow' 
+          : 'bg-white text-gray-700 hover:bg-primary-50 shadow-soft hover:shadow-layer'
+      }`}
+    >
+      {typeof category.icon === 'string' ? (
+        <span className="text-base sm:text-xl flex-shrink-0">{category.icon}</span>
+      ) : (
+        <span className="flex-shrink-0">{category.icon}</span>
+      )}
+      <span className="truncate">{category.name[language]}</span>
+    </button>
+  ))}
+</div>
         </div>
 
         {/* Products Grid */}
