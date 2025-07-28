@@ -5,7 +5,8 @@ import { ArrowLeft, ChevronDown, ChevronUp, ShoppingCart, Truck, Shield, Star, C
 
 import { productsData } from '@/data/single.js';
 
-const TamTamSingleProductPage = ({ productId = 1 }) => {
+const TamTamSingleProductPage = ({ params }) => {
+  const productId = params?.id ? parseInt(params.id) : 1;
   const [language, setLanguage] = useState('en');
   const [isSpecsOpen, setIsSpecsOpen] = useState(true);
   const [isDescOpen, setIsDescOpen] = useState(true);
