@@ -1,13 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp, ShoppingCart, Truck, Shield, Star, Clock, Heart, Gift } from 'lucide-react';
 
 import { productsData } from '@/data/single.js';
+import { useLanguage } from '@/context/LanguageContext';
 
 const TamTamSingleProductPage = ({ params }) => {
-  const productId = params?.id ? parseInt(params.id) : 1;
-  const [language, setLanguage] = useState('en');
+  const resolvedParams = use(params);
+  const productId = resolvedParams?.id ? parseInt(resolvedParams.id) : 1;
+  const {language} = useLanguage();
   const [isSpecsOpen, setIsSpecsOpen] = useState(true);
   const [isDescOpen, setIsDescOpen] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -166,15 +168,9 @@ const TamTamSingleProductPage = ({ params }) => {
         </div>
       </div>
 
-      {/* Language Toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <button
-          onClick={() => setLanguage(language === 'en' ? 'sw' : 'en')}
-          className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold border-2 border-orange-200 hover:bg-orange-100 transition-all shadow-soft"
-        >
-          {language === 'en' ? 'SW' : 'EN'}
-        </button>
-      </div>
+    
+
+     
 
       {/* Breadcrumb Navigation */}
       <div className="bg-white/80 backdrop-blur-sm py-4 border-b border-orange-100 relative z-10">

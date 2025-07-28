@@ -9,7 +9,7 @@ export const productsData = [
       sw: "TAM TAM Cheese Balls"
     },
     category: "balls",
-    image: "/tamtam-cheese-balls.jpg",
+    image: "/balls.jpeg",
     price: {
       en: "TSh 550",
       sw: "TSh 550"
@@ -65,7 +65,7 @@ export const productsData = [
       sw: "TAM TAM Chokoleti Kigumu"
     },
     category: "chocolate",
-    image: "/tamtam-choco-crunch.jpg",
+    image: "/crunch.jpeg",
     price: {
       en: "TSh 550",
       sw: "TSh 550"
@@ -168,7 +168,7 @@ export const productsData = [
     ],
     featured: true,
     rating: 4.6,
-    images: ["/crisp.jpeg", "/multigrain-2.jpg", "/multigrain-3.jpg"]
+    images: ["/crisp.jpeg", "/choko.jpeg", "/rings.jpeg"]
   },
   {
     id: 4,
@@ -224,7 +224,7 @@ export const productsData = [
     ],
     featured: false,
     rating: 4.5,
-    images: ["/rings.jpeg", "/rings-2.jpg", "/rings-3.jpg"]
+    images: ["/rings.jpeg", "/choko.jpeg", "/rings-3.jpg"]
   },
   {
     id: 5,
@@ -280,7 +280,7 @@ export const productsData = [
     ],
     featured: false,
     rating: 4.9,
-    images: ["/choko.jpeg", "/choco-bites-2.jpg", "/choco-bites-3.jpg"]
+    images: ["/choko.jpeg", "/rings.jpeg", "/crisps.jpeg"]
   },
   {
     id: 6,
