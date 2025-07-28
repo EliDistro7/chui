@@ -53,7 +53,7 @@ const ContactSection = () => {
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
                         TAM TAM Snacks Manufacturing Ltd.<br />
-                        Unubini Cocacola, Chang'ombe<br />
+                        Unubini Cocacola, Chang&apos;ombe<br />
                         Dar es Salaam, Tanzania
                       </p>
                     </div>
@@ -147,7 +147,7 @@ const ContactSection = () => {
                   loading="lazy" 
                   className="border-0"
                   allowFullScreen
-                  aria-label={language === 'en' ? "Visit TAM TAM Factory at Unubini Cocacola, Chang'ombe": "Tembelea Kiwanda cha TAM TAM kwa Unubini Cocacola, Chang'ombe"}
+                  aria-label={language === 'en' ? "Visit TAM TAM Factory at Unubini Cocacola, Chang&apos;ombe": "Tembelea Kiwanda cha TAM TAM kwa Unubini Cocacola, Chang&apos;ombe"}
                 />
                 
                 {/* Fallback content (hidden when iframe loads) */}
@@ -160,7 +160,7 @@ const ContactSection = () => {
                       TAM TAM Factory
                     </h3>
                     <p className="text-gray-600 font-medium">
-                      Unubini Cocacola, Chang'ombe<br />
+                      Unubini Cocacola, Chang&apos;ombe<br />
                       Dar es Salaam
                     </p>
                     
