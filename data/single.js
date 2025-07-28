@@ -9,7 +9,7 @@ export const productsData = [
       sw: "TAM TAM Cheese Balls"
     },
     category: "balls",
-    image: "/balls.jpeg",
+    image: "/cheese.jpeg",
     price: {
       en: "TSh 550",
       sw: "TSh 550"
@@ -56,7 +56,7 @@ export const productsData = [
     ],
     featured: true,
     rating: 4.8,
-    images: ["/tamtam-cheese-balls.jpg", "/cheese-balls-2.jpg", "/cheese-balls-3.jpg"]
+    images: ["/cheese.jpeg", "/pafki.jpeg", "/cheese-balls-3.jpg"]
   },
   {
     id: 2,
@@ -336,6 +336,6 @@ export const productsData = [
     ],
     featured: true,
     rating: 4.4,
-    images: ["/pafki.jpeg", "/spicy-mix-2.jpg", "/spicy-mix-3.jpg"]
+    images: ["/pafki.jpeg", "/rings.jpeg", "/crisps.jpeg"]
   }
 ];
