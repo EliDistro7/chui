@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Search, Filter, Star, ShoppingCart, Heart, Zap } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 // Language Context Hook (assuming this exists in your app)
 
@@ -390,14 +391,12 @@ export default function TamTamProductShowcase() {
                       </div>
                       
                       <div className="flex gap-2">
-                        <button className="flex-1 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-semibold py-3 px-4 rounded-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-soft">
+                        <Link href={`/single-product/${product.id}`} className="flex-1 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-semibold py-3 px-4 rounded-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-soft">
                           <ShoppingCart className="w-4 h-4" />
                           <span className="hidden sm:inline">{content.addToCart[language]}</span>
-                        </button>
+                        </Link>
                         
-                        <button className="px-4 py-3 border-2 border-primary-500 text-primary-500 hover:bg-primary-50 rounded-xl font-semibold transition-all">
-                          👁️
-                        </button>
+                      
                       </div>
                     </div>
                   </div>
