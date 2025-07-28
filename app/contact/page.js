@@ -10,7 +10,7 @@ const contactContent = {
     sw: "Wasiliana Nasi"
   },
   subtitle: {
-    en: "We'd love to hear from you! Reach out for questions, feedback, or just to say hello!",
+    en: "We love to hear from you! Reach out for questions, feedback, or just to say hello!",
     sw: "Tungependa kusikia kutoka kwako! Wasiliana nasi kwa maswali, maoni, au tu kusema hujambo!"
   },
   contactInfo: {
@@ -38,7 +38,7 @@ const contactContent = {
     sw: "Tutumie Ujumbe"
   },
   formSubtitle: {
-    en: "We'll respond within 24 hours with lots of love!",
+    en: "We respond within 24 hours with lots of love!",
     sw: "Tutajibu ndani ya masaa 24 kwa upendo mwingi!"
   },
   customerCare: {
