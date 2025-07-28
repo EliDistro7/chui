@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className="bg-white">
       {/* Hero Section - First Impression */}
   
-
+     <Hero />
       {/* Products Showcase - What We Offer */}
       <ProductsShowcase />
       <ClientPartners />

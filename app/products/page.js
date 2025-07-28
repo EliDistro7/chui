@@ -1,15 +1,13 @@
 'use client'
 
 import { useLanguage } from '@/context/LanguageContext';
-
 import { Fade } from 'react-awesome-reveal';
-import { Filter, Search, Tractor, Sprout, Sprout as Irrigation, Tractor as Harvester, Sprout as Tools, Warehouse } from 'lucide-react';
+import { Filter, Search, Star, Heart, ShoppingCart, Sparkles, Zap } from 'lucide-react';
 import { Libre_Baskerville, Source_Sans_3 as Source_Sans_Pro } from 'next/font/google';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-import {productsData} from '@/data/index'
+import { productsData, categories } from '@/data/index';
 
 // Font definitions
 const baskerville = Libre_Baskerville({
@@ -20,262 +18,250 @@ const baskerville = Libre_Baskerville({
 
 const sourceSans = Source_Sans_Pro({
   subsets: ['latin'],
-  weight: ['600', '700', '900'],
+  weight: ['400', '600', '700'],
   variable: '--font-source-sans'
 });
 
 const productsContent = {
   title: {
-    en: "Our Agricultural Products",
-    sw: "Bidhaa Zetu za Kilimo"
+    en: "TAM TAM Snack Collection",
+    sw: "Mkusanyiko wa Vitafunio vya TAM TAM"
   },
   subtitle: {
-    en: "Premium quality equipment and supplies for modern farming",
-    sw: "Vifaa na vifaa vya hali ya juu kwa kilimo cha kisasa"
+    en: "Discover our delicious range of premium snacks",
+    sw: "Gundua aina zetu za vitafunio vya hali ya juu"
   },
   searchPlaceholder: {
-    en: "Search products...",
-    sw: "Tafuta bidhaa..."
+    en: "Search for your favorite snack...",
+    sw: "Tafuta kitafunio chako unachokipenda..."
   },
   filterTitle: {
-    en: "Filter by Category",
-    sw: "Chuja kwa Kategoria"
+    en: "Choose Your Flavor",
+    sw: "Chagua Ladha Yako"
   },
   viewAll: {
-    en: "View All Products",
-    sw: "Tazama Bidhaa Zote"
+    en: "View All Snacks",
+    sw: "Tazama Vitafunio Vyote"
   },
   specifications: {
-    en: "Key Specifications",
-    sw: "Vipimo Muhimu"
+    en: "Product Details",
+    sw: "Maelezo ya Bidhaa"
   },
-  categories: [
-    {
-      id: "tractors",
-      name: { en: "Tractors & Machinery", sw: "Trekta na Mashine" },
-      icon: <Tractor className="w-5 h-5" />
-    },
-    {
-      id: "harvesters",
-      name: { en: "Harvesting Equipment", sw: "Vifaa vya Kuvuna" },
-      icon: <Harvester className="w-5 h-5" />
-    },
-    {
-      id: "tillers",
-      name: { en: "Tillers", sw: "Tillers" },
-      icon: <Tools className="w-5 h-5" />
-    },
-    {
-      id: "seeders",
-      name: { en: "Seeders", sw: "Vifaa vya Kupanda" },
-      icon: <Sprout className="w-5 h-5" />
-    },
-    {
-      id: "fertilizers",
-      name: { en: "Fertilizers & Inputs", sw: "Mbolea na Pembejeo" },
-      icon: <Sprout className="w-5 h-5" />
-    },
-    {
-      id: "irrigation",
-      name: { en: "Irrigation Systems", sw: "Mifumo ya Umwagiliaji" },
-      icon: <Irrigation className="w-5 h-5" />
-    },
-    {
-      id: "storage",
-      name: { en: "Storage Solutions", sw: "Vifaa vya Uhifadhi" },
-      icon: <Warehouse className="w-5 h-5" />
-    }
-  ]
+  addToCart: {
+    en: "Add to Cart",
+    sw: "Ongeza Kwenye Cart"
+  },
+  rating: {
+    en: "Rating",
+    sw: "Ukadiriaji"
+  },
+  newProduct: {
+    en: "New!",
+    sw: "Mpya!"
+  },
+  popular: {
+    en: "Popular",
+    sw: "Maarufu"
+  }
 };
 
-// Convert description into structured specifications
+// Enhanced specifications parsing for snack products
 const parseSpecifications = (product, language) => {
   if (product.specifications) return product.specifications;
   
-  // If there are no structured specifications, we extract them from description
-  const description = product.description[language];
-  const specs = [];
-  
-  // Extract specs based on common patterns in the descriptions
-  if (description.includes("HP")) {
-    const powerMatch = description.match(/(\d+HP|\d+ HP|HP \d+|HP \d+,|\d+,\s*\d+,\s*\d+HP)/i);
-    if (powerMatch) {
-      specs.push({
-        name: { en: "Power", sw: "Nguvu" },
-        value: { 
-          en: powerMatch[0].replace(/,$/, ''),
-          sw: powerMatch[0].replace(/,$/, '').replace('HP', 'HP')
-        }
-      });
+  // Default specs for snacks if not provided
+  return [
+    {
+      name: { en: "Weight", sw: "Uzito" },
+      value: { en: "50g", sw: "50g" }
+    },
+    {
+      name: { en: "Type", sw: "Aina" },
+      value: { en: "Premium Snack", sw: "Kitafunio cha Hali ya Juu" }
     }
-  }
-  
-  // Extract engine information
-  if (description.toLowerCase().includes("engine")) {
-    const engineMatch = description.match(/[^ ]+ engine|engine [^.]+/i);
-    if (engineMatch) {
-      specs.push({
-        name: { en: "Engine", sw: "Injini" },
-        value: { 
-          en: engineMatch[0].replace(/,$/, ''),
-          sw: language === 'en' ? engineMatch[0].replace(/,$/, '') : 'Injini ya ' + engineMatch[0].replace(/,$/, '')
-        }
-      });
-    }
-  }
-  
-  // Extract brakes information
-  if (description.toLowerCase().includes("brake")) {
-    const brakesMatch = description.match(/[^ ]+ (brakes|brake) [^,.]*/i);
-    if (brakesMatch) {
-      specs.push({
-        name: { en: "Brakes", sw: "Breki" },
-        value: { 
-          en: brakesMatch[0].replace(/,$/, ''),
-          sw: language === 'en' ? brakesMatch[0].replace(/,$/, '') : 'Breki za ' + brakesMatch[0].replace(/,$/, '')
-        }
-      });
-    }
-  }
-  
-  // Extract weight information
-  if (description.toLowerCase().includes("kg")) {
-    const weightMatch = description.match(/\d+\s*kg|\d+\.\d+\s*kg/i);
-    if (weightMatch) {
-      specs.push({
-        name: { en: "Weight", sw: "Uzito" },
-        value: { 
-          en: weightMatch[0],
-          sw: weightMatch[0]
-        }
-      });
-    }
-  }
-  
-  // If we couldn't extract specs or have fewer than 2, add a generic one
-  if (specs.length < 2) {
-    specs.push({
-      name: { en: "Details", sw: "Maelezo" },
-      value: { 
-        en: description.split('.')[0] + '.',
-        sw: description.split('.')[0] + '.'
-      }
-    });
-  }
-  
-  return specs;
+  ];
 };
 
-// Create a short description from the full description
+// Create engaging short descriptions
 const createShortDescription = (product, language) => {
-  const fullDesc = product.description[language];
+  const fullDesc = product.description?.[language];
+  if (!fullDesc) return '';
+  
   const firstSentence = fullDesc.split('.')[0] + '.';
-  return firstSentence.length > 100 ? firstSentence.substring(0, 100) + '...' : firstSentence;
+  return firstSentence.length > 120 ? firstSentence.substring(0, 120) + '...' : firstSentence;
 };
 
 export default function ProductsPage() {
   const { language } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
+  const [favorites, setFavorites] = useState(new Set());
+  const [scrollY, setScrollY] = useState(0);
+
+  // Parallax effect handler
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleFavorite = (productId) => {
+    const newFavorites = new Set(favorites);
+    if (newFavorites.has(productId)) {
+      newFavorites.delete(productId);
+    } else {
+      newFavorites.add(productId);
+    }
+    setFavorites(newFavorites);
+  };
 
   const filteredProducts = productsData.filter(product => {
-    const matchesSearch = product.name[language].toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          product.description[language].toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = product.name?.[language]?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          product.description?.[language]?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
   return (
-    <div className={`${sourceSans.variable} ${baskerville.variable} bg-white`}>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary-50 to-white py-20">
-        <div className="container mx-auto px-6 text-center">
+    <div className={`${sourceSans.variable} ${baskerville.variable} min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 font-sans`}>
+      {/* Short Intro Section with Parallax Background */}
+      <section className="relative overflow-hidden bg-primary-500 py-12 md:py-16">
+        {/* Parallax Background Elements */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+            background: 'radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%)'
+          }}
+        />
+        
+        {/* Floating Snack Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute top-10 left-10 w-12 h-12 md:w-16 md:h-16 text-4xl md:text-5xl opacity-30 animate-float"
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          >
+            🍿
+          </div>
+          <div 
+            className="absolute top-20 right-20 w-12 h-12 md:w-16 md:h-16 text-4xl md:text-5xl opacity-30 animate-bounce-fun"
+            style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+          >
+            🥨
+          </div>
+          <div 
+            className="absolute bottom-10 left-1/4 w-12 h-12 md:w-16 md:h-16 text-4xl md:text-5xl opacity-30 animate-float"
+            style={{ transform: `translateY(${scrollY * 0.4}px)`, animationDelay: '1s' }}
+          >
+            🍪
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <Fade direction="down" triggerOnce>
-            <h1 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-display`}>
-              {productsContent.title[language]}
-            </h1>
-            <p className={`text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-sans`}>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-white animate-pulse" />
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-white tracking-tight">
+                {productsContent.title[language]}
+              </h1>
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-white animate-pulse" />
+            </div>
+            <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               {productsContent.subtitle[language]}
             </p>
           </Fade>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          {/* Filters and Search */}
+      {/* Search and Filter Section with Parallax */}
+      <section 
+        className="py-8 md:py-12 bg-white shadow-soft border-b border-neutral-200 relative z-30"
+        style={{
+          transform: `translateY(${scrollY * 0.1}px)`,
+        }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Fade direction="up" triggerOnce>
-            <div className="mb-12">
-              <div className="flex flex-col md:flex-row gap-6 mb-8">
-                {/* Search Bar */}
-                <div className="flex-1 relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Search className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder={productsContent.searchPlaceholder[language]}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 font-sans"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
+            <div className="flex flex-col gap-4 md:gap-6">
+              {/* Enhanced Search Bar */}
+              <div className="relative group w-full">
+                <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none z-10">
+                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary-400 group-focus-within:text-primary-600 transition-colors" />
                 </div>
-
-                {/* Category Filter Dropdown (Mobile) */}
-                <div className="md:hidden">
-                  <div className="relative">
-                    <select
-                      className="block w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 font-sans appearance-none"
-                      value={activeCategory}
-                      onChange={(e) => setActiveCategory(e.target.value)}
-                    >
-                      <option value="all">
-                        {language === 'en' ? 'All Categories' : 'Kategoria Zote'}
-                      </option>
-                      {productsContent.categories.map(category => (
-                        <option key={category.id} value={category.id}>
-                          {category.name[language]}
-                        </option>
-                      ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <Filter className="h-5 w-5 text-gray-400" />
-                    </div>
+                <input
+                  type="text"
+                  placeholder={productsContent.searchPlaceholder[language]}
+                  className="block w-full pl-10 md:pl-12 pr-12 md:pr-16 py-3 md:py-4 border-2 border-neutral-200 rounded-xl md:rounded-2xl bg-white shadow-soft focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 text-sm md:text-base placeholder-neutral-400"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <div className="absolute inset-y-0 right-0 pr-3 md:pr-4 flex items-center">
+                  <div className="bg-primary-500 rounded-lg p-1.5 md:p-2 shadow-glow">
+                    <Zap className="h-3 w-3 md:h-4 md:w-4 text-white" />
                   </div>
                 </div>
               </div>
 
-              {/* Category Filter (Desktop) */}
-              <div className="hidden md:block">
-                <h3 className={`text-lg font-bold text-gray-900 mb-4 font-display`}>
-                  {productsContent.filterTitle[language]}
-                </h3>
-                <div className="flex flex-wrap gap-3">
+              {/* Category Pills */}
+              <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-start">
+                <button
+                  onClick={() => setActiveCategory('all')}
+                  className={`px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-2xl font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105 ${
+                    activeCategory === 'all' 
+                      ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-glow' 
+                      : 'bg-white text-neutral-700 hover:bg-neutral-50 shadow-soft border border-neutral-200'
+                  }`}
+                >
+                  <span className="mr-1 md:mr-2">🍿</span>
+                  <span className="hidden sm:inline">{language === 'en' ? 'All Snacks' : 'Vyote'}</span>
+                  <span className="sm:hidden">{language === 'en' ? 'All' : 'Vyote'}</span>
+                </button>
+                {categories.filter(cat => cat.id !== 'all').map(category => (
                   <button
-                    onClick={() => setActiveCategory('all')}
-                    className={`px-4 py-2 rounded-full ${activeCategory === 'all' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'} transition-colors font-sans font-medium`}
+                    key={category.id}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-2xl font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105 flex items-center gap-1 md:gap-2 ${
+                      activeCategory === category.id 
+                        ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-glow' 
+                        : 'bg-white text-neutral-700 hover:bg-neutral-50 shadow-soft border border-neutral-200'
+                    }`}
                   >
-                    {language === 'en' ? 'All Products' : 'Bidhaa Zote'}
+                    <span className="text-sm md:text-lg">{category.icon}</span>
+                    <span className="hidden lg:inline">{category.name[language]}</span>
                   </button>
-                  {productsContent.categories.map(category => (
-                    <button
-                      key={category.id}
-                      onClick={() => setActiveCategory(category.id)}
-                      className={`px-4 py-2 rounded-full flex items-center gap-2 ${activeCategory === category.id ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'} transition-colors font-sans font-medium`}
-                    >
-                      {category.icon}
-                      {category.name[language]}
-                    </button>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
           </Fade>
+        </div>
+      </section>
 
-          {/* Products Grid */}
+      {/* Products Grid with Parallax Effects */}
+      <section 
+        className="py-8 md:py-12 lg:py-16 relative"
+        style={{
+          transform: `translateY(${scrollY * 0.05}px)`,
+        }}
+      >
+        {/* Background Parallax Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          <div 
+            className="absolute top-20 right-10 text-6xl md:text-8xl"
+            style={{ transform: `translateY(${scrollY * 0.15}px) rotate(${scrollY * 0.1}deg)` }}
+          >
+            🌟
+          </div>
+          <div 
+            className="absolute bottom-40 left-10 text-6xl md:text-8xl"
+            style={{ transform: `translateY(${scrollY * -0.1}px) rotate(${scrollY * -0.1}deg)` }}
+          >
+            🎉
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {filteredProducts.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               {filteredProducts.map((product, index) => {
                 const specifications = parseSpecifications(product, language);
                 const shortDescription = product.shortDescription ? 
@@ -283,63 +269,110 @@ export default function ProductsPage() {
                   createShortDescription(product, language);
                 
                 return (
-                  <Fade key={product.id} direction="up" delay={Math.min(index * 100, 300)} triggerOnce>
-                    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                      <div className="h-48 bg-gray-100 overflow-hidden relative">
+                  <Fade key={product.id} direction="up" delay={Math.min(index * 50, 200)} triggerOnce>
+                    <div 
+                      className="group relative bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-soft hover:shadow-layer transition-all duration-500 transform hover:-translate-y-1 md:hover:-translate-y-2 overflow-hidden border-2 border-neutral-100 hover:border-primary-200"
+                      style={{
+                        transform: `translateY(${Math.sin((scrollY + index * 100) * 0.001) * 5}px)`,
+                      }}
+                    >
+                      {/* Product Image with Overlay - Bold Full Coverage */}
+                      <div className="relative h-56 sm:h-64 md:h-72 lg:h-56 bg-neutral-900 overflow-hidden">
                         <img 
                           src={product.image} 
-                          alt={product.name[language]} 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          alt={product.name?.[language]} 
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-110 contrast-110 saturate-110"
                         />
-                        {product.featured && (
-                          <div className="absolute top-3 left-3 bg-primary-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            {language === 'en' ? 'Featured' : 'Maalum'}
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-6 flex-1 flex flex-col">
-                        <div className="mb-4">
-                          <span className="inline-block px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium mb-2">
-                            {productsContent.categories.find(c => c.id === product.category)?.name[language] || product.category}
-                          </span>
-                          <h3 className={`text-xl font-bold text-gray-900 mb-2 font-display`}>
-                            {product.name[language]}
-                          </h3>
-                          
-                          {/* Short description */}
-                          <p className="text-gray-600 mb-4">
-                            {shortDescription}
-                          </p>
-                          
-                          {/* Specifications displayed as a structured list */}
-                          <div className="mt-3">
-                            <h4 className="font-medium text-gray-900 mb-2">
-                              {productsContent.specifications[language]}
-                            </h4>
-                            <ul className="text-sm space-y-1">
-                              {specifications.slice(0, 3).map((spec, idx) => (
-                                <li key={idx} className="flex items-start">
-                                  <span className="inline-block w-2 h-2 bg-primary-500 rounded-full mt-1.5 mr-2"></span>
-                                  <div>
-                                    <span className="font-medium">{spec.name[language]}: </span>
-                                    <span className="text-gray-600">{spec.value[language]}</span>
-                                  </div>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                        
+                        {/* Badges - Enhanced visibility */}
+                        <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 flex flex-col gap-1 md:gap-2 z-20">
+                          {product.featured && (
+                            <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full animate-pulse-glow shadow-lg">
+                              ⭐ {language === 'en' ? 'Featured' : 'Maalum'}
+                            </span>
+                          )}
+                          {index < 2 && (
+                            <span className="bg-accent-500 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg">
+                              🔥 {productsContent.popular[language]}
+                            </span>
+                          )}
                         </div>
-                        <div className="mt-auto">
-                          <div className={`text-lg font-bold text-primary-600 mb-4 font-sans`}>
-                            {product.price[language]}
+
+                        {/* Favorite Button - Enhanced visibility */}
+                        <button
+                          onClick={() => toggleFavorite(product.id)}
+                          className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 p-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 z-20 border border-white/50"
+                        >
+                          <Heart 
+                            className={`w-4 h-4 md:w-5 md:h-5 transition-colors ${
+                              favorites.has(product.id) 
+                                ? 'text-accent-500 fill-current' 
+                                : 'text-neutral-500 hover:text-accent-500'
+                            }`}
+                          />
+                        </button>
+
+                        {/* Bold Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10" />
+                      </div>
+
+                      {/* Product Details */}
+                      <div className="p-4 md:p-6">
+                        {/* Category Tag and Rating */}
+                        <div className="flex items-center justify-between mb-2 md:mb-3">
+                          <span className="inline-flex items-center px-2 md:px-3 py-1 bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 rounded-full text-xs font-semibold">
+                            <span className="mr-1">{categories.find(c => c.id === product.category)?.icon}</span>
+                            <span className="hidden sm:inline">{categories.find(c => c.id === product.category)?.name?.[language]}</span>
+                          </span>
+                          
+                          {/* Rating */}
+                          {product.rating && (
+                            <div className="flex items-center gap-1">
+                              <Star className="w-3 h-3 md:w-4 md:h-4 text-snack-cheese fill-current" />
+                              <span className="text-xs md:text-sm font-bold text-neutral-700">{product.rating}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Product Name */}
+                        <h3 className="text-lg md:text-xl font-heading font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors leading-tight">
+                          {product.name?.[language]}
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className="text-neutral-600 mb-3 md:mb-4 leading-relaxed text-sm md:text-base line-clamp-2">
+                          {shortDescription}
+                        </p>
+                        
+                        {/* Specifications as Pills */}
+                        <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
+                          {specifications.slice(0, 2).map((spec, idx) => (
+                            <div key={idx} className="bg-neutral-50 rounded-full px-2 md:px-3 py-1">
+                              <span className="text-xs font-medium text-neutral-600">
+                                {spec.name[language]}: {spec.value[language]}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Price and Actions */}
+                        <div className="flex items-center justify-between">
+                          <div className="text-xl md:text-2xl font-display font-black text-primary-600">
+                            {product.price?.[language]}
                           </div>
-                          <Link 
-                            href={`/single-product/${product.id}`}
-                            className="w-full flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors"
-                          >
-                            {language === 'en' ? 'View Details' : 'Angalia Maelezo'}
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </Link>
+                          
+                          <div className="flex gap-2">
+                            <Link 
+                              href={`/single-product/${product.id}`}
+                              className="flex items-center justify-center p-2 text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+                            >
+                              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                            </Link>
+                            
+                            <button className="flex items-center justify-center p-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl hover:shadow-glow transition-all duration-300 transform hover:scale-105">
+                              <Plus className="w-4 h-4 md:w-5 md:h-5" />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -349,47 +382,64 @@ export default function ProductsPage() {
             </div>
           ) : (
             <Fade direction="up" triggerOnce>
-              <div className="text-center py-12">
-                <h3 className={`text-xl font-bold text-gray-900 mb-2 font-display`}>
-                  {language === 'en' ? 'No products found' : 'Hakuna bidhaa zilizopatikana'}
+              <div className="text-center py-12 md:py-20">
+                <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 md:mb-8 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center">
+                  <Search className="w-12 h-12 md:w-16 md:h-16 text-primary-400" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-neutral-900 mb-3 md:mb-4">
+                  {language === 'en' ? 'No snacks found' : 'Hakuna vitafunio vilivyopatikana'}
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-neutral-600 mb-6 md:mb-8 text-base md:text-lg max-w-md mx-auto">
                   {language === 'en' 
-                    ? 'Try adjusting your search or filter criteria' 
-                    : 'Badilisha utafutaji au vigezo vya kuchuja'}
+                    ? 'Try a different search or explore our categories' 
+                    : 'Jaribu utafutaji mwingine au chunguza kategoria zetu'}
                 </p>
                 <button
                   onClick={() => {
                     setSearchTerm('');
                     setActiveCategory('all');
                   }}
-                  className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium"
+                  className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white rounded-xl md:rounded-2xl font-bold text-base md:text-lg shadow-soft hover:shadow-layer transition-all duration-300 transform hover:scale-105"
                 >
-                  {language === 'en' ? 'Reset Filters' : 'Weka Upya Vichujio'}
+                  {language === 'en' ? 'Show All Snacks' : 'Onyesha Vitafunio Vyote'}
                 </button>
               </div>
             </Fade>
           )}
 
-          {/* View All CTA */}
-          {filteredProducts.length > 0 && activeCategory !== 'all' && (
+          {/* Enhanced CTA Section with Parallax */}
+          {filteredProducts.length > 0 && (
             <Fade triggerOnce>
-              <div className="mt-12 text-center">
-                <Link
-                  href="/products"
-                  onClick={() => setActiveCategory('all')}
-                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-bold text-lg"
-                >
-                  {productsContent.viewAll[language]}
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+              <div 
+                className="mt-12 md:mt-20 text-center bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 rounded-2xl md:rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-layer"
+                style={{
+                  transform: `translateY(${scrollY * 0.08}px)`,
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-20"></div>
+                <div className="relative z-10">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-black mb-3 md:mb-4">
+                    {language === 'en' ? 'Craving More?' : 'Unataka Zaidi?'}
+                  </h2>
+                  <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
+                    {language === 'en' 
+                      ? 'Discover our complete collection of delicious snacks' 
+                      : 'Gundua mkusanyiko wetu kamili wa vitafunio vizuri'}
+                  </p>
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center px-6 md:px-8 py-3 md:py-4 bg-white text-primary-600 rounded-xl md:rounded-2xl font-bold text-base md:text-lg hover:bg-neutral-50 transition-all duration-300 transform hover:scale-105 shadow-layer"
+                  >
+                    <Sparkles className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
+                    {language === 'en' ? 'Explore All Flavors' : 'Chunguza Ladha Zote'}
+                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6 ml-2 md:ml-3" />
+                  </Link>
+                </div>
               </div>
             </Fade>
           )}
         </div>
       </section>
-
- 
     </div>
   );
 }
