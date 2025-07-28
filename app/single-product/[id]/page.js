@@ -17,42 +17,174 @@ const TamTamSingleProductPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Mock product data for TAM TAM snacks
-  const product = {
+  // TAM TAM Products Data
+const tamtamProducts = [
+  {
     id: 1,
     name: {
-      en: "TAM TAM Crunchy Peanut Mix",
-      sw: "TAM TAM Mchanganyiko wa Karanga wa Mchuzi"
+      en: "TAM TAM Cheese Balls",
+      sw: "TAM TAM Cheese Balls"
     },
+    category: "balls",
+    image: "/cheese.jpeg",
     price: {
-      en: "TSh 2,500",
-      sw: "TSh 2,500"
+      en: "TSh 550",
+      sw: "TSh 550"
     },
-    category: "snacks",
-    image: "/api/placeholder/400/400",
     description: {
-      en: "Delicious crunchy peanut mix with the perfect blend of spices. Made with premium roasted peanuts, corn, and special TAM TAM seasoning. Perfect for sharing with family and friends. Rich in protein and energy. Great for parties, movie nights, or anytime snacking.",
-      sw: "Mchanganyiko wa karanga wenye ladha ya kupendeza na mchanganyiko kamili wa viungo. Imetengenezwa kwa karanga bora zilizokangwa, mahindi, na chumvi maalum ya TAM TAM. Kamili kwa kushirikiana na familia na marafiki. Tajiri kwa protini na nishati. Bora kwa sherehe, usiku wa sinema, au chakula cha wakati wowote."
+      en: "Crispy, golden cheese balls packed with real cheese flavor. The perfect crunchy snack for any time of day.",
+      sw: "Mipira ya jibini yenye ladha ya kweli ya jibini. Kifurushi cha kushangaza kwa wakati wowote wa siku."
     },
     specifications: [
       {
         name: { en: "Weight", sw: "Uzito" },
-        value: { en: "150g", sw: "150g" }
+        value: { en: "50g", sw: "50g" }
       },
       {
-        name: { en: "Ingredients", sw: "Viungo" },
-        value: { en: "Peanuts, Corn, Salt, Spices", sw: "Karanga, Mahindi, Chumvi, Viungo" }
+        name: { en: "Flavor", sw: "Ladha" },
+        value: { en: "Real Cheese", sw: "Jibini Halisi" }
       },
       {
-        name: { en: "Shelf Life", sw: "Muda wa Uhifadhi" },
-        value: { en: "6 months", sw: "Miezi 6" }
-      },
-      {
-        name: { en: "Storage", sw: "Uhifadhi" },
-        value: { en: "Store in cool, dry place", sw: "Hifadhi mahali baridi na pakavu" }
+        name: { en: "Texture", sw: "Muundo" },
+        value: { en: "Extra Crunchy", sw: "Extra Crunchy" }
       }
-    ]
-  };
+    ],
+    featured: true,
+    rating: 4.8
+  },
+  {
+    id: 2,
+    name: {
+      en: "TAM TAM Choco Crunch",
+      sw: "TAM TAM Chokoleti Kigumu"
+    },
+    category: "chocolate",
+    image: "/crunch.jpeg",
+    price: {
+      en: "TSh 550",
+      sw: "TSh 550"
+    },
+    description: {
+      en: "Deliciously crunchy chocolate-flavored snacks that melt in your mouth with rich cocoa goodness.",
+      sw: "Vitafunio vya chokoleti vyenye ladha nzuri vinavyoyeyuka mdomoni na utamu wa kakao."
+    },
+    specifications: [
+      {
+        name: { en: "Weight", sw: "Uzito" },
+        value: { en: "45g", sw: "45g" }
+      },
+      {
+        name: { en: "Flavor", sw: "Ladha" },
+        value: { en: "Rich Chocolate", sw: "Chokoleti Tajiri" }
+      },
+      {
+        name: { en: "Type", sw: "Aina" },
+        value: { en: "Cocoa Crunch", sw: "Kakao Kigumu" }
+      }
+    ],
+    featured: false,
+    rating: 4.7
+  },
+  {
+    id: 3,
+    name: {
+      en: "TAM TAM Multigrain Crisps",
+      sw: "TAM TAM Nafaka Mchanganyiko"
+    },
+    category: "healthy",
+    image: "/crisps.jpeg",
+    price: {
+      en: "TSh 550",
+      sw: "TSh  550"
+    },
+    description: {
+      en: "Nutritious multigrain crisps made from a blend of wholesome grains. Healthy snacking at its finest.",
+      sw: "Vipande vya nafaka mchanganyiko vyenye lishe kutoka mchanganyiko wa nafaka nzuri. Kula vizuri kwa afya."
+    },
+    specifications: [
+      {
+        name: { en: "Weight", sw: "Uzito" },
+        value: { en: "60g", sw: "60g" }
+      },
+      {
+        name: { en: "Grains", sw: "Nafaka" },
+        value: { en: "5 Mixed Grains", sw: "Nafaka 5 Mchanganyiko" }
+      },
+      {
+        name: { en: "Benefit", sw: "Faida" },
+        value: { en: "High Fiber", sw: "High Fiber" }
+      }
+    ],
+    featured: true,
+    rating: 4.6
+  },
+  {
+    id: 4,
+    name: {
+      en: "TAM TAM Rings",
+      sw: "TAM TAM Rings"
+    },
+    category: "rings",
+    image: "/rings.jpeg",
+    price: {
+      en: "TSh 550",
+      sw: "TSh 550"
+    },
+    description: {
+      en: "Fun ring-shaped snacks with a satisfying crunch and bold flavor that kids and adults love.",
+      sw: "Vitafunio vya umbo la pete vyenye kigumu cha kuridhisha na ladha kali inayopendwa na watoto na watu wazima."
+    },
+    specifications: [
+      {
+        name: { en: "Weight", sw: "Uzito" },
+        value: { en: "40g", sw: "40g" }
+      },
+      {
+        name: { en: "Shape", sw: "Umbo" },
+        value: { en: "Ring Shape", sw: "Umbo la Pete" }
+      },
+      {
+        name: { en: "Flavor", sw: "Ladha" },
+        value: { en: "Bold & Tangy", sw: "Tamu yenye pilipili" }
+      }
+    ],
+    featured: false,
+    rating: 4.5
+  },
+  {
+    id: 5,
+    name: {
+      en: "TAM TAM Choco Bites",
+      sw: "TAM TAM Choco Bites"
+    },
+    category: "chocolate",
+    image: "/choko.jpeg",
+    price: {
+      en: "TSh 550",
+      sw: "TSh 550"
+    },
+    description: {
+      en: "Bite-sized chocolate treats perfect for sharing or enjoying as a personal indulgence.",
+      sw: "Snack ndogo ndogo za chocolate nzuri na tamu."
+    },
+    specifications: [
+      {
+        name: { en: "Weight", sw: "Uzito" },
+        value: { en: "35g", sw: "35g" }
+      },
+      {
+        name: { en: "Size", sw: "Ukubwa" },
+        value: { en: "Bite-sized", sw: "Ukubwa wa Kidonda" }
+      },
+      {
+        name: { en: "Coating", sw: "Coating" },
+        value: { en: "Chocolate Coating", sw: "Mfuniko wa Chokoleti" }
+      }
+    ],
+    featured: false,
+    rating: 4.9
+  }
+];
 
   const relatedProducts = [
     {

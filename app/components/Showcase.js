@@ -263,7 +263,7 @@ export default function TamTamProductShowcase() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br mt-8 from-primary-50 via-white to-secondary-50">
-      {/* Header */}
+ 
     
 
       {/* Main Content */}
