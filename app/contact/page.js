@@ -72,7 +72,7 @@ const ContactForm = ({ language }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
-    alert(language === 'en' ? 'Thank you for your message! We\'ll get back to you soon!' : 'Asante kwa ujumbe wako! Tutarudisha jibu hivi karibuni!');
+    alert(language === 'en' ? 'Thank you for your message! We&apos;ll get back to you soon!' : 'Asante kwa ujumbe wako! Tutarudisha jibu hivi karibuni!');
   };
 
   return (
@@ -156,7 +156,7 @@ const ContactForm = ({ language }) => {
           required
           rows={5}
           className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 resize-none"
-          placeholder={language === 'en' ? 'Tell us what\'s on your mind...' : 'Tuambie kile kilicho akilini mwako...'}
+          placeholder={language === 'en' ? 'Tell us what&apos;s on your mind...' : 'Tuambie kile kilicho akilini mwako...'}
           value={formData.message}
           onChange={(e) => setFormData({...formData, message: e.target.value})}
         ></textarea>
@@ -391,7 +391,7 @@ export default function ContactPage() {
                   
                   <div className="mt-6 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl">
                     <p className="text-center text-primary-700 font-medium italic">
-                      "Bidhaa Ya Ah... Adi..." - {contactContent.tagline[language]}
+                      &quot;Bidhaa Ya Ah... Adi...&quot; - {contactContent.tagline[language]}
                     </p>
                   </div>
                 </div>
