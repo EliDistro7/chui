@@ -1,9 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Battery, Zap, Shield, Globe, Truck, Award, Sparkles, Star, Target, ChevronDown, Factory, Wrench, Users, TrendingUp } from 'lucide-react';
-
+import { Battery, Zap, Shield, Globe, Award, Star, Target, ChevronDown, Users } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const aboutContent = {
@@ -36,8 +34,8 @@ const aboutContent = {
     sw: "Safari Yetu"
   },
   storyText: {
-    en: "Born from a deep understanding of Tanzania's unique power challenges, CHUI emerged as more than just a battery manufacturer. We are power enablers, reliability engineers, and guardians of quality. Every CHUI battery represents years of research into local climate conditions, road challenges, and energy demands. From our flagship N50MF compact batteries perfect for city driving to our industrial-grade N200MF ultra batteries that power heavy machinery, each CHUI product is engineered for Tanzania's demanding environment. We believe that reliable power doesn't just start engines—it drives economic growth, connects communities, and builds the foundation for a prosperous future.",
-    sw: "Kuzaliwa kutoka uelewa wa kina wa changamoto za kipekee za nguvu za Tanzania, CHUI ilitokea kama zaidi ya mtengenezaji wa betri tu. Sisi ni wezesha wa nguvu, wahandisi wa kuaminika, na walinzi wa ubora. Kila betri ya CHUI inawakilisha miaka ya utafiti katika mazingira ya hali ya hewa ya mitaa, changamoto za barabara, na mahitaji ya nishati. Kutoka betri zetu kuu za N50MF ndogo zinazofaa kwa uendeshaji wa jijini hadi betri zetu za kiwango cha viwanda za N200MF zinazoendesha mashine nzito, kila bidhaa ya CHUI imetengenezwa kwa mazingira magumu ya Tanzania. Tunaamini kwamba nguvu za kuaminika haziwashi injini tu—huendesha ukuaji wa kiuchumi, huunganisha jamii, na kujenga msingi wa mustakabali wenye mafanikio."
+    en: "Born from a deep understanding of Tanzania's unique power challenges, CHUI emerged as more than just a battery manufacturer. We are power enablers, reliability engineers, and guardians of quality. Every CHUI battery represents years of research into local climate conditions, road challenges, and energy demands.",
+    sw: "Kuzaliwa kutoka uelewa wa kina wa changamoto za kipekee za nguvu za Tanzania, CHUI ilitokea kama zaidi ya mtengenezaji wa betri tu. Sisi ni wezesha wa nguvu, wahandisi wa kuaminika, na walinzi wa ubora. Kila betri ya CHUI inawakilisha miaka ya utafiti katika mazingira ya hali ya hewa ya mitaa, changamoto za barabara, na mahitaji ya nishati."
   },
   valuesTitle: {
     en: "Our Core Values",
@@ -196,339 +194,214 @@ const batteryTypes = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
 export default function CHUIAboutPage() {
   const { language } = useLanguage();
 
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl"
-            animate={{ 
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-yellow-200/30 rounded-full blur-3xl"
-            animate={{ 
-              scale: [1.1, 1, 1.1],
-              opacity: [0.4, 0.2, 0.4]
-            }}
-            transition={{ 
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 12 }, (_, i) => (
+            <div
+              key={i}
+              className="absolute text-2xl opacity-10 animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${3 + (i % 3)}s`,
+              }}
+            >
+              {['🔋', '⚡', '🔌', '⚙️', '✨', '💬', '⭐', '🎯', '🏭', '🚗', '🌟', '⚡'][i % 12]}
+            </div>
+          ))}
+        </div>
+
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent">
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+              backgroundSize: '50px 50px'
             }}
           />
         </div>
 
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div variants={itemVariants} className="mb-8">
-              <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center">
+            <div className="mb-8">
+              <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-bold uppercase tracking-wider border border-white/30">
                 <Battery className="w-4 h-4 mr-2" />
                 {language === 'en' ? 'About CHUI Power' : 'Kuhusu Nguvu ya CHUI'}
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1 
-              variants={itemVariants}
-              className="text-6xl md:text-8xl font-display font-black text-white mb-8 leading-tight drop-shadow-lg"
-            >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               {aboutContent.title[language]}
-            </motion.h1>
+            </h1>
 
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed font-medium"
-            >
+            <p className="text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed">
               {aboutContent.subtitle[language]}
-            </motion.p>
+            </p>
 
-            <motion.div 
-              variants={itemVariants}
-              className="mt-12"
-            >
-              <motion.div 
-                className="inline-flex items-center text-white/60 cursor-pointer"
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
+            <div className="mt-12">
+              <div className="inline-flex items-center text-white/60 cursor-pointer animate-bounce">
                 <span className="text-sm font-medium mr-2">
                   {language === 'en' ? 'Discover More' : 'Gundua Zaidi'}
                 </span>
                 <ChevronDown className="w-5 h-5" />
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container relative z-10">
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
+      <section className="py-20 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm border-y border-yellow-400/30">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="text-center text-white"
-              >
-                <motion.div 
-                  className="text-5xl md:text-7xl font-display font-black mb-2"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
-                  viewport={{ once: true }}
-                >
+              <div key={index} className="text-center text-white">
+                <div className="text-4xl md:text-6xl font-bold mb-2 text-yellow-400">
                   {stat.number}
-                  <span className="text-3xl md:text-4xl">{stat.suffix}</span>
-                </motion.div>
+                  <span className="text-2xl md:text-3xl">{stat.suffix}</span>
+                </div>
                 <div className="text-sm md:text-base font-bold uppercase tracking-wider opacity-90">
                   {stat.label[language]}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
-        <div className="container">
-          <motion.div 
-            className="grid lg:grid-cols-2 gap-16 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.div variants={itemVariants} className="space-y-12">
-              <div className="group">
+      <section className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-12">
+              <div className="group hover:bg-white/10 hover:backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-white/10 hover:border-yellow-400/30">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Target className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-4xl font-display font-black text-slate-900">
+                  <h2 className="text-3xl font-bold text-white">
                     {aboutContent.missionTitle[language]}
                   </h2>
                 </div>
-                <p className="text-lg text-slate-600 leading-relaxed">
+                <p className="text-lg text-white/80 leading-relaxed">
                   {aboutContent.missionText[language]}
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="space-y-12">
-              <div className="group">
+            <div className="space-y-12">
+              <div className="group hover:bg-white/10 hover:backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-white/10 hover:border-yellow-400/30">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Star className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-4xl font-display font-black text-slate-900">
+                  <h2 className="text-3xl font-bold text-white">
                     {aboutContent.visionTitle[language]}
                   </h2>
                 </div>
-                <p className="text-lg text-slate-600 leading-relaxed">
+                <p className="text-lg text-white/80 leading-relaxed">
                   {aboutContent.visionText[language]}
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-32 bg-white relative">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.div variants={itemVariants} className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8">
+      <section className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
                 {aboutContent.storyTitle[language]}
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-12"></div>
-            </motion.div>
+              <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-12"></div>
+            </div>
 
-            <motion.div variants={itemVariants} className="prose prose-xl max-w-none">
-              <p className="text-xl text-slate-700 leading-relaxed text-center">
+            <div className="prose prose-xl max-w-none">
+              <p className="text-xl text-white/80 leading-relaxed text-center">
                 {aboutContent.storyText[language]}
               </p>
-            </motion.div>
+            </div>
 
             {/* Battery Types */}
-            <motion.div 
-              variants={itemVariants}
-              className="grid grid-cols-5 gap-8 mt-20 max-w-4xl mx-auto"
-            >
+            <div className="grid grid-cols-5 gap-8 mt-20 max-w-4xl mx-auto">
               {batteryTypes.map((battery, index) => (
-                <motion.div 
-                  key={index}
-                  className="text-center group cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
+                <div key={index} className="text-center group cursor-pointer transform hover:scale-110 transition-transform duration-300">
                   <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${battery.color} flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:shadow-xl transition-shadow`}>
                     <span className="text-3xl">{battery.icon}</span>
                   </div>
-                  <span className="text-sm font-bold text-slate-600 uppercase tracking-wide block">
+                  <span className="text-sm font-bold text-white uppercase tracking-wide block">
                     {battery.name}
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-white/60">
                     {battery.usage[language]}
                   </span>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
-        <div className="container">
-          <motion.div 
-            className="text-center mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8"
-            >
+      <section className="py-20 bg-white/5 backdrop-blur-sm border-y border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
               {aboutContent.valuesTitle[language]}
-            </motion.h2>
-            <motion.div 
-              variants={itemVariants}
-              className="w-32 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"
-            />
-          </motion.div>
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto" />
+          </div>
 
-          <motion.div 
-            className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {values.map((value, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="group"
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="bg-white rounded-3xl p-8 shadow-soft border border-slate-100 h-full group-hover:shadow-layer transition-all duration-300">
+              <div key={index} className="group transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 h-full group-hover:shadow-xl group-hover:border-yellow-400/50 transition-all duration-300">
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform`}>
                     {value.icon}
                   </div>
-                  <h3 className="text-2xl font-display font-black text-slate-900 mb-4">
+                  <h3 className="text-2xl font-bold text-white mb-4">
                     {value.title[language]}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     {value.description[language]}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Team */}
-      <section className="py-32 bg-white">
-        <div className="container">
-          <motion.div 
-            className="text-center mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8"
-            >
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
               {aboutContent.teamTitle[language]}
-            </motion.h2>
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl text-slate-600 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {language === 'en' 
                 ? 'The engineering minds and industry experts driving CHUI\'s power innovation'
                 : 'Akili za uhandisi na wataalamu wa tasnia wanaoongoza ubunifu wa nguvu ya CHUI'}
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div 
-            className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="group"
-                whileHover={{ y: -12 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-slate-100 group-hover:shadow-layer transition-all duration-500">
+              <div key={index} className="group transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-white/10 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg border border-white/20 group-hover:shadow-xl group-hover:border-yellow-400/50 transition-all duration-500">
                   <div className={`h-80 bg-gradient-to-br ${member.gradient} relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     <div className="absolute bottom-6 left-6 right-6">
@@ -538,85 +411,66 @@ export default function CHUIAboutPage() {
                     </div>
                   </div>
                   <div className="p-8">
-                    <h3 className="text-2xl font-display font-black text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-white mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-blue-600 font-bold mb-4 uppercase tracking-wide text-sm">
+                    <p className="text-yellow-400 font-bold mb-4 uppercase tracking-wide text-sm">
                       {member.role[language]}
                     </p>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-white/80 leading-relaxed">
                       {member.bio[language]}
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <motion.div 
-          className="absolute inset-0"
-          animate={{ 
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)'
-            ]
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        
-        <div className="container relative z-10">
-          <motion.div 
-            className="text-center max-w-5xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-5xl md:text-6xl font-display font-black text-white mb-8"
-            >
+      <section className="py-20 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm border-y border-yellow-400/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-5xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
               {aboutContent.ctaTitle[language]}
-            </motion.h2>
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl text-white/90 mb-12 leading-relaxed"
-            >
+            </h2>
+            <p className="text-xl text-white/90 mb-12 leading-relaxed">
               {aboutContent.ctaText[language]}
-            </motion.p>
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row justify-center gap-6"
-            >
-              <motion.a
-                href="/products"
-                className="group inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-display font-black text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <button className="group inline-flex items-center px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <Battery className="mr-2 w-5 h-5" />
                 <span>{language === 'en' ? 'Shop Batteries' : 'Nunua Betri'}</span>
                 <Zap className="ml-2 w-5 h-5 group-hover:animate-pulse" />
-              </motion.a>
-              <motion.a
-                href="/dealers"
-                className="group inline-flex items-center px-10 py-4 border-2 border-white text-white rounded-2xl font-display font-black text-lg hover:bg-white hover:text-slate-900 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              </button>
+              <button className="group inline-flex items-center px-10 py-4 border-2 border-white/30 hover:border-white/50 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
                 <Globe className="mr-2 w-5 h-5" />
                 {language === 'en' ? 'Find Dealers' : 'Tafuta Madalali'}
-              </motion.a>
-            </motion.div>
-          </motion.div>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-black/30 backdrop-blur-sm text-white py-12 border-t border-white/10">
+        <div className="container mx-auto px-6 text-center">
+          <div className="mb-8">
+            <div className="text-6xl mb-4">🔋</div>
+            <h3 className="text-2xl font-bold mb-2">CHUI Batteries</h3>
+            <p className="text-white/60">
+              {language === 'en' ? 'Powering Tanzania\'s Future' : 'Kuendesha Mustakabali wa Tanzania'}
+            </p>
+          </div>
+          
+          <div className="border-t border-white/20 pt-8">
+            <p className="text-white/60">
+              © 2024 CHUI Batteries. {language === 'en' ? 'All rights reserved.' : 'Haki zote zimehifadhiwa.'}
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
