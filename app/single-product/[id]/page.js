@@ -424,7 +424,7 @@ const CHUIBatterySingleProductPage = ({ params }) => {
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg border border-green-400/30">
                         <span className="text-green-400 mt-1">✓</span>
-                        <span className="text-blue-100">Built for Tanzania's challenging climate conditions</span>
+                        <span className="text-blue-100">Built for Tanzanias challenging climate conditions</span>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg border border-green-400/30">
                         <span className="text-green-400 mt-1">✓</span>
