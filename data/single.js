@@ -1,341 +1,504 @@
+//single.js
+// This file contains the data for CHUI battery products, including their details, specifications, features,
 
+import { Award, Zap, Globe, BookOpen, TrendingUp, Star } from 'lucide-react';
 
-// Enhanced TAM TAM Products Data
+// Enhanced CHUI Battery Products Data
 export const productsData = [
   {
     id: 1,
     name: {
-      en: "TAM TAM Cheese Balls",
-      sw: "TAM TAM Cheese Balls"
+      en: "CHUI N50MF Battery",
+      sw: "Betri ya CHUI N50MF"
     },
-    category: "balls",
-    image: "/cheese.jpeg",
+    category: "medium",
+    image: "/images/n50mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 85,000",
+      sw: "TSh 85,000"
     },
     description: {
-      en: "Crispy, golden cheese balls packed with real cheese flavor. Made with premium ingredients and baked to perfection for the ultimate crunchy experience. The perfect crunchy snack for any time of day.",
-      sw: "Mipira ya jibini yenye ladha ya kweli ya jibini. Imetengenezwa kwa viungo bora na kuokwa kwa ukamilifu kwa uzoefu wa juu wa kigumu. Kifurushi cha kushangaza kwa wakati wowote wa siku."
+      en: "Reliable 12V 50AH maintenance-free battery with German technology. Perfect for medium-sized vehicles and backup power applications. Built to withstand Tanzania's challenging climate conditions while delivering consistent, dependable power for years.",
+      sw: "Betri ya kuaminika 12V 50AH isiyohitaji ukarabati na teknolojia ya Kijerumani. Inafaa kwa magari ya wastani na matumizi ya nguvu za msaada. Imetengenezwa kustahimili mazingira magumu ya Tanzania huku ikitoa nguvu za kuaminika kwa miaka mingi."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "50g", sw: "50g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Flavor", sw: "Ladha" },
-        value: { en: "Real Cheese", sw: "Jibini Halisi" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "50AH", sw: "50AH" }
       },
       {
-        name: { en: "Texture", sw: "Muundo" },
-        value: { en: "Extra Crunchy", sw: "Extra Crunchy" }
+        name: { en: "Type", sw: "Aina" },
+        value: { en: "Maintenance Free", sw: "Haitaji Ukarabati" }
       },
       {
-        name: { en: "Shelf Life", sw: "Muda wa Kuhifadhi" },
-        value: { en: "6 months", sw: "Miezi 6" }
+        name: { en: "Warranty", sw: "Dhamana" },
+        value: { en: "24 months", sw: "Miezi 24" }
       }
     ],
     features: [
       {
-        en: "Premium roasted ingredients for maximum crunch",
-        sw: "Viungo vya hali ya juu vilivyokaushwa kwa kigumu cha juu"
+        en: "German technology with maintenance-free design for reliability",
+        sw: "Teknolojia ya Kijerumani na muundo usiopata ukarabati kwa uaminifu"
       },
       {
-        en: "Real cheese flavor that melts in your mouth",
-        sw: "Ladha ya jibini halisi inayoyeyuka mdomoni"
+        en: "Superior starting power in all weather conditions",
+        sw: "Nguvu bora za kuanza katika hali zote za hewa"
       },
       {
-        en: "Great source of calcium and protein",
-        sw: "Chanzo kizuri cha kalsiamu na protini"
+        en: "Built specifically for Tanzania's climate challenges",
+        sw: "Imetengenezwa maalum kwa changamoto za hali ya hewa ya Tanzania"
       },
       {
-        en: "Perfect for sharing with friends and family",
-        sw: "Bora kwa kushiriki na marafiki na familia"
+        en: "Long-lasting performance with 24-month warranty coverage",
+        sw: "Utendaji wa muda mrefu na ulinzi wa dhamana ya miezi 24"
       }
     ],
     featured: true,
     rating: 4.8,
-    images: ["/cheese.jpeg", "/pafki.jpeg", "/cheese-balls-3.jpg"]
+    images: ["/images/n50mf.jpeg", "/images/n60mf.jpeg", "/images/n80mf.jpeg"]
   },
   {
     id: 2,
     name: {
-      en: "TAM TAM Choco Crunch",
-      sw: "TAM TAM Chokoleti Kigumu"
+      en: "CHUI N70MF Battery",
+      sw: "Betri ya CHUI N70MF"
     },
-    category: "chocolate",
-    image: "/crunch.jpeg",
+    category: "heavy",
+    image: "/images/n70mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 120,000",
+      sw: "TSh 120,000"
     },
     description: {
-      en: "Deliciously crunchy chocolate-flavored snacks that melt in your mouth with rich cocoa goodness. Made with premium cocoa and natural ingredients for an indulgent treat that satisfies your sweet cravings.",
-      sw: "Vitafunio vya chokoleti vyenye ladha nzuri vinavyoyeyuka mdomoni na utamu wa kakao. Vimetengenezwa kwa kakao bora na viungo vya asili kwa kitafunio cha anasa kinachoridhisha tamaa zako za utamu."
+      en: "High-performance 12V 70AH battery with 580A CCA rating. Ideal for larger vehicles and commercial applications requiring reliable starting power. Engineered with advanced German technology for maximum durability and performance.",
+      sw: "Betri ya utendaji wa juu 12V 70AH na kiwango cha 580A CCA. Inafaa kwa magari makubwa na matumizi ya kibiashara yanayohitaji nguvu za kuanza za kuaminika. Imetengenezwa kwa teknolojia ya kisasa ya Kijerumani kwa uimara na utendaji wa juu."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "45g", sw: "45g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Flavor", sw: "Ladha" },
-        value: { en: "Rich Chocolate", sw: "Chokoleti Tajiri" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "70AH", sw: "70AH" }
       },
       {
-        name: { en: "Type", sw: "Aina" },
-        value: { en: "Cocoa Crunch", sw: "Kakao Kigumu" }
+        name: { en: "CCA Rating", sw: "Kiwango cha CCA" },
+        value: { en: "580A", sw: "580A" }
       },
       {
-        name: { en: "Cocoa Content", sw: "Maudhui ya Kakao" },
-        value: { en: "25%", sw: "25%" }
+        name: { en: "Technology", sw: "Teknolojia" },
+        value: { en: "German Standard", sw: "Kiwango cha Kijerumani" }
       }
     ],
     features: [
       {
-        en: "Premium cocoa for rich chocolate taste",
-        sw: "Kakao bora kwa ladha tajiri ya chokoleti"
+        en: "High CCA rating for reliable cold weather starting",
+        sw: "Kiwango cha juu cha CCA kwa kuanza kwa kuaminika hali ya baridi"
       },
       {
-        en: "Perfect balance of sweet and crunchy",
-        sw: "Usawaziko mkamilifu wa utamu na kigumu"
+        en: "Perfect for commercial vehicles and heavy-duty applications",
+        sw: "Bora kwa magari ya kibiashara na matumizi ya kazi nzito"
       },
       {
-        en: "Energy boost for active lifestyles",
-        sw: "Kuongeza nguvu kwa maisha yenye shughuli"
+        en: "Advanced plate technology for extended battery life",
+        sw: "Teknolojia ya kisasa ya sahani kwa maisha marefu ya betri"
       },
       {
-        en: "Individually wrapped for freshness",
-        sw: "Imefungwa moja moja kwa ubunifu"
+        en: "Sealed maintenance-free design prevents acid leakage",
+        sw: "Muundo uliosimbwa usiopata ukarabati unazuia kuvuja kwa asidi"
       }
     ],
-    featured: false,
-    rating: 4.7,
-    images: ["/tamtam-choco-crunch.jpg", "/choco-crunch-2.jpg", "/choco-crunch-3.jpg"]
+    featured: true,
+    rating: 4.9,
+    images: ["/images/n70mf.jpeg", "/images/n70mf.jpeg", "/images/n70mf.jpeg"]
   },
   {
     id: 3,
     name: {
-      en: "TAM TAM Multigrain Crisps",
-      sw: "TAM TAM Nafaka Mchanganyiko"
+      en: "CHUI NS40MF Battery",
+      sw: "Betri ya CHUI NS40MF"
     },
-    category: "healthy",
-    image: "/crisp.jpeg",
+    category: "compact",
+    image: "/images/ns40mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 65,000",
+      sw: "TSh 65,000"
     },
     description: {
-      en: "Nutritious multigrain crisps made from a blend of wholesome grains including wheat, corn, rice, oats, and barley. These healthy snacks are baked, not fried, and packed with fiber and essential nutrients. Healthy snacking at its finest.",
-      sw: "Vipande vya nafaka mchanganyiko vyenye lishe kutoka mchanganyiko wa nafaka nzuri ikiwa ni pamoja na ngano, mahindi, mchele, oats, na shayiri. Vitafunio hivi vya afya vimeokwa, si kukaanga, na vimejaa nyuzi na virutubisho muhimu. Kula vizuri kwa afya."
+      en: "Compact 12V 36AH battery with 360A CCA rating. Perfect for smaller vehicles, motorcycles, and compact car applications. Despite its compact size, it delivers reliable power with German engineering excellence.",
+      sw: "Betri ndogo 12V 36AH na 360A CCA. Inafaa kwa magari madogo, pikipiki, na matumizi ya magari madogo. Licha ya ukubwa wake mdogo, inatoa nguvu za kuaminika na ubora wa uhandisi wa Kijerumani."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "60g", sw: "60g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Grains", sw: "Nafaka" },
-        value: { en: "5 Mixed Grains", sw: "Nafaka 5 Mchanganyiko" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "36AH", sw: "36AH" }
       },
       {
-        name: { en: "Benefit", sw: "Faida" },
-        value: { en: "High Fiber", sw: "High Fiber" }
+        name: { en: "CCA Rating", sw: "Kiwango cha CCA" },
+        value: { en: "360A", sw: "360A" }
       },
       {
-        name: { en: "Cooking Method", sw: "Njia ya Kupika" },
-        value: { en: "Baked", sw: "Imeokwa" }
+        name: { en: "Size", sw: "Ukubwa" },
+        value: { en: "Compact Design", sw: "Muundo Mdogo" }
       }
     ],
     features: [
       {
-        en: "Made from 5 different wholesome grains",
-        sw: "Imetengenezwa kutoka nafaka 5 tofauti za afya"
+        en: "Compact size perfect for motorcycles and small cars",
+        sw: "Ukubwa mdogo mkamilifu kwa pikipiki na magari madogo"
       },
       {
-        en: "High in fiber for digestive health",
-        sw: "Nyingi za nyuzi kwa afya ya kumeng'enya"
+        en: "Excellent power-to-size ratio for maximum efficiency",
+        sw: "Uwiano bora wa nguvu kwa ukubwa kwa ufanisi wa juu"
       },
       {
-        en: "Baked not fried for healthier snacking",
-        sw: "Imeokwa si kukaanga kwa vitafunio vya afya"
+        en: "Vibration-resistant construction for rough road conditions",
+        sw: "Ujenzi unaopinga mtetemeko kwa hali za barabara mbaya"
       },
       {
-        en: "Natural ingredients with no artificial flavors",
-        sw: "Viungo vya asili bila ladha bandia"
+        en: "Quick charging capability for convenient use",
+        sw: "Uwezo wa kuchaji haraka kwa matumizi rahisi"
       }
     ],
-    featured: true,
-    rating: 4.6,
-    images: ["/crisp.jpeg", "/choko.jpeg", "/rings.jpeg"]
+    featured: false,
+    rating: 4.7,
+    images: ["/images/ns40mf.jpeg", "/images/ns40mf.jpeg", "/images/ns40mf.jpeg"]
   },
   {
     id: 4,
     name: {
-      en: "TAM TAM Rings",
-      sw: "TAM TAM Rings"
+      en: "CHUI N150MF Battery",
+      sw: "Betri ya CHUI N150MF"
     },
-    category: "rings",
-    image: "/rings.jpeg",
+    category: "industrial",
+    image: "/images/n150mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 280,000",
+      sw: "TSh 280,000"
     },
     description: {
-      en: "Fun ring-shaped snacks with a satisfying crunch and bold flavor that kids and adults love. These playful treats are made with quality ingredients and seasoned with a special blend of spices for an unforgettable taste experience.",
-      sw: "Vitafunio vya umbo la pete vyenye kigumu cha kuridhisha na ladha kali inayopendwa na watoto na watu wazima. Vitafunio hivi vya kucheza vimetengenezwa kwa viungo vya ubora na kukolezwa kwa mchanganyiko maalum wa viungo kwa uzoefu wa ladha usiosahaulika."
+      en: "Heavy-duty 12V 150AH industrial battery designed for trucks, buses, and high-capacity backup power systems. This premium battery delivers maximum power and reliability for the most demanding commercial applications.",
+      sw: "Betri ya kazi nzito 12V 150AH ya viwandani iliyotengenezwa kwa malori, mabasi, na mifumo ya nguvu za msaada za uwezo mkubwa. Betri hii ya hali ya juu inatoa nguvu za juu na uaminifu kwa matumizi makubwa zaidi ya kibiashara."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "40g", sw: "40g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Shape", sw: "Umbo" },
-        value: { en: "Ring Shape", sw: "Umbo la Pete" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "150AH", sw: "150AH" }
       },
       {
-        name: { en: "Flavor", sw: "Ladha" },
-        value: { en: "Bold & Tangy", sw: "Tamu yenye pilipili" }
+        name: { en: "Application", sw: "Matumizi" },
+        value: { en: "Heavy Duty/Industrial", sw: "Kazi Nzito/Viwandani" }
       },
       {
-        name: { en: "Color", sw: "Rangi" },
-        value: { en: "Golden Yellow", sw: "Dhahabu ya Manjano" }
+        name: { en: "Construction", sw: "Ujenzi" },
+        value: { en: "Deep Cycle", sw: "Mzunguko wa Kina" }
       }
     ],
     features: [
       {
-        en: "Unique ring shape for fun eating experience",
-        sw: "Umbo wa kipekee wa pete kwa uzoefu wa kula wa kufurahisha"
+        en: "Maximum capacity for trucks, buses, and industrial equipment",
+        sw: "Uwezo wa juu kwa malori, mabasi, na vifaa vya viwandani"
       },
       {
-        en: "Bold tangy flavor that excites the taste buds",
-        sw: "Ladha kali inayochochea viladha"
+        en: "Deep cycle technology for extended power backup applications",
+        sw: "Teknolojia ya mzunguko wa kina kwa matumizi ya nguvu za msaada za muda mrefu"
       },
       {
-        en: "Perfect size for easy snacking",
-        sw: "Ukubwa mkamilifu kwa kula rahisi"
+        en: "Heavy-duty construction withstands harsh operating conditions",
+        sw: "Ujenzi wa kazi nzito unastahimili mazingira magumu ya kufanya kazi"
       },
       {
-        en: "Great for parties and social gatherings",
-        sw: "Bora kwa sherehe na mikutano ya kijamii"
+        en: "Professional-grade reliability for commercial fleet operations",
+        sw: "Uaminifu wa kiwango cha kitaaluma kwa shughuli za magari ya kibiashara"
       }
     ],
-    featured: false,
-    rating: 4.5,
-    images: ["/rings.jpeg", "/choko.jpeg", "/rings-3.jpg"]
+    featured: true,
+    rating: 4.9,
+    images: ["/chui-n150mf.jpg", "/chui-n150mf-industrial.jpg", "/chui-n150mf-truck.jpg"]
   },
   {
     id: 5,
     name: {
-      en: "TAM TAM Choco Bites",
-      sw: "TAM TAM Choco Bites"
+      en: "CHUI N100MF Battery",
+      sw: "Betri ya CHUI N100MF"
     },
-    category: "chocolate",
-    image: "/choko.jpeg",
+    category: "heavy",
+    image: "/images/n80mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 180,000",
+      sw: "TSh 180,000"
     },
     description: {
-      en: "Bite-sized chocolate treats perfect for sharing or enjoying as a personal indulgence. Each piece is coated with rich chocolate and filled with a crunchy center that delivers pure satisfaction with every bite.",
-      sw: "Snack ndogo ndogo za chocolate nzuri na tamu. Kila kipande kimefunikwa na chokoleti tajiri na kimejazwa na kitovu cha kigumu kinachotoa kuridhika kamili kwa kila kidonda."
+      en: "High-capacity 12V 100AH maintenance-free battery ideal for SUVs, pickup trucks, and medium commercial vehicles. Combines German technology with robust construction for exceptional performance and longevity.",
+      sw: "Betri ya uwezo wa juu 12V 100AH isiyohitaji ukarabati inayofaa kwa SUV, malori madogo, na magari ya kibiashara ya wastani. Inachanganya teknolojia ya Kijerumani na ujenzi mkuu kwa utendaji wa kipekee na maisha marefu."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "35g", sw: "35g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Size", sw: "Ukubwa" },
-        value: { en: "Bite-sized", sw: "Ukubwa wa Kidonda" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "100AH", sw: "100AH" }
       },
       {
-        name: { en: "Coating", sw: "Coating" },
-        value: { en: "Chocolate Coating", sw: "Mfuniko wa Chokoleti" }
+        name: { en: "CCA Rating", sw: "Kiwango cha CCA" },
+        value: { en: "750A", sw: "750A" }
       },
       {
-        name: { en: "Pieces", sw: "Vipande" },
-        value: { en: "20-25 pieces", sw: "Vipande 20-25" }
+        name: { en: "Vehicle Type", sw: "Aina ya Gari" },
+        value: { en: "SUV/Pickup", sw: "SUV/Pickup" }
       }
     ],
     features: [
       {
-        en: "Rich chocolate coating with crunchy center",
-        sw: "Mfuniko tajiri wa chokoleti na kitovu cha kigumu"
+        en: "High CCA rating perfect for larger engines and SUVs",
+        sw: "Kiwango cha juu cha CCA kinafaa kwa injini kubwa na SUV"
       },
       {
-        en: "Perfect portion size for controlled indulgence",
-        sw: "Ukubwa mkamilifu wa sehemu kwa anasa iliyodhibitiwa"
+        en: "Extended reserve capacity for accessories and electronics",
+        sw: "Uwezo wa akiba ulioongezwa kwa vifaa na elektroniki"
       },
       {
-        en: "Resealable pack to maintain freshness",
-        sw: "Kifurushi kinachoweza kufungwa upya kulinda ubunifu"
+        en: "Robust design handles frequent start-stop cycles",
+        sw: "Muundo mkuu unashughulikia mizunguko ya mara kwa mara ya kuanza-kusimama"
       },
       {
-        en: "Ideal for dessert or afternoon treat",
-        sw: "Bora kwa kitindamlo au kitafunio cha mchana"
+        en: "Optimal balance of power and size for versatile applications",
+        sw: "Usawaziko bora wa nguvu na ukubwa kwa matumizi mbalimbali"
       }
     ],
     featured: false,
-    rating: 4.9,
-    images: ["/choko.jpeg", "/rings.jpeg", "/crisps.jpeg"]
+    rating: 4.8,
+    images: ["/chui-n100mf.jpg", "/chui-n100mf-suv.jpg", "/chui-n100mf-pickup.jpg"]
   },
   {
     id: 6,
     name: {
-      en: "TAM TAM Spicy Mix",
-      sw: "TAM TAM Mchanganyiko wa Pilipili"
+      en: "CHUI N200MF Battery",
+      sw: "Betri ya CHUI N200MF"
     },
-    category: "spicy",
-    image: "/pafki.jpeg",
+    category: "industrial",
+    image: "/images/n150mf.jpeg",
     price: {
-      en: "TSh 550",
-      sw: "TSh 550"
+      en: "TSh 380,000",
+      sw: "TSh 380,000"
     },
     description: {
-      en: "A fiery blend of spiced snacks that pack a punch with authentic African spices and herbs. Perfect for those who love heat in their treats. This bold mix combines different textures and flavors for an exciting snacking adventure.",
-      sw: "Mchanganyiko wa vitafunio vyenye pilipili kali vinavyopiga kwa viungo na mimea halisi ya Kiafrika. Bora kwa wale wanaopenda joto katika vitafunio vyao. Mchanganyiko huu mkuu unachanganya muundo na ladha tofauti kwa adventure ya kushangaza ya vitafunio."
+      en: "Ultra-high capacity 12V 200AH industrial battery designed for the most demanding applications including marine vessels, generators, and large commercial vehicles. The ultimate power solution for professional use.",
+      sw: "Betri ya uwezo wa juu sana 12V 200AH ya viwandani iliyotengenezwa kwa matumizi makubwa zaidi ikiwa ni pamoja na meli, jenereta, na magari makubwa ya kibiashara. Suluhisho la mwisho la nguvu kwa matumizi ya kitaaluma."
     },
     specifications: [
       {
-        name: { en: "Weight", sw: "Uzito" },
-        value: { en: "45g", sw: "45g" }
+        name: { en: "Voltage", sw: "Volti" },
+        value: { en: "12V DC", sw: "12V DC" }
       },
       {
-        name: { en: "Heat Level", sw: "Kiwango cha Joto" },
-        value: { en: "Hot & Spicy", sw: "Moto na Pilipili" }
+        name: { en: "Capacity", sw: "Uwezo" },
+        value: { en: "200AH", sw: "200AH" }
       },
       {
-        name: { en: "Type", sw: "Aina" },
-        value: { en: "Mixed Snacks", sw: "Vitafunio Mchanganyiko" }
+        name: { en: "Application", sw: "Matumizi" },
+        value: { en: "Marine/Generator", sw: "Bahari/Jenereta" }
       },
       {
-        name: { en: "Spice Origin", sw: "Asili ya Viungo" },
-        value: { en: "African Spices", sw: "Viungo vya Kiafrika" }
+        name: { en: "Cycle Life", sw: "Maisha ya Mzunguko" },
+        value: { en: "1500+ cycles", sw: "Mizunguko 1500+" }
       }
     ],
     features: [
       {
-        en: "Authentic African spice blend for bold flavor",
-        sw: "Mchanganyiko halisi wa viungo vya Kiafrika kwa ladha kali"
+        en: "Ultra-high capacity for marine and generator applications",
+        sw: "Uwezo wa juu sana kwa matumizi ya bahari na jenereta"
       },
       {
-        en: "Mix of different textures and shapes",
-        sw: "Mchanganyiko wa muundo na maumbo tofauti"
+        en: "Extended cycle life for frequent charge-discharge operations",
+        sw: "Maisha ya mzunguko ulioongezwa kwa shughuli za mara kwa mara za kuchaji-kutoa"
       },
       {
-        en: "Perfect heat level for spice lovers",
-        sw: "Kiwango kamili cha joto kwa wapenda viungo"
+        en: "Corrosion-resistant terminals for marine environments",
+        sw: "Vituo vyenye kupinga kutu kwa mazingira ya bahari"
       },
       {
-        en: "Made with natural spices and no artificial colors",
-        sw: "Imetengenezwa kwa viungo vya asili na hakuna rangi bandia"
+        en: "Professional-grade construction for maximum reliability",
+        sw: "Ujenzi wa kiwango cha kitaaluma kwa uaminifu wa juu"
       }
     ],
     featured: true,
-    rating: 4.4,
-    images: ["/pafki.jpeg", "/rings.jpeg", "/crisps.jpeg"]
+    rating: 4.9,
+    images: ["/images/n150mf.jpeg", "/images/n150mf.jpeg", "/images/n200mf.jpeg"]
   }
 ];
+
+// Categories for CHUI batteries
+export const categories = [
+  {
+    id: "all",
+    name: { en: "All Batteries", sw: "Betri Zote" },
+    icon: "🔋"
+  },
+  {
+    id: "compact",
+    name: { en: "Compact Size", sw: "Ukubwa Mdogo" },
+    icon: "⚡"
+  },
+  {
+    id: "medium",
+    name: { en: "Medium Duty", sw: "Kazi ya Wastani" },
+    icon: "🔌"
+  },
+  {
+    id: "heavy",
+    name: { en: "Heavy Duty", sw: "Kazi Nzito" },
+    icon: "⚙️"
+  },
+  {
+    id: "industrial",
+    name: { en: "Industrial", sw: "Viwandani" },
+    icon: "🏭"
+  }
+];
+
+// Hero content for CHUI
+export const heroContent = {
+  title: {
+    en: "The Power Leader Experience",
+    sw: "Uzoefu wa Kiongozi wa Nguvu"
+  },
+  subtitle: {
+    en: "CHUI delivers reliable, maintenance-free batteries with German technology for all your power needs",
+    sw: "CHUI inatoa betri za kuaminika, zisizohitaji ukarabati na teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu"
+  },
+  ctaPrimary: {
+    en: "Shop Batteries",
+    sw: "Nunua Betri"
+  },
+  ctaSecondary: {
+    en: "Find Dealers",
+    sw: "Tafuta Madalali"
+  },
+  trustText: {
+    en: "Trusted by vehicle owners nationwide",
+    sw: "Imezalishwa na wamiliki wa magari kote nchini"
+  },
+  whyChooseTitle: {
+    en: "Why Choose CHUI Batteries?",
+    sw: "Kwa Nini Uchague Betri za CHUI?"
+  },
+  whyChooseReasons: [
+    {
+      icon: Award,
+      text: {
+        en: "German technology with maintenance-free design",
+        sw: "Teknolojia ya Kijerumani na muundo usiopata ukarabati"
+      }
+    },
+    {
+      icon: Globe,
+      text: {
+        en: "Made in Tanzania for local conditions",
+        sw: "Imetengenezwa Tanzania kwa mazingira ya ndani"
+      }
+    },
+    {
+      icon: Star,
+      text: {
+        en: "Consistently rated 4.7+ stars by customers",
+        sw: "Inapewa alama za nyota 4.7+ na wateja"
+      }
+    },
+    {
+      icon: Zap,
+      text: {
+        en: "Superior starting power and reliability",
+        sw: "Nguvu bora za kuanza na uaminifu"
+      }
+    },
+    {
+      icon: TrendingUp,
+      text: {
+        en: "Leading automotive battery brand",
+        sw: "Chapa inayoongoza ya betri za magari"
+      }
+    }
+  ],
+  products: [
+    {
+      name: {
+        en: "Compact Batteries",
+        sw: "Betri Ndogo"
+      },
+      description: {
+        en: "Perfect for small vehicles and motorcycles",
+        sw: "Inafaa kwa magari madogo na pikipiki"
+      },
+      batteryImage: "/images/ns40mf.jpeg"
+    },
+    {
+      name: {
+        en: "Medium Duty",
+        sw: "Kazi ya Wastani"
+      },
+      description: {
+        en: "Reliable power for everyday vehicles",
+        sw: "Nguvu za kuaminika kwa magari ya kila siku"
+      },
+      batteryImage: "/images/ns50mf.jpeg"
+    },
+    {
+      name: {
+        en: "Heavy Duty",
+        sw: "Kazi Nzito"
+      },
+      description: {
+        en: "High-performance for demanding applications",
+        sw: "Utendaji wa juu kwa matumizi makubwa"
+      },
+      batteryImage: "/heavy-battery-hero.jpg"
+    },
+    {
+      name: {
+        en: "Industrial Grade",
+        sw: "Kiwango cha Viwandani"
+      },
+      description: {
+        en: "Maximum capacity for commercial use",
+        sw: "Uwezo wa juu kwa matumizi ya kibiashara"
+      },
+      batteryImage: "/images/ns70mf.jpeg"
+    }
+  ]
+};
+
+// Additional product features for detailed pages
+export const productFeatures = {
+  reliability: {
+    en: "Guaranteed Reliability",
+    sw: "Uhakika wa Uaminifu"
+  },
+  technology: {
+    en: "German Technology Standards",
+    sw: "Viwango vya Teknolojia ya Kijerumani"
+  },
+  maintenance: {
+    en: "Maintenance-Free Operation",
+    sw: "Utendaji Pasipo Ukarabati"
+  },
+  warranty: {
+    en: "Comprehensive Warranty Coverage",
+    sw: "Ulinzi wa Dhamana Kamili"
+  }
+};

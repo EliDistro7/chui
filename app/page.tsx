@@ -31,8 +31,8 @@ export default function HomePage() {
       {/* Educational Content  <EducationalContent /> - Build Trust */}
      
 
-      {/* Contact Section - Final CTA */}
-      <ContactSection />
+      {/* Contact Section - Final CTA <ContactSection /> */}
+      
 
    
     </div>

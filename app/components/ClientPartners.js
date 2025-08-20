@@ -4,94 +4,94 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Fade } from "react-awesome-reveal";
-import { Store, ShoppingCart, Building2, Truck, Heart, Users, MapPin, Crown } from 'lucide-react';
+import { Store, ShoppingCart, Building2, Truck, Wrench, Users, MapPin, Zap, Car, Battery } from 'lucide-react';
 
 // Define translations
 const partnersContent = {
   title: {
-    en: "Our Retail Partners & Friends",
-    sw: "Washirika Wetu wa Reja Reja & Marafiki"
+    en: "Our Authorized Dealers & Partners",
+    sw: "Madalali na Washirika Wetu Walioidhinishwa"
   },
   subtitle: {
-    en: "Available at your favorite stores across Tanzania - bringing happiness to every corner!",
-    sw: "Inapatikana katika maduka yako upendeayo kote Tanzania - tukiwaletea furaha kila mahali!"
+    en: "Find CHUI batteries at trusted dealers across Tanzania - reliable power solutions everywhere!",
+    sw: "Pata betri za CHUI kwa madalali wa kuaminika kote Tanzania - suluhisho za nguvu za kuaminika kila mahali!"
   },
   viewAll: {
-    en: "Find TAM TAM near you",
-    sw: "Pata TAM TAM karibu nawe"
+    en: "Find CHUI dealer near you",
+    sw: "Pata mdallali wa CHUI karibu nawe"
   },
   partners: [
     {
       id: 1,
-      name: "Shoprite Tanzania",
+      name: "Auto Spares Tanzania",
       location: "Nationwide",
-      icon: ShoppingCart,
+      icon: Car,
       color: "#e74c3c",
       textColor: "#ffffff",
-      description: "Premium Supermarkets"
+      description: "Premium Auto Parts"
     },
     {
       id: 2,
-      name: "Quality Center",
+      name: "Power Solutions Ltd",
       location: "Dar es Salaam",
-      icon: Crown,
+      icon: Zap,
       color: "#9b59b6",
       textColor: "#ffffff",
-      description: "Quality Shopping"
+      description: "Battery Specialists"
     },
     {
       id: 3,
-      name: "Nakumatt Stores",
+      name: "Mechanic Workshops",
       location: "Major Cities",
-      icon: Store,
+      icon: Wrench,
       color: "#3498db",
       textColor: "#ffffff",
-      description: "Everything Under One Roof"
+      description: "Professional Installation"
     },
     {
       id: 4,
-      name: "Local Dukas",
-      location: "Every Street",
+      name: "Local Garages",
+      location: "Every District",
       icon: Building2,
       color: "#f39c12",
       textColor: "#ffffff",
-      description: "Your Neighborhood Store"
+      description: "Neighborhood Service"
     },
     {
       id: 5,
-      name: "School Canteens",
-      location: "Schools Nationwide",
-      icon: Users,
+      name: "Transport Companies",
+      location: "Fleet Operations",
+      icon: Truck,
       color: "#27ae60",
       textColor: "#ffffff",
-      description: "Happy School Snacks"
+      description: "Commercial Fleet Solutions"
     },
     {
       id: 6,
-      name: "Wholesalers",
-      location: "Distribution Hubs",
-      icon: Truck,
+      name: "Battery Distributors",
+      location: "Regional Hubs",
+      icon: Battery,
       color: "#e67e22",
       textColor: "#ffffff",
-      description: "Bulk Distribution"
+      description: "Wholesale Distribution"
     },
     {
       id: 7,
-      name: "Corner Shops",
-      location: "Every Neighborhood",
+      name: "Petrol Stations",
+      location: "Highway Network",
       icon: MapPin,
       color: "#1abc9c",
       textColor: "#ffffff",
-      description: "Quick & Easy Access"
+      description: "Quick Service Points"
     },
     {
       id: 8,
-      name: "Family Markets",
-      location: "Community Centers",
-      icon: Heart,
+      name: "Generator Dealers",
+      location: "Industrial Areas",
+      icon: Users,
       color: "#e91e63",
       textColor: "#ffffff",
-      description: "Family Favorites"
+      description: "Power Backup Solutions"
     }
   ]
 };
@@ -129,26 +129,61 @@ const ClientPartners = () => {
     }
   };
 
+  // Floating elements similar to hero
+  const floatingElements = Array.from({ length: 10 }, (_, i) => ({
+    id: i,
+    icon: ['🔋', '⚡', '🔌', '⚙️', '✨', '🎯', '💪', '🚗', '🔧', '⭐'][i % 10],
+  }));
+
   return (
-    <section className="py-16 bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 overflow-hidden relative">
-      {/* Fun background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-12 h-12 bg-snack-cheese rounded-full animate-float opacity-10"></div>
-        <div className="absolute top-1/3 right-20 w-8 h-8 bg-secondary-300 rounded-full animate-bounce-fun opacity-15"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-10 h-10 bg-accent-300 rounded-full animate-float opacity-12"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-snack-orange rounded-full animate-bounce-fun opacity-18"></div>
+    <section className="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden relative">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        {floatingElements.map((element, i) => (
+          <div
+            key={element.id}
+            className="absolute text-2xl opacity-10 animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: `${3 + (i % 3)}s`,
+            }}
+          >
+            {element.icon}
+          </div>
+        ))}
       </div>
 
-      <div className="container relative">
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent">
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+      </div>
+
+      {/* Battery power decorations - updated for dark theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-10 w-12 h-12 bg-yellow-500/20 rounded-sm animate-pulse opacity-20"></div>
+        <div className="absolute top-1/3 right-20 w-8 h-8 bg-blue-500/20 rounded-sm animate-bounce opacity-25"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-10 h-10 bg-orange-500/20 rounded-sm animate-pulse opacity-22"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-green-500/20 rounded-sm animate-bounce opacity-28"></div>
+      </div>
+
+      <div className="container relative z-10">
         <div className="text-center mb-12">
           <Fade direction="up" triggerOnce>
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-full mb-6 animate-pulse-glow">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mb-6 shadow-lg animate-pulse">
               <Store className="w-10 h-10 text-white" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4 bg-gradient-to-r from-white via-blue-100 to-gray-100 bg-clip-text text-transparent">
               {partnersContent.title[language]}
             </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-blue-100 max-w-3xl mx-auto leading-relaxed">
               {partnersContent.subtitle[language]}
             </p>
           </Fade>
@@ -165,14 +200,14 @@ const ClientPartners = () => {
               {[...partnersContent.partners, ...partnersContent.partners].map((partner, index) => (
                 <div
                   key={`${partner.id}-${index}`}
-                  className="flex-shrink-0 relative rounded-2xl bg-white p-6 shadow-soft hover:shadow-layer transition-all duration-300 min-w-64 group border-2 border-primary-100 hover:border-primary-300"
+                  className="flex-shrink-0 relative rounded-2xl bg-white/10 backdrop-blur-sm p-6 shadow-lg hover:shadow-2xl transition-all duration-300 min-w-64 group border-2 border-white/20 hover:border-yellow-400/50"
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {/* Partner icon with gradient background */}
                   <div className="flex items-center gap-4 mb-3">
                     <div 
-                      className="w-14 h-14 flex items-center justify-center rounded-xl shadow-sm group-hover:scale-110 transition-transform duration-300"
+                      className="w-14 h-14 flex items-center justify-center rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
                       style={{ 
                         background: `linear-gradient(135deg, ${partner.color}, ${partner.color}dd)`
                       }}
@@ -181,31 +216,30 @@ const ClientPartners = () => {
                     </div>
                     
                     <div className="flex-grow">
-                      <h3 className="font-bold text-lg text-gray-900 group-hover:text-primary-600 transition-colors leading-tight">
+                      <h3 className="font-bold text-lg text-white group-hover:text-yellow-300 transition-colors leading-tight">
                         {partner.name}
                       </h3>
-                      <p className="text-primary-600 text-sm font-medium">{partner.description}</p>
+                      <p className="text-blue-200 text-sm font-medium">{partner.description}</p>
                     </div>
                   </div>
                   
                   {/* Location with MapPin icon */}
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-secondary-500" />
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <MapPin className="w-4 h-4 text-yellow-400" />
                     <span className="text-sm font-medium">{partner.location}</span>
                   </div>
                   
-                  {/* Fun hover effect - snack crumbs */}
+                  {/* Power indicator hover effects */}
                   <div className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-3 h-3 bg-snack-cheese rounded-full animate-bounce-fun"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-sm animate-bounce"></div>
                   </div>
                   <div className="absolute top-2 -left-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    <div className="w-2 h-2 bg-secondary-400 rounded-full animate-float"></div>
+                    <div className="w-2 h-2 bg-orange-400 rounded-sm animate-pulse"></div>
                   </div>
                   
                   {/* Animated bottom accent */}
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-1 rounded-b-2xl"
-                    style={{ backgroundColor: partner.color }}
+                    className="absolute bottom-0 left-0 h-1 rounded-b-2xl bg-gradient-to-r from-yellow-400 to-orange-500"
                     initial={{ width: "0%" }}
                     animate={{ width: hoveredIndex === index ? "100%" : "0%" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
@@ -225,14 +259,14 @@ const ClientPartners = () => {
               {[...partnersContent.partners, ...partnersContent.partners].reverse().map((partner, index) => (
                 <div
                   key={`reverse-${partner.id}-${index}`}
-                  className="flex-shrink-0 relative rounded-2xl bg-white p-6 shadow-soft hover:shadow-layer transition-all duration-300 min-w-64 group border-2 border-secondary-100 hover:border-secondary-300"
+                  className="flex-shrink-0 relative rounded-2xl bg-white/10 backdrop-blur-sm p-6 shadow-lg hover:shadow-2xl transition-all duration-300 min-w-64 group border-2 border-white/20 hover:border-yellow-400/50"
                   onMouseEnter={() => setHoveredIndex(`rev-${index}`)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {/* Partner icon with gradient background */}
                   <div className="flex items-center gap-4 mb-3">
                     <div 
-                      className="w-14 h-14 flex items-center justify-center rounded-xl shadow-sm group-hover:scale-110 transition-transform duration-300"
+                      className="w-14 h-14 flex items-center justify-center rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
                       style={{ 
                         background: `linear-gradient(135deg, ${partner.color}, ${partner.color}dd)`
                       }}
@@ -241,31 +275,30 @@ const ClientPartners = () => {
                     </div>
                     
                     <div className="flex-grow">
-                      <h3 className="font-bold text-lg text-gray-900 group-hover:text-secondary-600 transition-colors leading-tight">
+                      <h3 className="font-bold text-lg text-white group-hover:text-yellow-300 transition-colors leading-tight">
                         {partner.name}
                       </h3>
-                      <p className="text-secondary-600 text-sm font-medium">{partner.description}</p>
+                      <p className="text-blue-200 text-sm font-medium">{partner.description}</p>
                     </div>
                   </div>
                   
                   {/* Location with MapPin icon */}
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-primary-500" />
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <MapPin className="w-4 h-4 text-yellow-400" />
                     <span className="text-sm font-medium">{partner.location}</span>
                   </div>
                   
-                  {/* Fun hover effect - snack crumbs */}
+                  {/* Power indicator hover effects */}
                   <div className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-3 h-3 bg-snack-orange rounded-full animate-bounce-fun"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-sm animate-bounce"></div>
                   </div>
                   <div className="absolute top-2 -left-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    <div className="w-2 h-2 bg-accent-400 rounded-full animate-float"></div>
+                    <div className="w-2 h-2 bg-orange-400 rounded-sm animate-pulse"></div>
                   </div>
                   
                   {/* Animated bottom accent */}
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-1 rounded-b-2xl"
-                    style={{ backgroundColor: partner.color }}
+                    className="absolute bottom-0 left-0 h-1 rounded-b-2xl bg-gradient-to-r from-yellow-400 to-orange-500"
                     initial={{ width: "0%" }}
                     animate={{ width: hoveredIndex === `rev-${index}` ? "100%" : "0%" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
@@ -279,14 +312,14 @@ const ClientPartners = () => {
         {/* Call to action */}
         <Fade triggerOnce delay={500}>
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-primary-600 hover:to-secondary-600 transform hover:scale-105 transition-all duration-300 shadow-soft hover:shadow-layer group cursor-pointer">
+            <div className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group cursor-pointer">
               <MapPin className="w-5 h-5 mr-3" />
               {partnersContent.viewAll[language]}
             </div>
-            <p className="mt-4 text-gray-600 font-medium">
+            <p className="mt-4 text-blue-200 font-medium">
               {language === 'en' 
-                ? 'Join thousands of happy families enjoying TAM TAM snacks!' 
-                : 'Jiunge na familia elfu nyingi zinazofurahia vitafunio vya TAM TAM!'}
+                ? 'Join thousands of satisfied vehicle owners trusting CHUI power!' 
+                : 'Jiunge na wamiliki wa magari elfu nyingi wanaoamini nguvu za CHUI!'}
             </p>
           </div>
         </Fade>

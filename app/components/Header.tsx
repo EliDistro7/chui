@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Languages, Sparkles, ShoppingBag } from "lucide-react";
+import { Menu, X, Languages, Battery, MapPin, Zap } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,12 +12,13 @@ const navItems = {
     sw: "Nyumbani",
   },
   products: {
-    en: "Products",
-    sw: "Bidhaa",
+    en: "Batteries",
+    sw: "Betri",
   },
+
   about: {
-    en: "About Us",
-    sw: "Kuhusu Sisi",
+    en: "About CHUI",
+    sw: "Kuhusu CHUI",
   },
   contact: {
     en: "Contact",
@@ -43,50 +44,69 @@ export default function Header() {
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
           ? "bg-white/95 backdrop-blur-lg shadow-lg shadow-primary-500/10" 
-          : "bg-gradient-to-r from-primary-500/90 to-secondary-500/90 backdrop-blur-md"
+          : "bg-gradient-to-r from-slate-900/90 via-blue-900/90 to-slate-800/90 backdrop-blur-md"
       }`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-18">
-          {/* TAM TAM Logo */}
+          {/* CHUI Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <motion.div 
               whileHover={{ 
                 scale: 1.1, 
-                rotate: [0, -5, 5, 0],
-                boxShadow: "0 0 20px rgba(245,158,11,0.4)"
+                rotate: [0, -3, 3, 0],
+                boxShadow: "0 0 25px rgba(251,191,36,0.5)"
               }}
               transition={{ duration: 0.3 }}
-              className="relative h-12 w-12 rounded-full bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500 flex items-center justify-center shadow-lg overflow-hidden"
+              className="relative h-12 w-12 rounded-lg bg-gradient-to-br from-primary-400 via-primary-500 to-orange-500 flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
             >
-              {/* Animated background sparkles */}
+              {/* Electric pulse animation */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 opacity-30"
-              >
-                <Sparkles className="absolute top-1 left-1 w-3 h-3 text-white" />
-                <Sparkles className="absolute bottom-1 right-1 w-2 h-2 text-white" />
-              </motion.div>
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.8, 0.3]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 bg-gradient-to-br from-electric-400/30 to-primary-400/30"
+              />
               
-              <span className="relative z-10 font-display text-white text-lg font-black tracking-tight">
-                TT
-              </span>
+              {/* Battery icon with electric effect */}
+              <div className="relative z-10 flex items-center justify-center">
+                <Battery className="w-6 h-6 text-white" />
+                <motion.div
+                  animate={{ 
+                    opacity: [0, 1, 0],
+                    scale: [0.8, 1.2, 0.8]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    delay: 0.5 
+                  }}
+                  className="absolute -top-1 -right-1"
+                >
+                  <Zap className="w-3 h-3 text-yellow-300" />
+                </motion.div>
+              </div>
             </motion.div>
             
             <div className="flex flex-col">
               <motion.span 
                 whileHover={{ scale: 1.05 }}
                 className={`font-display text-2xl font-black tracking-tight transition-colors ${
-                  scrolled ? "text-primary-600" : "text-white"
+                  scrolled ? "text-slate-800" : "text-white"
                 } drop-shadow-sm`}
               >
-                TAM TAM
+                CHUI
               </motion.span>
               <span className={`text-xs font-medium -mt-1 ${
-                scrolled ? "text-secondary-500" : "text-white/80"
+                scrolled ? "text-primary-600" : "text-primary-300"
               }`}>
-                Premium Snacks
+                {language === "en" ? "Power Leader" : "Kiongozi wa Nguvu"}
               </span>
             </div>
           </Link>
@@ -100,7 +120,7 @@ export default function Header() {
                   className={`relative px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
                     scrolled 
                       ? "text-gray-700 hover:text-primary-600 hover:bg-primary-50" 
-                      : "text-white hover:text-primary-100 hover:bg-white/10 backdrop-blur-sm"
+                      : "text-white hover:text-primary-200 hover:bg-white/10 backdrop-blur-sm"
                   }`}
                 >
                   <motion.span 
@@ -127,17 +147,17 @@ export default function Header() {
             <motion.button
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: "0 8px 25px rgba(245,158,11,0.3)"
+                boxShadow: "0 8px 25px rgba(251,191,36,0.4)"
               }}
               whileTap={{ scale: 0.95 }}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ml-2 ${
                 scrolled
-                  ? "bg-primary-500 text-white hover:bg-primary-600 shadow-lg"
+                  ? "bg-gradient-to-r from-primary-500 to-orange-500 text-white hover:from-primary-600 hover:to-orange-600 shadow-lg"
                   : "bg-white text-primary-600 hover:bg-primary-50 shadow-lg"
               }`}
             >
-              <ShoppingBag size={16} />
-              <span>{language === "en" ? "Shop" : "Nunua"}</span>
+              <Battery size={16} />
+              <span>{language === "en" ? "Buy Now" : "Nunua Sasa"}</span>
             </motion.button>
 
             {/* Language Toggle */}
@@ -176,13 +196,13 @@ export default function Header() {
               whileTap={{ scale: 0.95 }}
               className={`flex items-center gap-1.5 px-3 py-2 rounded-full font-bold text-sm transition-all ${
                 scrolled
-                  ? "bg-primary-500 text-white shadow-lg"
+                  ? "bg-gradient-to-r from-primary-500 to-orange-500 text-white shadow-lg"
                   : "bg-white text-primary-600 shadow-lg"
               }`}
             >
-              <ShoppingBag size={14} />
+              <Battery size={14} />
               <span className="hidden sm:inline">
-                {language === "en" ? "Shop" : "Nunua"}
+                {language === "en" ? "Buy" : "Nunua"}
               </span>
             </motion.button>
 
@@ -270,10 +290,26 @@ export default function Header() {
                           whileHover={{ x: 5 }}
                           className="flex items-center gap-3"
                         >
-                          <div className={`w-2 h-2 rounded-full ${
-                            scrolled ? "bg-primary-400" : "bg-white/60"
-                          }`} />
+                          <motion.div 
+                            animate={{ 
+                              backgroundColor: scrolled ? "#fbbf24" : "#ffffff60",
+                              scale: [1, 1.2, 1]
+                            }}
+                            transition={{ 
+                              scale: { duration: 2, repeat: Infinity },
+                              backgroundColor: { duration: 0.3 }
+                            }}
+                            className="w-2 h-2 rounded-full"
+                          />
                           <span>{translations[language]}</span>
+                          
+                          {/* Add icons for specific nav items */}
+                          {key === "dealers" && (
+                            <MapPin className="w-4 h-4 opacity-60" />
+                          )}
+                          {key === "products" && (
+                            <Battery className="w-4 h-4 opacity-60" />
+                          )}
                         </motion.div>
                         
                         {/* Navigation arrow */}
@@ -295,12 +331,50 @@ export default function Header() {
                     className="mt-4 pt-4 border-t border-white/20"
                   >
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 10px 30px rgba(251,191,36,0.3)"
+                      }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-4 rounded-xl font-bold text-center shadow-lg"
+                      className="w-full bg-gradient-to-r from-primary-500 via-orange-500 to-primary-600 text-white px-6 py-4 rounded-xl font-bold text-center shadow-lg relative overflow-hidden"
                     >
-                      🛒 {language === "en" ? "Start Shopping" : "Anza Ununuzi"}
+                      {/* Electric pulse effect */}
+                      <motion.div
+                        animate={{
+                          x: ["-100%", "100%"],
+                          opacity: [0, 0.5, 0]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      />
+                      
+                      <div className="flex items-center justify-center gap-2 relative z-10">
+                        <Battery className="w-5 h-5" />
+                        <span>
+                          {language === "en" ? "Shop CHUI Batteries" : "Nunua Betri za CHUI"}
+                        </span>
+                        <Zap className="w-4 h-4" />
+                      </div>
                     </motion.button>
+                    
+                    {/* Additional info */}
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                      className={`text-xs text-center mt-2 ${
+                        scrolled ? "text-gray-500" : "text-white/70"
+                      }`}
+                    >
+                      {language === "en" 
+                        ? "German Technology • 24 Month Warranty" 
+                        : "Teknolojia ya Kijerumani • Dhamana ya Miezi 24"
+                      }
+                    </motion.p>
                   </motion.div>
                 </nav>
               </div>

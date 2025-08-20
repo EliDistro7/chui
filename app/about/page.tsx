@@ -2,160 +2,197 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Trophy, Leaf, Globe, Truck, Shield, Sparkles, Award, Heart, Star, Target, Zap, ArrowRight, ChevronDown } from 'lucide-react';
+import { Battery, Zap, Shield, Globe, Truck, Award, Sparkles, Star, Target, ChevronDown, Factory, Wrench, Users, TrendingUp } from 'lucide-react';
 
 import { useLanguage } from '@/context/LanguageContext';
 
-
 const aboutContent = {
   title: {
-    en: "The TAM TAM Story",
-    sw: "Historia ya TAM TAM"
+    en: "The CHUI Power Story",
+    sw: "Historia ya Nguvu ya CHUI"
   },
   subtitle: {
-    en: "Crafting extraordinary snack experiences that bring joy to every moment",
-    sw: "Kuunda uzoefu wa ajabu wa vitafunio unaoleta furaha katika kila wakati"
+    en: "Engineering reliable power solutions that keep Tanzania moving forward",
+    sw: "Kujenga suluhisho za kuaminika za nguvu zinazoendesha Tanzania mbele"
   },
   missionTitle: {
     en: "Our Mission",
     sw: "Dhamira Yetu"
   },
   missionText: {
-    en: "To create premium snacks that transcend ordinary taste experiences, bringing communities together through innovative flavors that celebrate life's finest moments while maintaining uncompromising quality standards.",
-    sw: "Kuunda vitafunio vya hali ya juu vinavyopita uzoefu wa kawaida wa ladha, vikileta pamoja jamii kupitia ladha za ubunifu zinazosherehekea nyakati bora zaidi za maisha huku tukishikilia viwango visivyokubali ya ubora."
+    en: "To deliver premium maintenance-free batteries that power Tanzania's growth, providing reliable energy solutions with German engineering standards while supporting local communities and sustainable development.",
+    sw: "Kutoa betri bora zisizohitaji ukarabati zinazoendesha ukuaji wa Tanzania, kutoa suluhisho za kuaminika za nishati kwa viwango vya uhandisi wa Kijerumani huku tukiunga mkono jamii za mitaa na maendeleo endelevu."
   },
   visionTitle: {
     en: "Our Vision",
     sw: "Maono Yetu"
   },
   visionText: {
-    en: "To become East Africa's most innovative snack brand, setting new standards for taste, quality, and sustainability while inspiring moments of pure joy across generations.",
-    sw: "Kuwa chapa ya vitafunio yenye ubunifu zaidi Afrika Mashariki, kuweka viwango vipya vya ladha, ubora, na uendelevu huku tukihamasisha nyakati za furaha safi kote vizazi."
+    en: "To become East Africa's most trusted battery brand, setting the standard for quality, durability, and innovation while empowering every journey from personal transportation to industrial applications.",
+    sw: "Kuwa chapa ya betri inayoaminika zaidi Afrika Mashariki, kuweka kiwango cha ubora, kudumu, na ubunifu huku tukiwezesha kila safari kutoka usafiri wa kibinafsi hadi matumizi ya viwandani."
   },
   storyTitle: {
     en: "Our Journey",
     sw: "Safari Yetu"
   },
   storyText: {
-    en: "Born from a passion for perfection and a deep understanding of what makes moments special, TAM TAM emerged as more than just a snack brand. We are curators of taste, architects of joy, and guardians of quality. Every product in our collection represents countless hours of innovation, testing, and refinement. From our signature golden Cheese Balls that deliver the perfect crunch to our luxurious Chocolate range that melts beautifully on the tongue, each TAM TAM creation is a testament to our commitment to excellence. We believe that great snacks don't just satisfy hunger—they create memories, spark conversations, and bring people together.",
-    sw: "Kuzaliwa kutoka shauku ya ukamilifu na uelewa wa kina wa kile kinachofanya nyakati kuwa maalum, TAM TAM ilitokea kama zaidi ya chapa ya vitafunio tu. Sisi ni wakusanya wa ladha, wajenzi wa furaha, na walinzi wa ubora. Kila bidhaa katika mkusanyiko wetu inawakilisha masaa yasiyo na hesabu ya ubunifu, majaribio, na uborefu. Kutoka kwa Cheese Balls zetu za dhahabu zinazotoa kigumu kamili hadi safu yetu ya anasa ya Chokoleti inayoyeyuka vizuri ulimini, kila uumbaji wa TAM TAM ni ushahidi wa kujitolea kwetu kwa ubora. Tunaamini kwamba vitafunio vizuri haviridhishi njaa tu—huunda kumbukumbu, huchochea mazungumzo, na huleta watu pamoja."
+    en: "Born from a deep understanding of Tanzania's unique power challenges, CHUI emerged as more than just a battery manufacturer. We are power enablers, reliability engineers, and guardians of quality. Every CHUI battery represents years of research into local climate conditions, road challenges, and energy demands. From our flagship N50MF compact batteries perfect for city driving to our industrial-grade N200MF ultra batteries that power heavy machinery, each CHUI product is engineered for Tanzania's demanding environment. We believe that reliable power doesn't just start engines—it drives economic growth, connects communities, and builds the foundation for a prosperous future.",
+    sw: "Kuzaliwa kutoka uelewa wa kina wa changamoto za kipekee za nguvu za Tanzania, CHUI ilitokea kama zaidi ya mtengenezaji wa betri tu. Sisi ni wezesha wa nguvu, wahandisi wa kuaminika, na walinzi wa ubora. Kila betri ya CHUI inawakilisha miaka ya utafiti katika mazingira ya hali ya hewa ya mitaa, changamoto za barabara, na mahitaji ya nishati. Kutoka betri zetu kuu za N50MF ndogo zinazofaa kwa uendeshaji wa jijini hadi betri zetu za kiwango cha viwanda za N200MF zinazoendesha mashine nzito, kila bidhaa ya CHUI imetengenezwa kwa mazingira magumu ya Tanzania. Tunaamini kwamba nguvu za kuaminika haziwashi injini tu—huendesha ukuaji wa kiuchumi, huunganisha jamii, na kujenga msingi wa mustakabali wenye mafanikio."
   },
   valuesTitle: {
     en: "Our Core Values",
     sw: "Maadili Yetu ya Msingi"
   },
   teamTitle: {
-    en: "Meet Our Visionaries",
-    sw: "Kutana na Wenye Maono Wetu"
+    en: "Meet Our Power Leaders",
+    sw: "Kutana na Viongozi wetu wa Nguvu"
   },
   ctaTitle: {
-    en: "Ready to experience the extraordinary?",
-    sw: "Tayari kupata uzoefu wa ajabu?"
+    en: "Ready to power your journey?",
+    sw: "Tayari kuendesha safari yako?"
   },
   ctaText: {
-    en: "Discover the TAM TAM difference and elevate your snacking experience",
-    sw: "Gundua tofauti ya TAM TAM na uinue uzoefu wako wa kula vitafunio"
+    en: "Experience the CHUI difference and never worry about power again",
+    sw: "Pata uzoefu wa tofauti ya CHUI na usijali kuhusu nguvu tena"
   }
 };
 
 const values = [
   {
-    icon: <Sparkles className="w-7 h-7" />,
-    title: { en: "Relentless Innovation", sw: "Ubunifu Usiopungua" },
+    icon: <Battery className="w-7 h-7" />,
+    title: { en: "German Engineering", sw: "Uhandisi wa Kijerumani" },
     description: {
-      en: "Pioneering breakthrough flavors and textures that redefine snacking experiences",
-      sw: "Kuongoza mstari katika ladha na miundo inayofafanua upya uzoefu wa vitafunio"
+      en: "Advanced technology and precision manufacturing ensuring superior performance and longevity",
+      sw: "Teknolojia ya hali ya juu na utengenezaji wa usahihi kuhakikisha utendaji bora na kudumu"
     },
-    gradient: "from-primary-400 via-primary-500 to-secondary-500"
+    gradient: "from-blue-400 via-blue-500 to-cyan-500"
+  },
+  {
+    icon: <Shield className="w-7 h-7" />,
+    title: { en: "Maintenance Free", sw: "Haitaji Ukarabati" },
+    description: {
+      en: "Zero maintenance design with sealed technology for hassle-free, long-lasting power",
+      sw: "Muundo usihitaji ukarabati na teknolojia iliyofungwa kwa nguvu ya muda mrefu bila wasiwasi"
+    },
+    gradient: "from-green-400 via-emerald-500 to-teal-500"
   },
   {
     icon: <Award className="w-7 h-7" />,
-    title: { en: "Uncompromising Excellence", sw: "Ubora Usiopendelea" },
+    title: { en: "Proven Durability", sw: "Kudumu Kuliloonyeshwa" },
     description: {
-      en: "Setting industry benchmarks through meticulous attention to every detail",
-      sw: "Kuweka viwango vya sekta kupitia umakini mkubwa kwa kila undani"
+      en: "Built to withstand Tanzania's challenging climate with extended warranty coverage",
+      sw: "Imetengenezwa kustahimili hali ngumu ya hewa ya Tanzania na uhakikisho wa muda mrefu"
     },
-    gradient: "from-secondary-400 via-accent-400 to-accent-500"
-  },
-  {
-    icon: <Heart className="w-7 h-7" />,
-    title: { en: "Passionate Craftsmanship", sw: "Ufundi wa Shauku" },
-    description: {
-      en: "Every product is meticulously crafted with love, precision, and artistry",
-      sw: "Kila bidhaa inatengenezwa kwa umakini na upendo, usahihi, na usanifu"
-    },
-    gradient: "from-accent-400 via-primary-400 to-secondary-400"
+    gradient: "from-orange-400 via-red-400 to-pink-500"
   },
   {
     icon: <Globe className="w-7 h-7" />,
-    title: { en: "Sustainable Future", sw: "Mustakabali Endelevu" },
+    title: { en: "Local Understanding", sw: "Uelewa wa Kienyeji" },
     description: {
-      en: "Building a responsible legacy through eco-conscious practices and innovation",
-      sw: "Kujenga urithi wenye uwajibikaji kupitia mazoea na ubunifu unaohifadhi mazingira"
+      en: "Designed specifically for East African conditions with local support networks",
+      sw: "Imeundwa maalum kwa mazingira ya Afrika Mashariki na mitandao ya usaidizi wa kieneo"
     },
-    gradient: "from-success-400 via-info-400 to-primary-400"
+    gradient: "from-purple-400 via-violet-500 to-indigo-500"
   },
   {
     icon: <Users className="w-7 h-7" />,
-    title: { en: "Community Connection", sw: "Muunganiko wa Jamii" },
+    title: { en: "Community Focus", sw: "Mkazo wa Jamii" },
     description: {
-      en: "Fostering meaningful relationships and shared moments of joy across communities",
-      sw: "Kukuza mahusiano yenye maana na nyakati za furaha zilizoshirikishwa katika jamii"
+      en: "Supporting local dealerships and creating opportunities across Tanzania",
+      sw: "Kuunga mkono madalali wa kieneo na kuunda fursa kote Tanzania"
     },
-    gradient: "from-info-400 via-secondary-400 to-primary-500"
+    gradient: "from-teal-400 via-cyan-500 to-blue-500"
   }
 ];
 
 const teamMembers = [
   {
-    name: "Sarah Mwangi",
-    role: { en: "Founder & Visionary", sw: "Mwanzilishi na Mwenye Maono" },
+    name: "Eng. Michael Swai",
+    role: { en: "Founder & Chief Engineer", sw: "Mwanzilishi na Mkuu wa Uhandisi" },
     bio: {
-      en: "Transforming the snack industry through innovative leadership and unwavering commitment to excellence",
-      sw: "Kubadilisha sekta ya vitafunio kupitia uongozi wa ubunifu na kujitolea bila kusita kwa ubora"
+      en: "Leading CHUI's technical innovation with 15+ years in automotive power solutions and German engineering expertise",
+      sw: "Kuongoza ubunifu wa kiufundi wa CHUI na uzoefu wa zaidi ya miaka 15 katika suluhisho za nguvu za magari na utaalam wa uhandisi wa Kijerumani"
     },
-    gradient: "from-primary-500 to-secondary-500"
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
-    name: "Dr. James Kibua",
-    role: { en: "Chief Innovation Officer", sw: "Mkuu wa Ubunifu" },
+    name: "Dr. Grace Kimaro",
+    role: { en: "Director of Quality", sw: "Mkurugenzi wa Ubora" },
     bio: {
-      en: "Leading breakthrough research in flavor science and revolutionary snack technology",
-      sw: "Kuongoza utafiti wa mstari katika sayansi ya ladha na teknolojia ya mapinduzi ya vitafunio"
+      en: "Ensuring every CHUI battery meets international standards through rigorous testing and quality control processes",
+      sw: "Kuhakikisha kila betri ya CHUI inakidhi viwango vya kimataifa kupitia majaribio makali na mchakato wa udhibiti wa ubora"
     },
-    gradient: "from-info-500 to-primary-500"
+    gradient: "from-green-500 to-teal-500"
   },
   {
-    name: "Grace Massawe", 
-    role: { en: "Director of Excellence", sw: "Mkurugenzi wa Ubora" },
+    name: "Joseph Mwanga", 
+    role: { en: "National Sales Director", sw: "Mkurugenzi wa Mauzo wa Kitaifa" },
     bio: {
-      en: "Ensuring every TAM TAM product exceeds the highest international quality standards",
-      sw: "Kuhakikisha kila bidhaa ya TAM TAM inazidi viwango vikuu vya kimataifa vya ubora"
+      en: "Building nationwide dealer networks and ensuring CHUI batteries are accessible across Tanzania's diverse markets",
+      sw: "Kujenga mitandao ya madalali kote nchini na kuhakikisha betri za CHUI zinapatikana katika masoko mbalimbali ya Tanzania"
     },
-    gradient: "from-accent-500 to-secondary-500"
+    gradient: "from-orange-500 to-red-500"
   }
 ];
 
 const stats = [
   { 
-    number: "7", 
-    label: { en: "Premium Varieties", sw: "Aina za Hali ya Juu" },
+    number: "12", 
+    label: { en: "Battery Models", sw: "Mifano ya Betri" },
     suffix: ""
   },
   { 
-    number: "250", 
-    label: { en: "Satisfied Customers", sw: "Wateja Waliorithika" },
+    number: "50", 
+    label: { en: "Dealer Network", sw: "Mtandao wa Madalali" },
     suffix: "K+"
   },
   { 
-    number: "99.8", 
-    label: { en: "Quality Score", sw: "Alama za Ubora" },
-    suffix: "%"
+    number: "24", 
+    label: { en: "Months Warranty", sw: "Miezi ya Uhakikisho" },
+    suffix: ""
   },
   { 
-    number: "24", 
-    label: { en: "Innovation Hours", sw: "Masaa ya Ubunifu" },
-    suffix: "/7"
+    number: "99.5", 
+    label: { en: "Reliability Rate", sw: "Kiwango cha Kuaminika" },
+    suffix: "%"
+  }
+];
+
+const batteryTypes = [
+  { 
+    name: 'N50MF', 
+    capacity: '50AH', 
+    color: 'from-blue-400 to-blue-600',
+    icon: '🚗',
+    usage: { en: 'Compact Cars', sw: 'Magari Madogo' }
+  },
+  { 
+    name: 'N70MF', 
+    capacity: '70AH', 
+    color: 'from-green-400 to-green-600',
+    icon: '🚙',
+    usage: { en: 'SUVs & Pickups', sw: 'SUV na Pikap' }
+  },
+  { 
+    name: 'N100MF', 
+    capacity: '100AH', 
+    color: 'from-orange-400 to-orange-600',
+    icon: '🚚',
+    usage: { en: 'Commercial', sw: 'Kibiashara' }
+  },
+  { 
+    name: 'N150MF', 
+    capacity: '150AH', 
+    color: 'from-red-400 to-red-600',
+    icon: '🏭',
+    usage: { en: 'Industrial', sw: 'Viwanda' }
+  },
+  { 
+    name: 'N200MF', 
+    capacity: '200AH', 
+    color: 'from-purple-400 to-purple-600',
+    icon: '⚡',
+    usage: { en: 'Heavy Duty', sw: 'Kazi Nzito' }
   }
 ];
 
@@ -182,17 +219,17 @@ const itemVariants = {
   }
 };
 
-export default function AboutPage() {
+export default function CHUIAboutPage() {
   const { language } = useLanguage();
 
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 via-white to-primary-50">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
-            className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-primary-200/30 to-secondary-200/30 rounded-full blur-3xl"
+            className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl"
             animate={{ 
               scale: [1, 1.1, 1],
               opacity: [0.3, 0.5, 0.3]
@@ -204,7 +241,7 @@ export default function AboutPage() {
             }}
           />
           <motion.div 
-            className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-br from-accent-200/30 to-info-200/30 rounded-full blur-3xl"
+            className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-yellow-200/30 rounded-full blur-3xl"
             animate={{ 
               scale: [1.1, 1, 1.1],
               opacity: [0.4, 0.2, 0.4]
@@ -225,22 +262,22 @@ export default function AboutPage() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="mb-8">
-              <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-                <Sparkles className="w-4 h-4 mr-2" />
-                {language === 'en' ? 'About TAM TAM' : 'Kuhusu TAM TAM'}
+              <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
+                <Battery className="w-4 h-4 mr-2" />
+                {language === 'en' ? 'About CHUI Power' : 'Kuhusu Nguvu ya CHUI'}
               </span>
             </motion.div>
 
             <motion.h1 
               variants={itemVariants}
-              className="text-6xl md:text-8xl font-display font-black text-transparent bg-gradient-to-r from-neutral-900 via-primary-600 to-secondary-600 bg-clip-text mb-8 leading-tight"
+              className="text-6xl md:text-8xl font-display font-black text-white mb-8 leading-tight drop-shadow-lg"
             >
               {aboutContent.title[language]}
             </motion.h1>
 
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-neutral-600 max-w-5xl mx-auto leading-relaxed font-medium"
+              className="text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed font-medium"
             >
               {aboutContent.subtitle[language]}
             </motion.p>
@@ -250,7 +287,7 @@ export default function AboutPage() {
               className="mt-12"
             >
               <motion.div 
-                className="inline-flex items-center text-neutral-400 cursor-pointer"
+                className="inline-flex items-center text-white/60 cursor-pointer"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -265,7 +302,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container relative z-10">
           <motion.div 
@@ -301,7 +338,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-32 bg-gradient-to-b from-neutral-50 to-white">
+      <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
         <div className="container">
           <motion.div 
             className="grid lg:grid-cols-2 gap-16 items-center"
@@ -313,14 +350,14 @@ export default function AboutPage() {
             <motion.div variants={itemVariants} className="space-y-12">
               <div className="group">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Target className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-4xl font-display font-black text-neutral-900">
+                  <h2 className="text-4xl font-display font-black text-slate-900">
                     {aboutContent.missionTitle[language]}
                   </h2>
                 </div>
-                <p className="text-lg text-neutral-600 leading-relaxed">
+                <p className="text-lg text-slate-600 leading-relaxed">
                   {aboutContent.missionText[language]}
                 </p>
               </div>
@@ -329,14 +366,14 @@ export default function AboutPage() {
             <motion.div variants={itemVariants} className="space-y-12">
               <div className="group">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent-500 to-info-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Star className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-4xl font-display font-black text-neutral-900">
+                  <h2 className="text-4xl font-display font-black text-slate-900">
                     {aboutContent.visionTitle[language]}
                   </h2>
                 </div>
-                <p className="text-lg text-neutral-600 leading-relaxed">
+                <p className="text-lg text-slate-600 leading-relaxed">
                   {aboutContent.visionText[language]}
                 </p>
               </div>
@@ -356,41 +393,38 @@ export default function AboutPage() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-neutral-900 mb-8">
+              <h2 className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8">
                 {aboutContent.storyTitle[language]}
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-12"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-12"></div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="prose prose-xl max-w-none">
-              <p className="text-xl text-neutral-700 leading-relaxed text-center">
+              <p className="text-xl text-slate-700 leading-relaxed text-center">
                 {aboutContent.storyText[language]}
               </p>
             </motion.div>
 
-            {/* Product Icons */}
+            {/* Battery Types */}
             <motion.div 
               variants={itemVariants}
               className="grid grid-cols-5 gap-8 mt-20 max-w-4xl mx-auto"
             >
-              {[
-                { emoji: '🧀', name: 'Cheese', color: 'from-yellow-400 to-orange-400' },
-                { emoji: '🍫', name: 'Chocolate', color: 'from-amber-600 to-red-600' },
-                { emoji: '🌾', name: 'Multigrain', color: 'from-green-400 to-yellow-400' },
-                { emoji: '⭕', name: 'Rings', color: 'from-orange-400 to-red-400' },
-                { emoji: '✨', name: 'Premium', color: 'from-purple-400 to-pink-400' }
-              ].map((item, index) => (
+              {batteryTypes.map((battery, index) => (
                 <motion.div 
                   key={index}
                   className="text-center group cursor-pointer"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:shadow-xl transition-shadow`}>
-                    <span className="text-3xl">{item.emoji}</span>
+                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${battery.color} flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:shadow-xl transition-shadow`}>
+                    <span className="text-3xl">{battery.icon}</span>
                   </div>
-                  <span className="text-sm font-bold text-neutral-600 uppercase tracking-wide">
-                    {item.name}
+                  <span className="text-sm font-bold text-slate-600 uppercase tracking-wide block">
+                    {battery.name}
+                  </span>
+                  <span className="text-xs text-slate-500">
+                    {battery.usage[language]}
                   </span>
                 </motion.div>
               ))}
@@ -400,7 +434,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-32 bg-gradient-to-b from-neutral-50 to-white">
+      <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
         <div className="container">
           <motion.div 
             className="text-center mb-20"
@@ -411,13 +445,13 @@ export default function AboutPage() {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-5xl md:text-6xl font-display font-black text-neutral-900 mb-8"
+              className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8"
             >
               {aboutContent.valuesTitle[language]}
             </motion.h2>
             <motion.div 
               variants={itemVariants}
-              className="w-32 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"
+              className="w-32 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"
             />
           </motion.div>
 
@@ -436,14 +470,14 @@ export default function AboutPage() {
                 whileHover={{ y: -8 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 h-full group-hover:shadow-layer transition-all duration-300">
+                <div className="bg-white rounded-3xl p-8 shadow-soft border border-slate-100 h-full group-hover:shadow-layer transition-all duration-300">
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform`}>
                     {value.icon}
                   </div>
-                  <h3 className="text-2xl font-display font-black text-neutral-900 mb-4">
+                  <h3 className="text-2xl font-display font-black text-slate-900 mb-4">
                     {value.title[language]}
                   </h3>
-                  <p className="text-neutral-600 leading-relaxed">
+                  <p className="text-slate-600 leading-relaxed">
                     {value.description[language]}
                   </p>
                 </div>
@@ -465,17 +499,17 @@ export default function AboutPage() {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-5xl md:text-6xl font-display font-black text-neutral-900 mb-8"
+              className="text-5xl md:text-6xl font-display font-black text-slate-900 mb-8"
             >
               {aboutContent.teamTitle[language]}
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-neutral-600 max-w-3xl mx-auto"
+              className="text-xl text-slate-600 max-w-3xl mx-auto"
             >
               {language === 'en' 
-                ? 'The extraordinary minds behind TAM TAM\'s revolutionary approach to snacking'
-                : 'Akili za kipekee nyuma ya mbinu ya mapinduzi ya TAM TAM ya vitafunio'}
+                ? 'The engineering minds and industry experts driving CHUI\'s power innovation'
+                : 'Akili za uhandisi na wataalamu wa tasnia wanaoongoza ubunifu wa nguvu ya CHUI'}
             </motion.p>
           </motion.div>
 
@@ -494,21 +528,23 @@ export default function AboutPage() {
                 whileHover={{ y: -12 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-neutral-100 group-hover:shadow-layer transition-all duration-500">
+                <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-slate-100 group-hover:shadow-layer transition-all duration-500">
                   <div className={`h-80 bg-gradient-to-br ${member.gradient} relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     <div className="absolute bottom-6 left-6 right-6">
-                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mx-auto border border-white/20"></div>
+                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mx-auto border border-white/20 flex items-center justify-center">
+                        <Battery className="w-10 h-10 text-white" />
+                      </div>
                     </div>
                   </div>
                   <div className="p-8">
-                    <h3 className="text-2xl font-display font-black text-neutral-900 mb-2">
+                    <h3 className="text-2xl font-display font-black text-slate-900 mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-primary-600 font-bold mb-4 uppercase tracking-wide text-sm">
+                    <p className="text-blue-600 font-bold mb-4 uppercase tracking-wide text-sm">
                       {member.role[language]}
                     </p>
-                    <p className="text-neutral-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed">
                       {member.bio[language]}
                     </p>
                   </div>
@@ -520,15 +556,15 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 relative overflow-hidden">
+      <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div 
           className="absolute inset-0"
           animate={{ 
             background: [
-              'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)'
+              'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)',
+              'radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)',
+              'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)'
             ]
           }}
           transition={{ duration: 8, repeat: Infinity }}
@@ -560,20 +596,22 @@ export default function AboutPage() {
             >
               <motion.a
                 href="/products"
-                className="group inline-flex items-center px-10 py-4 bg-white text-primary-600 rounded-2xl font-display font-black text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-display font-black text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>{language === 'en' ? 'Explore Our Collection' : 'Chunguza Mkusanyiko Wetu'}</span>
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Battery className="mr-2 w-5 h-5" />
+                <span>{language === 'en' ? 'Shop Batteries' : 'Nunua Betri'}</span>
+                <Zap className="ml-2 w-5 h-5 group-hover:animate-pulse" />
               </motion.a>
               <motion.a
-                href="/contact"
-                className="group inline-flex items-center px-10 py-4 border-2 border-white text-white rounded-2xl font-display font-black text-lg hover:bg-white hover:text-primary-600 transition-all duration-300"
+                href="/dealers"
+                className="group inline-flex items-center px-10 py-4 border-2 border-white text-white rounded-2xl font-display font-black text-lg hover:bg-white hover:text-slate-900 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {language === 'en' ? 'Connect With Us' : 'Unganisha Nasi'}
+                <Globe className="mr-2 w-5 h-5" />
+                {language === 'en' ? 'Find Dealers' : 'Tafuta Madalali'}
               </motion.a>
             </motion.div>
           </motion.div>

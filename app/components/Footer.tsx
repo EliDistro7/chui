@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
-import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Heart, Star } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Battery, Zap, Award, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 const footerContent = {
@@ -10,16 +10,20 @@ const footerContent = {
     sw: "Kampuni"
   },
   links: {
-    en: "Our Snacks",
-    sw: "Vitafunio Vyetu"
+    en: "Our Batteries",
+    sw: "Betri Zetu"
+  },
+  dealers: {
+    en: "Find Dealers",
+    sw: "Tafuta Madalali"
   },
   contact: {
     en: "Get In Touch",
     sw: "Wasiliana Nasi"
   },
   newsletter: {
-    en: "Join the TAM TAM Family!",
-    sw: "Jiunge na Familia ya TAM TAM!"
+    en: "Stay Powered Up!",
+    sw: "Baki na Nguvu!"
   },
   subscribe: {
     en: "Subscribe",
@@ -37,9 +41,13 @@ const footerContent = {
     en: "Terms of Service",
     sw: "Sheria za Matumizi"
   },
+  warranty: {
+    en: "Warranty",
+    sw: "Dhamana"
+  },
   tagline: {
-    en: "Making every moment deliciously happy!",
-    sw: "Tukifanya kila wakati kuwa wa furaha na ladha!"
+    en: "The Power Leader Experience - Reliable Energy for Life!",
+    sw: "Uzoefu wa Kiongozi wa Nguvu - Nguvu za Kuaminika kwa Maisha!"
   }
 };
 
@@ -47,13 +55,22 @@ const Footer = () => {
   const { language } = useLanguage();
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 pt-16 pb-8 relative overflow-hidden">
-      {/* Fun background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
-        <div className="absolute top-20 left-20 w-16 h-16 bg-primary-400 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-32 w-12 h-12 bg-secondary-400 rounded-full animate-bounce-fun"></div>
-        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-accent-400 rounded-full animate-float"></div>
-        <div className="absolute bottom-20 right-1/5 w-14 h-14 bg-snack-cheese rounded-full animate-bounce-fun"></div>
+    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-gray-300 pt-16 pb-8 relative overflow-hidden">
+      {/* Electric background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+        <div className="absolute top-20 left-20 w-16 h-16 bg-primary-400 rounded-full animate-pulse-electric"></div>
+        <div className="absolute top-40 right-32 w-12 h-12 bg-electric-400 rounded-full animate-voltage-pulse"></div>
+        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-secondary-400 rounded-full animate-power-glow"></div>
+        <div className="absolute bottom-20 right-1/5 w-14 h-14 bg-battery-charge rounded-full animate-battery-bounce"></div>
+        
+        {/* Electric grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-6 relative">
@@ -61,106 +78,130 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
-                <span className="font-heading text-white text-xl font-bold">TT</span>
+              <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary-500 via-orange-500 to-primary-600 flex items-center justify-center shadow-power group-hover:scale-110 transition-transform duration-300 border border-primary-300/20 relative overflow-hidden">
+                {/* Electric pulse effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-electric-400/20 to-primary-400/20 animate-pulse-electric"></div>
+                <Battery className="w-6 h-6 text-white relative z-10" />
               </div>
               <div>
                 <span className="font-heading text-2xl font-bold text-white block leading-tight">
-                  TAM TAM
+                  CHUI
                 </span>
                 <span className="text-primary-400 text-sm font-medium">
-                  Happy Snacks
+                  {language === 'en' ? 'Power Leader' : 'Kiongozi wa Nguvu'}
                 </span>
               </div>
             </Link>
             
             <p className="text-gray-400 leading-relaxed">
               {language === 'en' 
-                ? 'Bringing joy to families across Tanzania with our delicious and nutritious snacks. Every bite is a happy moment!' 
-                : 'Tunawaletea furaha familia kote Tanzania kwa vitafunio vyetu vizuri na vya lishe. Kila ulaji ni wakati wa furaha!'}
+                ? 'Powering Tanzania with reliable, maintenance-free batteries built with German technology. Every CHUI battery delivers consistent, dependable power for your journey.' 
+                : 'Tunaongoza Tanzania kwa betri za kuaminika, zisizohitaji ukarabati zilizojengwa kwa teknolojia ya Kijerumani. Kila betri ya CHUI inatoa nguvu za kuaminika kwa safari yako.'}
             </p>
 
-            {/* Tagline */}
-            <div className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent font-bold text-lg">
-              Bidhaa Ya Ah... Adi...
+            {/* Key Features */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm">
+                <Award className="w-4 h-4 text-primary-400" />
+                <span className="text-gray-300">{language === 'en' ? 'German Technology' : 'Teknolojia ya Kijerumani'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Globe className="w-4 h-4 text-electric-400" />
+                <span className="text-gray-300">{language === 'en' ? 'Made in Tanzania' : 'Imetengenezwa Tanzania'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Zap className="w-4 h-4 text-secondary-400" />
+                <span className="text-gray-300">{language === 'en' ? '24 Month Warranty' : 'Dhamana ya Miezi 24'}</span>
+              </div>
             </div>
             
             {/* Social Media */}
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft">
+              <a href="#" className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft hover:shadow-electric">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft">
+              <a href="#" className="w-10 h-10 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft hover:shadow-electric">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gradient-to-r from-sky-500 to-sky-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft">
+              <a href="#" className="w-10 h-10 bg-gradient-to-r from-sky-500 to-sky-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft hover:shadow-electric">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft">
+              <a href="#" className="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft hover:shadow-electric">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Product Links */}
+          {/* Battery Links */}
           <div>
             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Star className="w-5 h-5 text-primary-400" />
+              <Battery className="w-5 h-5 text-primary-400" />
               {footerContent.links[language]}
             </h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/single-product/1" className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2 group">
-                  <div className="w-2 h-2 bg-snack-cheese rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                  {language === 'en' ? 'Cheese Balls' : 'Mpira wa Jibini'}
+                <Link href="/batteries/compact" className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-6 h-6 bg-battery-positive/20 rounded group-hover:bg-battery-positive/40 transition-colors">
+                    <div className="w-2 h-3 bg-battery-positive rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+                  {language === 'en' ? 'N50MF Compact (50AH)' : 'N50MF Ndogo (50AH)'}
                 </Link>
               </li>
               <li>
-                <Link href="/single-product/2" className="text-gray-400 hover:text-secondary-400 transition-colors flex items-center gap-2 group">
-                  <div className="w-2 h-2 bg-snack-chocolate rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                  {language === 'en' ? 'Choco Crunch' : 'Choco Crunch'}
+                <Link href="/batteries/heavy-duty" className="text-gray-400 hover:text-secondary-400 transition-colors flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-6 h-6 bg-battery-charge/20 rounded group-hover:bg-battery-charge/40 transition-colors">
+                    <div className="w-2 h-3 bg-battery-charge rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+                  {language === 'en' ? 'N70MF Heavy Duty (70AH)' : 'N70MF Kazi Nzito (70AH)'}
                 </Link>
               </li>
               <li>
-                <Link href="/single-product/3" className="text-gray-400 hover:text-accent-400 transition-colors flex items-center gap-2 group">
-                  <div className="w-2 h-2 bg-success-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                  {language === 'en' ? 'Multigrain Crisps' : 'Multigrain Crisps'}
+                <Link href="/batteries/suv" className="text-gray-400 hover:text-electric-400 transition-colors flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-6 h-6 bg-electric-500/20 rounded group-hover:bg-electric-500/40 transition-colors">
+                    <div className="w-2 h-3 bg-electric-500 rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+                  {language === 'en' ? 'N100MF SUV Power (100AH)' : 'N100MF Nguvu SUV (100AH)'}
                 </Link>
               </li>
               <li>
-                <Link href="/single-product/4" className="text-gray-400 hover:text-snack-orange transition-colors flex items-center gap-2 group">
-                  <div className="w-2 h-2 bg-snack-orange rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                  {language === 'en' ? 'TAM TAM Rings' : 'TAM TAM Rings'}
+                <Link href="/batteries/industrial" className="text-gray-400 hover:text-battery-capacity transition-colors flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-6 h-6 bg-battery-capacity/20 rounded group-hover:bg-battery-capacity/40 transition-colors">
+                    <div className="w-2 h-3 bg-battery-capacity rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+                  {language === 'en' ? 'N150MF Industrial (150AH)' : 'N150MF Viwandani (150AH)'}
                 </Link>
               </li>
               <li>
-                <Link href="/single-product/5" className="text-gray-400 hover:text-snack-strawberry transition-colors flex items-center gap-2 group">
-                  <div className="w-2 h-2 bg-snack-strawberry rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                  {language === 'en' ? 'Choco Bites' : 'Choco Bites'}
+                <Link href="/batteries/marine" className="text-gray-400 hover:text-accent-400 transition-colors flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-6 h-6 bg-accent-500/20 rounded group-hover:bg-accent-500/40 transition-colors">
+                    <div className="w-2 h-3 bg-accent-500 rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+                  {language === 'en' ? 'N200MF Marine (200AH)' : 'N200MF Bahari (200AH)'}
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-primary-400 hover:text-primary-300 transition-colors font-medium">
-                  {language === 'en' ? 'View All Products →' : 'Angalia Bidhaa Zote →'}
+                <Link href="/batteries" className="text-primary-400 hover:text-primary-300 transition-colors font-medium flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  {language === 'en' ? 'View All Batteries →' : 'Angalia Betri Zote →'}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info & Dealers */}
           <div>
             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Heart className="w-5 h-5 text-accent-400" />
+              <MapPin className="w-5 h-5 text-accent-400" />
               {footerContent.contact[language]}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start group">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-orange-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-power">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">
-                    {language === 'en' ? 'Customer Care' : 'Huduma kwa Wateja'}
+                    {language === 'en' ? 'Customer Support' : 'Msaada kwa Wateja'}
                   </p>
                   <a href="tel:+255123456789" className="text-white hover:text-primary-400 transition-colors font-medium">
                     +255 123 456 789
@@ -168,25 +209,25 @@ const Footer = () => {
                 </div>
               </li>
               <li className="flex items-start group">
-                <div className="w-10 h-10 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 bg-gradient-to-r from-secondary-500 to-electric-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-electric">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">
-                    {language === 'en' ? 'Email Us' : 'Tutumie Barua Pepe'}
+                    {language === 'en' ? 'Technical Support' : 'Msaada wa Kiufundi'}
                   </p>
-                  <a href="mailto:hello@tamtamsnacks.co.tz" className="text-white hover:text-secondary-400 transition-colors font-medium">
-                    hello@tamtamsnacks.co.tz
+                  <a href="mailto:support@chuibatteries.co.tz" className="text-white hover:text-secondary-400 transition-colors font-medium">
+                    support@chuibatteries.co.tz
                   </a>
                 </div>
               </li>
               <li className="flex items-start group">
-                <div className="w-10 h-10 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 bg-gradient-to-r from-electric-500 to-primary-500 rounded-xl flex items-center justify-center mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-glow">
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">
-                    {language === 'en' ? 'Snack Factory' : 'Kiwanda cha Vitafunio'}
+                    {language === 'en' ? 'Head Office' : 'Makao Makuu'}
                   </p>
                   <p className="text-white font-medium">
                     Industrial Area,<br />
@@ -195,17 +236,26 @@ const Footer = () => {
                 </div>
               </li>
             </ul>
+
+            {/* Dealer Locator Link */}
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <Link href="/dealers" className="flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors font-medium group">
+                <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                {footerContent.dealers[language]}
+              </Link>
+            </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter & Warranty */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">
+            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+              <Zap className="w-5 h-5 text-primary-400" />
               {footerContent.newsletter[language]}
             </h3>
             <p className="text-gray-400 mb-6 leading-relaxed">
               {language === 'en' 
-                ? 'Get exclusive offers, new product launches, and fun family activities delivered to your inbox!' 
-                : 'Pokea ofa za kipekee, bidhaa mpya, na shughuli za familia zilizotumwa kwenye barua pepe yako!'}
+                ? 'Get updates on new battery models, maintenance tips, and exclusive dealer offers delivered to your inbox!' 
+                : 'Pokea taarifa za mifano mpya ya betri, vidokezo vya ukarabati, na ofa za kipekee za madalali zilizotumwa kwenye barua pepe yako!'}
             </p>
             <form className="space-y-4">
               <div className="relative">
@@ -218,11 +268,26 @@ const Footer = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-soft hover:shadow-layer"
+                className="w-full bg-gradient-to-r from-primary-500 via-orange-500 to-primary-600 hover:from-primary-600 hover:via-orange-600 hover:to-primary-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-power hover:shadow-electric flex items-center justify-center gap-2 relative overflow-hidden"
               >
-                {footerContent.subscribe[language]} 🎉
+                {/* Electric pulse effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-charge-flow"></div>
+                <Battery className="w-4 h-4" />
+                <span>{footerContent.subscribe[language]}</span>
+                <Zap className="w-4 h-4" />
               </button>
             </form>
+
+            {/* Warranty Info */}
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <Link href="/warranty" className="flex items-center gap-2 text-electric-400 hover:text-electric-300 transition-colors font-medium group">
+                <Award className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                {footerContent.warranty[language]}
+              </Link>
+              <p className="text-xs text-gray-500 mt-1">
+                {language === 'en' ? '24-month comprehensive coverage' : 'Ulinzi mkamilifu wa miezi 24'}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -231,7 +296,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
               <p className="text-gray-500 text-sm mb-2">
-                © {new Date().getFullYear()} TAM TAM Snacks Ltd. {footerContent.rights[language]}
+                © {new Date().getFullYear()} CHUI Batteries Ltd. {footerContent.rights[language]}
               </p>
               <p className="text-primary-400 text-sm font-medium italic">
                 {footerContent.tagline[language]}
@@ -245,9 +310,12 @@ const Footer = () => {
                 <Link href="/terms" className="text-gray-500 hover:text-secondary-400 text-sm transition-colors">
                   {footerContent.terms[language]}
                 </Link>
+                <Link href="/warranty" className="text-gray-500 hover:text-electric-400 text-sm transition-colors">
+                  {footerContent.warranty[language]}
+                </Link>
               </div>
               <div className="text-gray-500 text-sm flex items-center gap-1">
-                Made with <Heart className="w-4 h-4 text-accent-400 animate-pulse" /> in Tanzania
+                Powered by <Battery className="w-4 h-4 text-primary-400 animate-pulse" /> German Technology
               </div>
             </div>
           </div>
