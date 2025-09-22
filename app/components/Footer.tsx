@@ -219,7 +219,8 @@ const Footer = () => {
                     {language === 'en' ? 'Technical Support' : 'Msaada wa Kiufundi'}
                   </p>
                   <a href="mailto:info@chui-battery-tanzania.com" className="text-white hover:text-secondary-400 transition-colors font-medium">
-                    info@chui-battery-tanzania.com
+                   mpandilashop@gmail.com <br />
+                  info@chui-battery-tanzania.com
                   </a>
                 </div>
               </li>
