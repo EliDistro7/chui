@@ -46,8 +46,8 @@ const footerContent = {
     sw: "Dhamana"
   },
   tagline: {
-    en: "The Power Leader Experience - Reliable Energy for Life!",
-    sw: "Uzoefu wa Kiongozi wa Nguvu - Nguvu za Kuaminika kwa Maisha!"
+    en: "Betri ni Chui - Reliable Energy for Life!",
+    sw: "Betri ni Chui - Nguvu za Kuaminika kwa Maisha!"
   }
 };
 
@@ -88,7 +88,7 @@ const Footer = () => {
                   CHUI
                 </span>
                 <span className="text-primary-400 text-sm font-medium">
-                  {language === 'en' ? 'Power Leader' : 'Kiongozi wa Nguvu'}
+                  {language === 'en' ? 'Power Leader' : 'Betri ni Chui'}
                 </span>
               </div>
             </Link>
@@ -115,7 +115,7 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Social Media */}
+            {/* Social Media 
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-soft hover:shadow-electric">
                 <Facebook className="w-5 h-5" />
@@ -130,6 +130,7 @@ const Footer = () => {
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
+            */}
           </div>
 
           {/* Battery Links */}
@@ -204,7 +205,8 @@ const Footer = () => {
                     {language === 'en' ? 'Customer Support' : 'Msaada kwa Wateja'}
                   </p>
                   <a href="tel:+255123456789" className="text-white hover:text-primary-400 transition-colors font-medium">
-                    +255 123 456 789
+                    +255 768 484 714 <br/>
+                    +255 752 884 110
                   </a>
                 </div>
               </li>
@@ -216,8 +218,8 @@ const Footer = () => {
                   <p className="text-gray-400 text-sm">
                     {language === 'en' ? 'Technical Support' : 'Msaada wa Kiufundi'}
                   </p>
-                  <a href="mailto:support@chuibatteries.co.tz" className="text-white hover:text-secondary-400 transition-colors font-medium">
-                    support@chuibatteries.co.tz
+                  <a href="mailto:info@chui-battery-tanzania.com" className="text-white hover:text-secondary-400 transition-colors font-medium">
+                    info@chui-battery-tanzania.com
                   </a>
                 </div>
               </li>

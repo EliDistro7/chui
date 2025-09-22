@@ -14,8 +14,8 @@ export const productsData = [
     category: "medium",
     image: "/images/n50mf.jpeg",
     price: {
-      en: "TSh 85,000",
-      sw: "TSh 85,000"
+      en: "TSh 120,000",
+      sw: "TSh 120,000"
     },
     description: {
       en: "Reliable 12V 50AH maintenance-free battery with German technology. Perfect for medium-sized vehicles and backup power applications. Built to withstand Tanzania's challenging climate conditions while delivering consistent, dependable power for years.",
@@ -70,8 +70,8 @@ export const productsData = [
     category: "heavy",
     image: "/images/n70mf.jpeg",
     price: {
-      en: "TSh 120,000",
-      sw: "TSh 120,000"
+      en: "TSh 150,000",
+      sw: "TSh 150,000"
     },
     description: {
       en: "High-performance 12V 70AH battery with 580A CCA rating. Ideal for larger vehicles and commercial applications requiring reliable starting power. Engineered with advanced German technology for maximum durability and performance.",
@@ -126,8 +126,8 @@ export const productsData = [
     category: "compact",
     image: "/images/ns40mf.jpeg",
     price: {
-      en: "TSh 65,000",
-      sw: "TSh 65,000"
+      en: "TSh 110,000",
+      sw: "TSh 110,000"
     },
     description: {
       en: "Compact 12V 36AH battery with 360A CCA rating. Perfect for smaller vehicles, motorcycles, and compact car applications. Despite its compact size, it delivers reliable power with German engineering excellence.",
@@ -182,8 +182,8 @@ export const productsData = [
     category: "industrial",
     image: "/images/n150mf.jpeg",
     price: {
-      en: "TSh 280,000",
-      sw: "TSh 280,000"
+      en: "TSh 330,000",
+      sw: "TSh 330,000"
     },
     description: {
       en: "Heavy-duty 12V 150AH industrial battery designed for trucks, buses, and high-capacity backup power systems. This premium battery delivers maximum power and reliability for the most demanding commercial applications.",
@@ -238,8 +238,8 @@ export const productsData = [
     category: "heavy",
     image: "/images/n80mf.jpeg",
     price: {
-      en: "TSh 180,000",
-      sw: "TSh 180,000"
+      en: "TSh 215,000",
+      sw: "TSh 215,000"
     },
     description: {
       en: "High-capacity 12V 100AH maintenance-free battery ideal for SUVs, pickup trucks, and medium commercial vehicles. Combines German technology with robust construction for exceptional performance and longevity.",
@@ -294,8 +294,8 @@ export const productsData = [
     category: "industrial",
     image: "/images/n150mf.jpeg",
     price: {
-      en: "TSh 380,000",
-      sw: "TSh 380,000"
+      en: "TSh 420,000",
+      sw: "TSh 420,000"
     },
     description: {
       en: "Ultra-high capacity 12V 200AH industrial battery designed for the most demanding applications including marine vessels, generators, and large commercial vehicles. The ultimate power solution for professional use.",

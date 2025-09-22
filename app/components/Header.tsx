@@ -58,40 +58,11 @@ export default function Header() {
                 boxShadow: "0 0 25px rgba(251,191,36,0.5)"
               }}
               transition={{ duration: 0.3 }}
-              className="relative h-12 w-12 rounded-lg bg-gradient-to-br from-primary-400 via-primary-500 to-orange-500 flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
+              className="relative  flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
             >
               {/* Electric pulse animation */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.8, 0.3]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                className="absolute inset-0 bg-gradient-to-br from-electric-400/30 to-primary-400/30"
-              />
-              
-              {/* Battery icon with electric effect */}
-              <div className="relative z-10 flex items-center justify-center">
-                <Battery className="w-6 h-6 text-white" />
-                <motion.div
-                  animate={{ 
-                    opacity: [0, 1, 0],
-                    scale: [0.8, 1.2, 0.8]
-                  }}
-                  transition={{ 
-                    duration: 1.5, 
-                    repeat: Infinity, 
-                    delay: 0.5 
-                  }}
-                  className="absolute -top-1 -right-1"
-                >
-                  <Zap className="w-3 h-3 text-yellow-300" />
-                </motion.div>
-              </div>
+           
+           
             </motion.div>
             
             <div className="flex flex-col">
@@ -106,7 +77,7 @@ export default function Header() {
               <span className={`text-xs font-medium -mt-1 ${
                 scrolled ? "text-primary-600" : "text-primary-300"
               }`}>
-                {language === "en" ? "Power Leader" : "Kiongozi wa Nguvu"}
+                {language === "en" ? "Power Leader" : "Betri ni Chui"}
               </span>
             </div>
           </Link>
@@ -119,7 +90,8 @@ export default function Header() {
                   href={`/${key === "home" ? "" : key}`}
                   className={`relative px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
                     scrolled 
-                      ? "text-gray-700 hover:text-primary-600 hover:bg-primary-50" 
+                  
+                    ? "text-gray-700 hover:text-primary-600 hover:bg-primary-50" 
                       : "text-white hover:text-primary-200 hover:bg-white/10 backdrop-blur-sm"
                   }`}
                 >
@@ -156,8 +128,10 @@ export default function Header() {
                   : "bg-white text-primary-600 hover:bg-primary-50 shadow-lg"
               }`}
             >
+              <Link href="/products" className="flex items-center gap-2">
               <Battery size={16} />
               <span>{language === "en" ? "Buy Now" : "Nunua Sasa"}</span>
+              </Link>
             </motion.button>
 
             {/* Language Toggle */}
@@ -180,7 +154,7 @@ export default function Header() {
                 animate={{ rotate: language === "en" ? 0 : 180 }}
                 transition={{ duration: 0.3 }}
               >
-                <Languages size={16} />
+               
               </motion.div>
               <span className="font-bold text-sm">
                 {language === "en" ? "SW" : "EN"}
@@ -200,10 +174,12 @@ export default function Header() {
                   : "bg-white text-primary-600 shadow-lg"
               }`}
             >
+              <Link href="/products" className="flex items-center gap-1.5">
               <Battery size={14} />
-              <span className="hidden sm:inline">
+              <span className=" sm:inline">
                 {language === "en" ? "Buy" : "Nunua"}
               </span>
+              </Link>
             </motion.button>
 
             {/* Mobile Language Toggle */}
@@ -222,7 +198,7 @@ export default function Header() {
                   : "Switch to English"
               }
             >
-              <Languages size={14} />
+            
               <span className="font-bold text-sm">
                 {language === "en" ? "SW" : "EN"}
               </span>
@@ -353,11 +329,13 @@ export default function Header() {
                       />
                       
                       <div className="flex items-center justify-center gap-2 relative z-10">
+                        <Link href="/products" className="flex items-center gap-2">
                         <Battery className="w-5 h-5" />
                         <span>
                           {language === "en" ? "Shop CHUI Batteries" : "Nunua Betri za CHUI"}
                         </span>
                         <Zap className="w-4 h-4" />
+                        </Link>
                       </div>
                     </motion.button>
                     

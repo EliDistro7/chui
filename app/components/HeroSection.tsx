@@ -105,8 +105,8 @@ const CHUIHero = () => {
   
   const heroText = {
     tagline: {
-      en: "The Power Leader Experience",
-      sw: "Uzoefu wa Kiongozi wa Nguvu"
+      en: "Betri ni Chui",
+      sw: "Betri ni Chui"
     },
     subtitle: {
       en: "Powering your journey with German technology",
@@ -114,7 +114,7 @@ const CHUIHero = () => {
     },
     description: {
       en: "CHUI delivers reliable, maintenance-free batteries with German technology for all your power needs. Built to withstand Tanzania's challenging climate conditions.",
-      sw: "CHUI inatoa betri za kuaminika, zisizohitaji ukarabati na teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu. Imetengenezwa kustahimili mazingira magumu ya Tanzania."
+      sw: "CHUI inatoa betri za kuaminika, zisizohitaji ukarabati wa mara kwa mara na teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu. Imetengenezwa kustahimili mazingira magumu ya Tanzania."
     },
     shopNow: {
       en: "Shop Batteries",
@@ -323,14 +323,7 @@ const CHUIHero = () => {
                 <span>{heroText.shopNow[language]}</span>
               </motion.button>
               
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-transparent border-3 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 flex items-center justify-center space-x-2"
-              >
-                <Globe className="w-5 h-5" />
-                <span>{heroText.findDealers[language]}</span>
-              </motion.button>
+         
             </motion.div>
 
             {/* Social Proof */}
@@ -374,13 +367,9 @@ const CHUIHero = () => {
               }}
               className="relative z-10"
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 px-0 border border-white/20 shadow-2xl">
                 {/* Video visibility indicator (optional - remove in production) */}
-                {process.env.NODE_ENV === 'development' && (
-                  <div className="absolute top-2 right-2 z-50 bg-black/50 text-white px-2 py-1 rounded text-xs">
-                    {isInView ? '👁️ In View' : '❌ Not In View'}
-                  </div>
-                )}
+             
 
                 {hasVideo ? (
                   <div className="relative overflow-hidden rounded-2xl">

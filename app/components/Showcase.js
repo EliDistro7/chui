@@ -29,11 +29,11 @@ export default function CHUIBatteryShowcase() {
   const content = {
     title: {
       en: "CHUI Battery Collection",
-      sw: "Mkusanyiko wa Betri za CHUI"
+      sw: "Betri za CHUI"
     },
     subtitle: {
-      en: "The Power Leader Experience - Reliable batteries with German technology for all your power needs!",
-      sw: "Uzoefu wa Kiongozi wa Nguvu - Betri za kuaminika na teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu!"
+      en: "Betri ni Chui - Reliable batteries with German technology for all your power needs!",
+      sw: "Betri ni Chui - Betri za kuaminika na teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu!"
     },
     searchPlaceholder: {
       en: "Search CHUI batteries...",
