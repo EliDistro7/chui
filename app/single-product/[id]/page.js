@@ -178,10 +178,10 @@ const CHUIBatterySingleProductPage = ({ params }) => {
       {/* Breadcrumb Navigation */}
       <div className="bg-white/10 backdrop-blur-sm py-3 md:py-4 border-b border-white/20 relative z-10">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-          <button className="flex items-center text-yellow-400 hover:text-yellow-300 font-bold transition-colors group text-sm md:text-base">
+          <Link href="/products" className="flex items-center text-yellow-400 hover:text-yellow-300 font-bold transition-colors group text-sm md:text-base">
             <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
             {productPageContent.backToProducts[language]}
-          </button>
+          </Link>
         </div>
       </div>
 
