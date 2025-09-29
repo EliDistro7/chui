@@ -111,7 +111,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Zap className="w-4 h-4 text-secondary-400" />
-                <span className="text-gray-300">{language === 'en' ? '24 Month Warranty' : 'Dhamana ya Miezi 24'}</span>
+                <span className="text-gray-300">{language === 'en' ? '12 Month Warranty' : 'Dhamana ya Miezi 12'}</span>
               </div>
             </div>
             

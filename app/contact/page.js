@@ -273,7 +273,7 @@ export default function CHUIContactPage() {
                             <p className="text-sm text-white/60 font-medium uppercase tracking-wide">
                               {language === 'en' ? 'Warranty & Claims' : 'Uhakikisho na Madai'}
                             </p>
-                            <a href="mailto:warranty@chuibatteries.co.tz" className="text-lg text-white/80 hover:text-orange-400 transition-colors font-medium">
+                            <a href="mailto:info@chuibatteries.com" className="text-lg text-white/80 hover:text-orange-400 transition-colors font-medium">
                               warranty@chuibatteries.co.tz
                             </a>
                           </div>

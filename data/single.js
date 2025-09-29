@@ -36,7 +36,7 @@ export const productsData = [
       },
       {
         name: { en: "Warranty", sw: "Dhamana" },
-        value: { en: "24 months", sw: "Miezi 24" }
+        value: { en: "12 months", sw: "Miezi 12" }
       }
     ],
     features: [

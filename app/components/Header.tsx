@@ -388,8 +388,8 @@ export default function Header() {
                       }`}
                     >
                       {language === "en" 
-                        ? "German Technology • 24 Month Warranty" 
-                        : "Teknolojia ya Kijerumani • Dhamana ya Miezi 24"
+                        ? "German Technology • 12 Month Warranty" 
+                        : "Teknolojia ya Kijerumani • Dhamana ya Miezi 12"
                       }
                     </motion.p>
                   </motion.div>
