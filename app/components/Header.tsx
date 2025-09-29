@@ -49,10 +49,10 @@ export default function Header() {
           : "bg-gradient-to-r from-slate-900/90 via-blue-900/90 to-slate-800/90 backdrop-blur-md"
       }`}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 pl-2">
         <div className="flex items-center justify-between h-18">
           {/* CHUI Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group px-0 mx-0">
             <motion.div 
               whileHover={{ 
                 scale: 1.1, 
@@ -63,7 +63,7 @@ export default function Header() {
               className="relative flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
             />
             
-            <div className="flex flex-col">
+            <div className="flex flex-col px-0 mr-3">
               <motion.span 
                 whileHover={{ scale: 1.05 }}
                 className={`font-display text-2xl font-black tracking-tight transition-colors ${
@@ -75,7 +75,7 @@ export default function Header() {
               <span className={`text-xs font-medium -mt-1 ${
                 scrolled ? "text-primary-600" : "text-primary-300"
               }`}>
-                {language === "en" ? "Power Leader" : "Betri ni Chui"}
+                {language === "en" ? "Betri ni Chui" : "Betri ni Chui"}
               </span>
             </div>
           </Link>
