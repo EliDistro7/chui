@@ -141,7 +141,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/batteries/compact" className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-3 group">
+                <Link href="/single-product/2" className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-3 group">
                   <div className="flex items-center justify-center w-6 h-6 bg-battery-positive/20 rounded group-hover:bg-battery-positive/40 transition-colors">
                     <div className="w-2 h-3 bg-battery-positive rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
@@ -149,7 +149,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/batteries/heavy-duty" className="text-gray-400 hover:text-secondary-400 transition-colors flex items-center gap-3 group">
+                <Link href="/single-product/4" className="text-gray-400 hover:text-secondary-400 transition-colors flex items-center gap-3 group">
                   <div className="flex items-center justify-center w-6 h-6 bg-battery-charge/20 rounded group-hover:bg-battery-charge/40 transition-colors">
                     <div className="w-2 h-3 bg-battery-charge rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
@@ -157,7 +157,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/batteries/suv" className="text-gray-400 hover:text-electric-400 transition-colors flex items-center gap-3 group">
+                <Link href="/single-product/5" className="text-gray-400 hover:text-electric-400 transition-colors flex items-center gap-3 group">
                   <div className="flex items-center justify-center w-6 h-6 bg-electric-500/20 rounded group-hover:bg-electric-500/40 transition-colors">
                     <div className="w-2 h-3 bg-electric-500 rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
@@ -165,7 +165,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/batteries/industrial" className="text-gray-400 hover:text-battery-capacity transition-colors flex items-center gap-3 group">
+                <Link href="/single-product/3" className="text-gray-400 hover:text-battery-capacity transition-colors flex items-center gap-3 group">
                   <div className="flex items-center justify-center w-6 h-6 bg-battery-capacity/20 rounded group-hover:bg-battery-capacity/40 transition-colors">
                     <div className="w-2 h-3 bg-battery-capacity rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
@@ -173,7 +173,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/batteries/marine" className="text-gray-400 hover:text-accent-400 transition-colors flex items-center gap-3 group">
+                <Link href="/single-product/7" className="text-gray-400 hover:text-accent-400 transition-colors flex items-center gap-3 group">
                   <div className="flex items-center justify-center w-6 h-6 bg-accent-500/20 rounded group-hover:bg-accent-500/40 transition-colors">
                     <div className="w-2 h-3 bg-accent-500 rounded-sm group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
@@ -181,7 +181,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/batteries" className="text-primary-400 hover:text-primary-300 transition-colors font-medium flex items-center gap-2">
+                <Link href="/products" className="text-primary-400 hover:text-primary-300 transition-colors font-medium flex items-center gap-2">
                   <Zap className="w-4 h-4" />
                   {language === 'en' ? 'View All Batteries →' : 'Angalia Betri Zote →'}
                 </Link>
@@ -241,12 +241,7 @@ const Footer = () => {
             </ul>
 
             {/* Dealer Locator Link */}
-            <div className="mt-6 pt-4 border-t border-gray-700">
-              <Link href="/dealers" className="flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors font-medium group">
-                <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                {footerContent.dealers[language]}
-              </Link>
-            </div>
+        
           </div>
 
           {/* Newsletter & Warranty */}
