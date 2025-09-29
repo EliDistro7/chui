@@ -259,7 +259,7 @@ const createShortDescription = (product, language) => {
                       />
                       
                       {/* Power indicator background pattern */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-yellow-400/20 to-transparent rounded-bl-full opacity-50"></div>
+                     
                       
                       {/* Badges */}
                       <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 flex flex-col gap-1 md:gap-2 z-20">
@@ -300,7 +300,7 @@ const createShortDescription = (product, language) => {
                       )}
 
                       {/* Overlay Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10" />
+                 
                     </div>
 
                     {/* Product Details */}
