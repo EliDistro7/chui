@@ -364,11 +364,7 @@ const createShortDescription = (product, language) => {
                       </div>
 
                       {/* Power indicator icon */}
-                      <div className="absolute bottom-4 right-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs">⚡</span>
-                        </div>
-                      </div>
+                    
 
                       {/* Floating sparkle effects on hover */}
                       <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
