@@ -283,7 +283,7 @@ const Footer = () => {
                 {footerContent.warranty[language]}
               </Link>
               <p className="text-xs text-gray-500 mt-1">
-                {language === 'en' ? '24-month comprehensive coverage' : 'Ulinzi mkamilifu wa miezi 24'}
+                {language === 'en' ? '12-month comprehensive coverage' : 'Ulinzi mkamilifu wa miezi 12'}
               </p>
             </div>
           </div>
