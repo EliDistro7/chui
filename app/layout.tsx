@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   authors: [{ name: "CHUI Batteries" }],
   creator: "CHUI Batteries",
   publisher: "CHUI Batteries",
-  metadataBase: new URL('https://chuibatteries.com'), // Update with actual domain
+  metadataBase: new URL('https://chui-battery-tanzania.com'), // Update with actual domain
   
   // Open Graph metadata for social sharing
   openGraph: {
     type: "website",
     locale: "en_TZ",
     alternateLocale: ["sw_TZ"],
-    url: "https://chuibatteries.com",
+    url: "https://chui-battery-tanzania.com",
     siteName: "CHUI Batteries",
     title: "CHUI Batteries | German Technology Power Solutions",
     description: "Powering your journey with German technology. Reliable, maintenance-free batteries built for Tanzania's climate.",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
 
   // App links
   alternates: {
-    canonical: "https://chuibatteries.com",
+    canonical: "https://chui-battery-tanzania.com",
     languages: {
       'en': 'https://chuibatteries.com/en',
       'sw': 'https://chuibatteries.com/sw',
