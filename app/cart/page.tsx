@@ -175,7 +175,7 @@ const cartContent = {
             <div className="sticky top-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/20 shadow-lg">
                 <h2 className="text-2xl font-bold text-white mb-6">
-                  {language === 'en' ? 'Order Summary' : 'Muhtasari wa Agizo'}
+                  {language === 'en' ? 'Order Summary' : 'Muhtasari wa Oda'}
                 </h2>
 
                 <div className="space-y-4 mb-6">
