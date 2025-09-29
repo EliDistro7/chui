@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 import { LanguageProvider } from '@/context/LanguageContext';
+import { CartProvider } from '@/context/CartContext';
 
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
@@ -143,6 +144,7 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
+          <CartProvider>
           <section className="min-h-screen">
             <Toaster />
             <Header />
@@ -150,6 +152,7 @@ export default function RootLayout({
             <Footer />
           </section>
           <SpeedInsights />
+          </CartProvider>
         </LanguageProvider>
       </body>
     </html>

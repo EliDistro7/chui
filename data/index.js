@@ -9,7 +9,7 @@ export const productsData = [
       sw: "Betri ya CHUI N5"
     },
     category: "compact",
-    image: "/images/n5.jpeg",
+    image: "/images/n50mf.jpeg",
     price: {
       en: "TSh 89,000",
       sw: "TSh 89,000"
@@ -38,7 +38,7 @@ export const productsData = [
       sw: "Betri ya CHUI N6"
     },
     category: "compact",
-    image: "/images/n6.jpeg",
+    image: "/images/n150mf.jpeg",
     price: {
       en: "TSh 21,000",
       sw: "TSh 21,000"
@@ -67,7 +67,7 @@ export const productsData = [
       sw: "Betri ya CHUI N9"
     },
     category: "compact",
-    image: "/images/n9.jpeg",
+    image: "/images/n40mf.jpeg",
     price: {
       en: "TSh 23,000",
       sw: "TSh 23,000"
@@ -96,7 +96,7 @@ export const productsData = [
       sw: "Betri ya CHUI N36"
     },
     category: "medium",
-    image: "/images/n36.jpeg",
+    image: "/images/n50mf.jpeg",
     price: {
       en: "TSh 90,000",
       sw: "TSh 90,000"
@@ -129,7 +129,7 @@ export const productsData = [
       sw: "Betri ya CHUI N40"
     },
     category: "medium",
-    image: "/images/n40.jpeg",
+    image: "/images/ns40mf.jpeg",
     price: {
       en: "TSh 110,000",
       sw: "TSh 110,000"
@@ -162,7 +162,7 @@ export const productsData = [
       sw: "Betri ya CHUI N60"
     },
     category: "heavy",
-    image: "/images/n60.jpeg",
+    image: "/images/n60mf.jpeg",
     price: {
       en: "TSh 130,000",
       sw: "TSh 130,000"
@@ -195,7 +195,7 @@ export const productsData = [
       sw: "Betri ya CHUI N70"
     },
     category: "heavy",
-    image: "/images/n70.jpeg",
+    image: "/images/n70mf.jpeg",
     price: {
       en: "TSh 150,000",
       sw: "TSh 150,000"
@@ -228,7 +228,7 @@ export const productsData = [
       sw: "Betri ya CHUI N100"
     },
     category: "industrial",
-    image: "/images/n100.jpeg",
+    image: "/images/n70mf.jpeg",
     price: {
       en: "TSh 215,000",
       sw: "TSh 215,000"
@@ -261,7 +261,7 @@ export const productsData = [
       sw: "Betri ya CHUI N150"
     },
     category: "industrial",
-    image: "/images/n150.jpeg",
+    image: "/images/n150mf.jpeg",
     price: {
       en: "TSh 339,000",
       sw: "TSh 339,000"
@@ -294,7 +294,7 @@ export const productsData = [
       sw: "Betri ya CHUI N200"
     },
     category: "industrial",
-    image: "/images/n200.jpeg",
+    image: "/images/n70mf.jpeg",
     price: {
       en: "TSh 420,000",
       sw: "TSh 420,000"
@@ -439,7 +439,7 @@ export const heroContent = {
         en: "Reliable power for everyday vehicles",
         sw: "Nguvu za kuaminika kwa magari ya kila siku"
       },
-      batteryImage: "/images/n40.jpeg",
+      batteryImage: "/images/n40mf.jpeg",
       priceRange: {
         en: "From TSh 90,000",
         sw: "Kuanzia TSh 90,000"
@@ -454,7 +454,7 @@ export const heroContent = {
         en: "High-performance for demanding applications",
         sw: "Utendaji wa juu kwa matumizi makubwa"
       },
-      batteryImage: "/images/n70.jpeg",
+      batteryImage: "/images/n70mf.jpeg",
       priceRange: {
         en: "From TSh 130,000",
         sw: "Kuanzia TSh 130,000"

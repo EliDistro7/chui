@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Languages, Battery, MapPin, Zap } from "lucide-react";
+import { Menu, X, Languages, Battery, MapPin, Zap, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = {
@@ -15,7 +16,6 @@ const navItems = {
     en: "Batteries",
     sw: "Betri",
   },
-
   about: {
     en: "About CHUI",
     sw: "Kuhusu CHUI",
@@ -28,8 +28,10 @@ const navItems = {
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
+  const { getTotalItems } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const totalItems = getTotalItems();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,12 +60,8 @@ export default function Header() {
                 boxShadow: "0 0 25px rgba(251,191,36,0.5)"
               }}
               transition={{ duration: 0.3 }}
-              className="relative  flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
-            >
-              {/* Electric pulse animation */}
-           
-           
-            </motion.div>
+              className="relative flex items-center justify-center shadow-lg overflow-hidden border border-primary-300/20"
+            />
             
             <div className="flex flex-col">
               <motion.span 
@@ -90,8 +88,7 @@ export default function Header() {
                   href={`/${key === "home" ? "" : key}`}
                   className={`relative px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
                     scrolled 
-                  
-                    ? "text-gray-700 hover:text-primary-600 hover:bg-primary-50" 
+                      ? "text-gray-700 hover:text-primary-600 hover:bg-primary-50" 
                       : "text-white hover:text-primary-200 hover:bg-white/10 backdrop-blur-sm"
                   }`}
                 >
@@ -115,6 +112,34 @@ export default function Header() {
               </motion.div>
             ))}
 
+            {/* Cart Icon - Desktop */}
+            <Link href="/cart">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ml-2 ${
+                  scrolled
+                    ? "bg-white text-primary-600 border-2 border-primary-200 hover:border-primary-300 shadow-sm"
+                    : "bg-white/10 text-white border-2 border-white/30 hover:bg-white/20 backdrop-blur-sm"
+                }`}
+              >
+                <ShoppingCart size={18} />
+                <AnimatePresence mode="wait">
+                  {totalItems > 0 && (
+                    <motion.span
+                      key={totalItems}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0 }}
+                      className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg"
+                    >
+                      {totalItems}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </Link>
+
             {/* Shop Button */}
             <motion.button
               whileHover={{ 
@@ -122,15 +147,15 @@ export default function Header() {
                 boxShadow: "0 8px 25px rgba(251,191,36,0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ml-2 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${
                 scrolled
                   ? "bg-gradient-to-r from-primary-500 to-orange-500 text-white hover:from-primary-600 hover:to-orange-600 shadow-lg"
                   : "bg-white text-primary-600 hover:bg-primary-50 shadow-lg"
               }`}
             >
               <Link href="/products" className="flex items-center gap-2">
-              <Battery size={16} />
-              <span>{language === "en" ? "Buy Now" : "Nunua Sasa"}</span>
+                <Battery size={16} />
+                <span>{language === "en" ? "Buy Now" : "Nunua Sasa"}</span>
               </Link>
             </motion.button>
 
@@ -150,12 +175,6 @@ export default function Header() {
                   : "Switch to English"
               }
             >
-              <motion.div
-                animate={{ rotate: language === "en" ? 0 : 180 }}
-                transition={{ duration: 0.3 }}
-              >
-               
-              </motion.div>
               <span className="font-bold text-sm">
                 {language === "en" ? "SW" : "EN"}
               </span>
@@ -164,6 +183,34 @@ export default function Header() {
 
           {/* Mobile Menu Controls */}
           <div className="flex md:hidden items-center gap-3">
+            {/* Mobile Cart Icon */}
+            <Link href="/cart">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative flex items-center gap-1.5 px-3 py-2 rounded-full transition-all border-2 ${
+                  scrolled
+                    ? "bg-white text-primary-600 border-primary-200 shadow-sm"
+                    : "bg-white/10 text-white border-white/30 backdrop-blur-sm"
+                }`}
+              >
+                <ShoppingCart size={16} />
+                <AnimatePresence mode="wait">
+                  {totalItems > 0 && (
+                    <motion.span
+                      key={totalItems}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0 }}
+                      className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 shadow-lg"
+                    >
+                      {totalItems}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </Link>
+
             {/* Mobile Shop Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -175,10 +222,10 @@ export default function Header() {
               }`}
             >
               <Link href="/products" className="flex items-center gap-1.5">
-              <Battery size={14} />
-              <span className=" sm:inline">
-                {language === "en" ? "Buy" : "Nunua"}
-              </span>
+                <Battery size={14} />
+                <span className="sm:inline">
+                  {language === "en" ? "Buy" : "Nunua"}
+                </span>
               </Link>
             </motion.button>
 
@@ -198,7 +245,6 @@ export default function Header() {
                   : "Switch to English"
               }
             >
-            
               <span className="font-bold text-sm">
                 {language === "en" ? "SW" : "EN"}
               </span>
@@ -279,16 +325,11 @@ export default function Header() {
                           />
                           <span>{translations[language]}</span>
                           
-                          {/* Add icons for specific nav items */}
-                          {key === "dealers" && (
-                            <MapPin className="w-4 h-4 opacity-60" />
-                          )}
                           {key === "products" && (
                             <Battery className="w-4 h-4 opacity-60" />
                           )}
                         </motion.div>
                         
-                        {/* Navigation arrow */}
                         <motion.div
                           whileHover={{ x: 3 }}
                           className={`w-1.5 h-1.5 border-r-2 border-t-2 rotate-45 ${
@@ -314,7 +355,6 @@ export default function Header() {
                       whileTap={{ scale: 0.98 }}
                       className="w-full bg-gradient-to-r from-primary-500 via-orange-500 to-primary-600 text-white px-6 py-4 rounded-xl font-bold text-center shadow-lg relative overflow-hidden"
                     >
-                      {/* Electric pulse effect */}
                       <motion.div
                         animate={{
                           x: ["-100%", "100%"],
@@ -330,16 +370,15 @@ export default function Header() {
                       
                       <div className="flex items-center justify-center gap-2 relative z-10">
                         <Link href="/products" className="flex items-center gap-2">
-                        <Battery className="w-5 h-5" />
-                        <span>
-                          {language === "en" ? "Shop CHUI Batteries" : "Nunua Betri za CHUI"}
-                        </span>
-                        <Zap className="w-4 h-4" />
+                          <Battery className="w-5 h-5" />
+                          <span>
+                            {language === "en" ? "Shop CHUI Batteries" : "Nunua Betri za CHUI"}
+                          </span>
+                          <Zap className="w-4 h-4" />
                         </Link>
                       </div>
                     </motion.button>
                     
-                    {/* Additional info */}
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
