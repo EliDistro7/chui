@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Shield, Truck, Zap, Clock, Star, Award, Play, Pause, Volume2, VolumeX } from "lucide-react";
-
+import { useLanguage } from "@/context/LanguageContext";
 const CHUIBenefitsSection = () => {
-    const [language, setLanguage] = useState<'en' | 'sw'>('en');
+    const {language} = useLanguage();
     const [scrollY, setScrollY] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
@@ -321,14 +321,7 @@ const CHUIBenefitsSection = () => {
 
         <div className="container mx-auto px-6 relative">
           {/* Language Toggle */}
-          <div className="absolute top-4 right-6 z-10">
-            <button
-              onClick={() => setLanguage(language === 'en' ? 'sw' : 'en')}
-              className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-all text-white"
-            >
-              {language === 'en' ? 'SW' : 'EN'}
-            </button>
-          </div>
+        
 
           {/* Header */}
           <div className="text-center mb-16">
@@ -588,17 +581,7 @@ const CHUIBenefitsSection = () => {
                 </p>
               </div>
               
-              <button className="bg-gradient-to-r from-blue-500 via-white/20 to-orange-500 hover:from-blue-600 hover:via-white/30 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-2xl transition-all transform hover:scale-105 shadow-glow hover:shadow-layer flex items-center gap-3 relative overflow-hidden group">
-                <span className="text-xl animate-bounce-fun">🔋</span>
-                {language === 'en' ? 'Find CHUI Dealer' : 'Tafuta Mdallali wa CHUI'}
-                <span className="text-xl animate-wiggle">⚡</span>
-                
-                {/* Button sparkle effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute top-1 left-1/4 text-xs animate-ping text-white">✨</div>
-                  <div className="absolute bottom-1 right-1/4 text-xs animate-pulse text-white">⭐</div>
-                </div>
-              </button>
+            
             </div>
           </div>
         </div>
