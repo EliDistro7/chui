@@ -83,7 +83,11 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
       ) : isInCart ? (
         <ShoppingCart className={iconSizes[size]} />
       ) : (
-        <Plus className={iconSizes[size]} />
+        <p className=''>
+        
+         {language==='sw'? "nunua":"buy"}
+        </p>
+        
       )}
       
       {showText && (
