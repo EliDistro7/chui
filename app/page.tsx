@@ -11,7 +11,7 @@ import ClientPartners from "./components/ClientPartners";
 
 export default function HomePage() {
   return (
-    <div className="bg-white">
+    <div >
       {/* Hero Section - First Impression */}
   
      <Hero />

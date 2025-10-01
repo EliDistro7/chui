@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Battery, Zap, Shield, Globe, Award, Star, Target, ChevronDown, Users } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 const aboutContent = {
   title: {
@@ -103,34 +104,19 @@ const values = [
   }
 ];
 
+
 const teamMembers = [
   {
-    name: "Eng. Michael Swai",
-    role: { en: "Founder & Chief Engineer", sw: "Mwanzilishi na Mkuu wa Uhandisi" },
+    name: "Comrade Mpandilah",
+    role: { en: "Founder & CEO", sw: "Mwanzilishi na Mkurugenzi" },
     bio: {
       en: "Leading CHUI's technical innovation with 15+ years in automotive power solutions and German engineering expertise",
       sw: "Kuongoza ubunifu wa kiufundi wa CHUI na uzoefu wa zaidi ya miaka 15 katika suluhisho za nguvu za magari na utaalam wa uhandisi wa Kijerumani"
     },
+    image: "/chui.png", // Add your image path here
     gradient: "from-blue-500 to-cyan-500"
   },
-  {
-    name: "Dr. Grace Kimaro",
-    role: { en: "Director of Quality", sw: "Mkurugenzi wa Ubora" },
-    bio: {
-      en: "Ensuring every CHUI battery meets international standards through rigorous testing and quality control processes",
-      sw: "Kuhakikisha kila betri ya CHUI inakidhi viwango vya kimataifa kupitia majaribio makali na mchakato wa udhibiti wa ubora"
-    },
-    gradient: "from-green-500 to-teal-500"
-  },
-  {
-    name: "Joseph Mwanga", 
-    role: { en: "National Sales Director", sw: "Mkurugenzi wa Mauzo wa Kitaifa" },
-    bio: {
-      en: "Building nationwide dealer networks and ensuring CHUI batteries are accessible across Tanzania's diverse markets",
-      sw: "Kujenga mitandao ya madalali kote nchini na kuhakikisha betri za CHUI zinapatikana katika masoko mbalimbali ya Tanzania"
-    },
-    gradient: "from-orange-500 to-red-500"
-  }
+
 ];
 
 const stats = [
@@ -384,49 +370,58 @@ export default function CHUIAboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              {aboutContent.teamTitle[language]}
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              {language === 'en' 
-                ? 'The engineering minds and industry experts driving CHUI\'s power innovation'
-                : 'Akili za uhandisi na wataalamu wa tasnia wanaoongoza ubunifu wa nguvu ya CHUI'}
-            </p>
-          </div>
+  {/* Team */}
+<section className="py-20">
+  <div className="container mx-auto px-6">
+    <div className="text-center mb-20">
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+        {aboutContent.teamTitle[language]}
+      </h2>
+      <p className="text-xl text-white/80 max-w-3xl mx-auto">
+        {language === 'en' 
+          ? 'The engineering minds and industry experts driving CHUI\'s power innovation'
+          : 'Akili za uhandisi na wataalamu wa tasnia wanaoongoza ubunifu wa nguvu ya CHUI'}
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="group transform hover:scale-105 transition-transform duration-300">
-                <div className="bg-white/10 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg border border-white/20 group-hover:shadow-xl group-hover:border-yellow-400/50 transition-all duration-500">
-                  <div className={`h-80 bg-gradient-to-br ${member.gradient} relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mx-auto border border-white/20 flex items-center justify-center">
-                        <Battery className="w-10 h-10 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-yellow-400 font-bold mb-4 uppercase tracking-wide text-sm">
-                      {member.role[language]}
-                    </p>
-                    <p className="text-white/80 leading-relaxed">
-                      {member.bio[language]}
-                    </p>
+    <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+      {teamMembers.map((member, index) => (
+        <div key={index} className="group transform hover:scale-105 transition-transform duration-300">
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg border border-white/20 group-hover:shadow-xl group-hover:border-yellow-400/50 transition-all duration-500">
+            <div className={`h-80 bg-gradient-to-br ${member.gradient} relative overflow-hidden`}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              {member.image && (
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              )}
+              {!member.image && (
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mx-auto border border-white/20 flex items-center justify-center">
+                    <Battery className="w-10 h-10 text-white" />
                   </div>
                 </div>
-              </div>
-            ))}
+              )}
+            </div>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                {member.name}
+              </h3>
+              <p className="text-yellow-400 font-bold mb-4 uppercase tracking-wide text-sm">
+                {member.role[language]}
+              </p>
+              <p className="text-white/80 leading-relaxed">
+                {member.bio[language]}
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm border-y border-yellow-400/30">
@@ -439,15 +434,15 @@ export default function CHUIAboutPage() {
               {aboutContent.ctaText[language]}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <button className="group inline-flex items-center px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <Link href='/products' className="group inline-flex items-center px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <Battery className="mr-2 w-5 h-5" />
                 <span>{language === 'en' ? 'Shop Batteries' : 'Nunua Betri'}</span>
                 <Zap className="ml-2 w-5 h-5 group-hover:animate-pulse" />
-              </button>
-              <button className="group inline-flex items-center px-10 py-4 border-2 border-white/30 hover:border-white/50 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
+              </Link>
+              <Link href='/contact' className="group inline-flex items-center px-10 py-4 border-2 border-white/30 hover:border-white/50 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
                 <Globe className="mr-2 w-5 h-5" />
                 {language === 'en' ? 'Find Dealers' : 'Tafuta Madalali'}
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -466,7 +461,7 @@ export default function CHUIAboutPage() {
           
           <div className="border-t border-white/20 pt-8">
             <p className="text-white/60">
-              © 2024 CHUI Batteries. {language === 'en' ? 'All rights reserved.' : 'Haki zote zimehifadhiwa.'}
+              © 2025 CHUI Batteries. {language === 'en' ? 'All rights reserved.' : 'Haki zote zimehifadhiwa.'}
             </p>
           </div>
         </div>
