@@ -7,15 +7,15 @@ export default function CHUIAboutSection() {
   const content = {
     badge: {
       en: 'About CHUI Power',
-      sw: 'Kuhusu Nguvu ya CHUI'
+      sw: 'Kuhusu Betri za CHUI'
     },
     title: {
       en: 'Engineering Power Solutions for Tanzania',
-      sw: 'Uhandisi wa Suluhisho za Nguvu kwa Tanzania'
+      sw: 'Betri ni Chui'
     },
     description: {
       en: 'CHUI delivers premium maintenance-free batteries with German engineering standards, specifically designed for East African conditions. With over 15 years of expertise in automotive power solutions, we power Tanzania\'s growth through reliable energy that keeps the nation moving.',
-      sw: 'CHUI inatoa betri bora zisizohitaji ukarabati kwa viwango vya uhandisi wa Kijerumani, zilizotengenezwa maalum kwa mazingira ya Afrika Mashariki. Na uzoefu wa zaidi ya miaka 15 katika suluhisho za nguvu za magari, tunaendesha ukuaji wa Tanzania kupitia nishati ya kuaminika inayoendesha taifa.'
+      sw: 'CHUI inatoa betri bora zisizohitaji ukarabati wa mara kwa mara kwa viwango vya ubora vya Kijerumani, zilizotengenezwa maalum kwa mazingira ya Afrika Mashariki. Na uzoefu wa zaidi ya miaka 15 katika suluhisho za nguvu za magari, tunaendesha ukuaji wa Tanzania kupitia nishati ya kuaminika inayoendesha taifa.'
     },
     ceoName: 'Comrade Mpandilah',
     ceoTitle: {
@@ -104,22 +104,7 @@ export default function CHUIAboutSection() {
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 py-6">
-                {content.stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="flex items-center justify-center mb-2 text-yellow-400">
-                      {stat.icon}
-                    </div>
-                    <div className="text-3xl font-bold text-white mb-1">
-                      {stat.number}
-                      {stat.suffix && <span className="text-xl">{stat.suffix}</span>}
-                    </div>
-                    <div className="text-xs text-white/60 font-medium uppercase tracking-wide">
-                      {stat.label[language]}
-                    </div>
-                  </div>
-                ))}
-              </div>
+           
 
               {/* CTA Button */}
               <div>
