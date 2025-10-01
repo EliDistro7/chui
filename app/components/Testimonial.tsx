@@ -180,10 +180,10 @@ const Testimonials = () => {
         <Fade triggerOnce delay={300}>
           <div className="mt-12 text-center">
             <Link
-              href="/testimonials"
+              href="/products"
               className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group"
             >
-              {language === 'en' ? 'More Success Stories' : 'Hadithi Zaidi za Mafanikio'}
+              {language === 'en' ? 'Get your Battery today' : 'Pata betri yako leo'}
               <ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
