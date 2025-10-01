@@ -333,10 +333,10 @@ export default function CHUIContactPage() {
                     {language === 'en' ? 'Follow Our Power Journey' : 'Tufuate Katika Safari ya Nguvu'}
                   </h3>
                   <div className="flex space-x-4">
-                    <a href="#" className="group bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                    <a href="https://www.facebook.com/profile.php?id=100082992409947" className="group bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
                       <Facebook className="w-6 h-6 text-white" />
                     </a>
-                    <a href="#" className="group bg-gradient-to-br from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                    <a href="https://www.instagram.com/chuibatterytanzania/" className="group bg-gradient-to-br from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
                       <Instagram className="w-6 h-6 text-white" />
                     </a>
                     <a href="#" className="group bg-gradient-to-br from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
