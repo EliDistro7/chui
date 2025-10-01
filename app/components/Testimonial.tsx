@@ -193,7 +193,7 @@ const Testimonials = () => {
         <Fade triggerOnce delay={400}>
           <div className="mt-8 text-center">
             <p className="text-2xl font-heading font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-              {language === 'en' ? 'The Power Leader Experience' : 'Uzoefu wa Kiongozi wa Nguvu'}
+              {language === 'en' ? 'Power Leader Experience' : 'Power Leader Experience'}
             </p>
           </div>
         </Fade>
