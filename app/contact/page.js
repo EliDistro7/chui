@@ -233,16 +233,16 @@ export default function CHUIContactPage() {
                             <p className="text-sm text-white/60 font-medium uppercase tracking-wide">
                               {language === 'en' ? 'Technical Support' : 'Msaada wa Kiufundi'}
                             </p>
-                            <a href="tel:+255789012345" className="text-lg text-white/80 hover:text-yellow-400 transition-colors font-medium">
-                              +255 789 012 345
+                            <a href="tel:+255768484715" className="text-lg text-white/80 hover:text-yellow-400 transition-colors font-medium">
+                              +255 768 484 715
                             </a>
                           </div>
                           <div>
                             <p className="text-sm text-white/60 font-medium uppercase tracking-wide">
                               {language === 'en' ? '24/7 Emergency Support' : 'Msaada wa Dharura 24/7'}
                             </p>
-                            <a href="tel:+255123456789" className="text-lg text-orange-400 hover:text-orange-300 transition-colors font-bold">
-                              +255 123 456 789
+                            <a href="tel:+255768484715" className="text-lg text-orange-400 hover:text-orange-300 transition-colors font-bold">
+                              +255 768 484 715
                             </a>
                           </div>
                         </div>
@@ -265,16 +265,16 @@ export default function CHUIContactPage() {
                             <p className="text-sm text-white/60 font-medium uppercase tracking-wide">
                               {language === 'en' ? 'General Inquiries' : 'Maswali ya Jumla'}
                             </p>
-                            <a href="mailto:info@chuibatteries.co.tz" className="text-lg text-white/80 hover:text-yellow-400 transition-colors font-medium">
-                              info@chuibatteries.co.tz
+                            <a href="mailto:info@chui-battery-tanzania.com" className="text-lg text-white/80 hover:text-yellow-400 transition-colors font-medium">
+                              info@chui-battery-tanzania.com
                             </a>
                           </div>
                           <div>
                             <p className="text-sm text-white/60 font-medium uppercase tracking-wide">
-                              {language === 'en' ? 'Warranty & Claims' : 'Uhakikisho na Madai'}
+                              {language === 'en' ? 'Warranty & Claims' : 'Uhakikisho'}
                             </p>
                             <a href="mailto:info@chuibatteries.com" className="text-lg text-white/80 hover:text-orange-400 transition-colors font-medium">
-                              warranty@chuibatteries.co.tz
+                              info@chui-battery-tanzania.com
                             </a>
                           </div>
                         </div>
@@ -339,12 +339,7 @@ export default function CHUIContactPage() {
                     <a href="https://www.instagram.com/chuibatterytanzania/" className="group bg-gradient-to-br from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
                       <Instagram className="w-6 h-6 text-white" />
                     </a>
-                    <a href="#" className="group bg-gradient-to-br from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
-                      <Twitter className="w-6 h-6 text-white" />
-                    </a>
-                    <a href="#" className="group bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 p-4 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
-                      <Youtube className="w-6 h-6 text-white" />
-                    </a>
+                   
                   </div>
                   
                   <div className="mt-6 p-4 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm rounded-2xl border border-yellow-400/30">
