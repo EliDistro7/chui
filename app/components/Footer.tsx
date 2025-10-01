@@ -246,35 +246,7 @@ const Footer = () => {
 
           {/* Newsletter & Warranty */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Zap className="w-5 h-5 text-primary-400" />
-              {footerContent.newsletter[language]}
-            </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              {language === 'en' 
-                ? 'Get updates on new battery models, maintenance tips, and exclusive dealer offers delivered to your inbox!' 
-                : 'Pokea taarifa za mifano mpya ya betri, vidokezo vya ukarabati, na ofa za kipekee za madalali zilizotumwa kwenye barua pepe yako!'}
-            </p>
-            <form className="space-y-4">
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder={language === 'en' ? 'Your email address' : 'Barua pepe yako'}
-                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900 border-2 border-transparent focus:border-primary-300 transition-all duration-300"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-primary-500 via-orange-500 to-primary-600 hover:from-primary-600 hover:via-orange-600 hover:to-primary-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-power hover:shadow-electric flex items-center justify-center gap-2 relative overflow-hidden"
-              >
-                {/* Electric pulse effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-charge-flow"></div>
-                <Battery className="w-4 h-4" />
-                <span>{footerContent.subscribe[language]}</span>
-                <Zap className="w-4 h-4" />
-              </button>
-            </form>
+          
 
             {/* Warranty Info */}
             <div className="mt-6 pt-4 border-t border-gray-700">

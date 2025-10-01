@@ -7,6 +7,7 @@ import SpecialOffer from "./components/CTA2";
 
 import ContactSection from "./components/Contact";
 import ClientPartners from "./components/ClientPartners";
+import CHUIAboutSection from "./components/About";
 
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       {/* Hero Section - First Impression */}
   
      <Hero />
+     <CHUIAboutSection />
       {/* Products Showcase - What We Offer */}
       <ProductsShowcase />
       <ClientPartners />
