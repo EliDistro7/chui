@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Battery, ShoppingCart, Star, Zap, Award, Globe, TrendingUp, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 const CHUIHero = () => {
   const { language } = useLanguage();
@@ -319,8 +320,10 @@ const CHUIHero = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
               >
+                <Link href="/products" className="flex items-center space-x-2">
                 <ShoppingCart className="w-5 h-5" />
                 <span>{heroText.shopNow[language]}</span>
+                </Link>
               </motion.button>
               
          

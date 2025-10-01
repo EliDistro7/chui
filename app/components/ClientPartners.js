@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Fade } from "react-awesome-reveal";
 import { Store, ShoppingCart, Building2, Truck, Wrench, Users, MapPin, Zap, Car, Battery } from 'lucide-react';
+import Link from 'next/link';
 
 // Define translations
 const partnersContent = {
@@ -310,12 +311,13 @@ const ClientPartners = () => {
         </div>
 
         {/* Call to action */}
+        
         <Fade triggerOnce delay={500}>
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group cursor-pointer">
+            <Link href={'/contact'} className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group cursor-pointer">
               <MapPin className="w-5 h-5 mr-3" />
               {partnersContent.viewAll[language]}
-            </div>
+            </Link>
             <p className="mt-4 text-blue-200 font-medium">
               {language === 'en' 
                 ? 'Join thousands of satisfied vehicle owners trusting CHUI power!' 
