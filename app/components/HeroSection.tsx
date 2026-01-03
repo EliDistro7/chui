@@ -3,8 +3,60 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Battery, ShoppingCart, Star, Zap, Award, Globe, TrendingUp, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
+
+const content = {
+  tagline: {
+    en: "Betri ni Chui",
+    sw: "Betri ni Chui"
+  },
+  subtitle: {
+    en: "Powering your journey with German technology",
+    sw: "Kuendesha safari yako kwa teknolojia ya Kijerumani"
+  },
+  description: {
+    en: "CHUI delivers reliable, maintenance-free batteries with German technology for all your power needs. Built to withstand Tanzania's challenging climate conditions.",
+    sw: "CHUI inatoa betri za kuaminika, bila matengenezo kwa teknolojia ya Kijerumani kwa mahitaji yako yote ya nguvu. Zimeundwa kustahimili hali ngumu za hewa ya Tanzania."
+  },
+  badges: {
+    germanTech: {
+      en: "German Technology",
+      sw: "Teknolojia ya Kijerumani"
+    },
+    maintenanceFree: {
+      en: "Maintenance Free",
+      sw: "Bila Matengenezo"
+    }
+  },
+  buttons: {
+    shopBatteries: {
+      en: "Shop Batteries",
+      sw: "Nunua Betri"
+    },
+    findDealers: {
+      en: "Find Dealers",
+      sw: "Tafuta Wauzaji"
+    }
+  },
+  stats: {
+    rating: {
+      en: "4.8/5 Rating",
+      sw: "Ukadiriaji wa 4.8/5"
+    },
+    trusted: {
+      en: "Trusted Nationwide",
+      sw: "Imaaminiwa Nchini Kote"
+    }
+  },
+  scrollText: {
+    en: "Scroll for more",
+    sw: "Scroll kwa zaidi"
+  }
+};
 
 const Hero = () => {
+  const { language } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [hasVideo, setHasVideo] = useState(false);
@@ -84,6 +136,7 @@ const Hero = () => {
             loop
             playsInline
             autoPlay
+            preload="auto"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           >
@@ -196,13 +249,13 @@ const Hero = () => {
               className="space-y-4"
             >
               <h2 className="text-2xl lg:text-4xl font-bold text-white">
-                Betri ni Chui
+                {content.tagline[language]}
               </h2>
               <p className="text-md lg:text-xl text-white/90 font-medium">
-                Powering your journey with German technology
+                {content.subtitle[language]}
               </p>
               <p className="text-lg text-white/80 leading-relaxed max-w-xl">
-                CHUI delivers reliable, maintenance-free batteries with German technology for all your power needs. Built to withstand Tanzania's challenging climate conditions.
+                {content.description[language]}
               </p>
             </motion.div>
 
@@ -214,11 +267,11 @@ const Hero = () => {
             >
               <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
                 <Award className="w-5 h-5 text-yellow-400" />
-                <span className="text-white font-medium">German Technology</span>
+                <span className="text-white font-medium">{content.badges.germanTech[language]}</span>
               </div>
               <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
                 <Globe className="w-5 h-5 text-green-400" />
-                <span className="text-white font-medium">Maintenance Free</span>
+                <span className="text-white font-medium">{content.badges.maintenanceFree[language]}</span>
               </div>
             </motion.div>
 
@@ -228,22 +281,26 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
-              >
-                <ShoppingCart className="w-5 h-5" />
-                <span>Shop Batteries</span>
-              </motion.button>
+              <Link href="/products">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  <span>{content.buttons.shopBatteries[language]}</span>
+                </motion.button>
+              </Link>
 
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
-              >
-                Find Dealers
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
+                >
+                  {content.buttons.findDealers[language]}
+                </motion.button>
+              </Link>
             </motion.div>
 
             <motion.div
@@ -258,11 +315,11 @@ const Hero = () => {
                     <Star key={i} className="w-5 h-5 text-yellow-300 fill-current" />
                   ))}
                 </div>
-                <span className="text-white font-medium">4.8/5 Rating</span>
+                <span className="text-white font-medium">{content.stats.rating[language]}</span>
               </div>
               <div className="text-white">
                 <TrendingUp className="w-5 h-5 inline mr-2" />
-                <span className="font-medium">Trusted Nationwide</span>
+                <span className="font-medium">{content.stats.trusted[language]}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -344,7 +401,7 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center z-10"
       >
         <Zap className="w-6 h-6 mx-auto" />
-        <p className="text-sm mt-2">Scroll for more</p>
+        <p className="text-sm mt-2">{content.scrollText[language]}</p>
       </motion.div>
     </section>
   );
