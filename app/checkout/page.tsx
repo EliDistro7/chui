@@ -88,7 +88,7 @@ interface FormErrors {
   };
 
   const generateWhatsAppMessage = (): string => {
-    const producerNumber = "+255765762688"; // Replace with actual producer WhatsApp number
+    const producerNumber = "+255 768 484 715 "; // Replace with actual producer WhatsApp number
     
     let message = `🔋 *CHUI BATTERY ORDER* 🔋\n\n`;
     message += `👤 *Customer Details:*\n`;

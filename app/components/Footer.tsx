@@ -205,7 +205,7 @@ const Footer = () => {
                     {language === 'en' ? 'Customer Support' : 'Msaada kwa Wateja'}
                   </p>
                   <a href="tel:+255123456789" className="text-white hover:text-primary-400 transition-colors font-medium">
-                    +255765762688 <br/>
+                    +255 768 484 715 <br/>
                    
                   </a>
                 </div>
